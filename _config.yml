@@ -11,3 +11,4 @@ github_username:  wingadium1
 # Build settings
 markdown: kramdown
 name: wingadium
+future: true
