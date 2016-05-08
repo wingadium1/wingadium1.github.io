@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Từ bài toán đến tư duy"
-date:   2016-06-08 21:36:44
+date:   2016-05-08 21:36:44
 categories: new
 ---
 
