@@ -1,19 +1,18 @@
 # Site settings
-title: wingadium 
+title: wingadium's blog
 email: wingadium1@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
-  testbed for case study publication
-url: http://wingadium1.github.io" # the base hostname & protocol for your site
+  wingadium's blog about Linux, FOSS, Web, music, movies, book and social problem
+baseurl: "" # the subpath of your site, e.g. /blog/
 twitter_username: wingadium1
 github_username:  wingadium1
 encoding: utf-8
 
 # Build settings
-# markdown: redcarpet
-# highlighter: pygments
-# extensions: [tables fenced_code_blocks]
-
-exclude: [vendor]
+# Build settings
+markdown: kramdown
+name: wingadium
+future: true
 kramdown:
    input: GFM
 gems:
