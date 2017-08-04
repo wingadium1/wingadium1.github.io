@@ -38,9 +38,7 @@ Năm 2005, Andrew "Tridge" Tridgell đã dịch ngược BK, gần như ngay l�
 
 Quá trình phát triển bắt đầu từ ngày 3 tháng 4 nằm 2005, Torvalds công bố dự án vào ngày 6, Git có thể cài đặt trên PC vào ngày 7 và tính năng merge branch được release vào ngày 18. Đến ngày 16/6 Git thực hiện quản lý việc release Linux Kernel v2.6.12
 
-```qoute
-Có lẽ việc ôn lại lịch sử sẽ kết thúc ở đây, phần tiếp theo sẽ quay lại thực tế sử dụng Git
-```
+> Có lẽ việc ôn lại lịch sử sẽ kết thúc ở đây, phần tiếp theo sẽ quay lại thực tế sử dụng Git
 
 Một số khái niệm trong Git
 ------
@@ -74,12 +72,10 @@ hoặc cũng có thể bạn cần tạo ra một nhánh mới hãy thêm flag `
 ### Commit
 * Nếu như Branch là nhánh cây, cành cây thì có thể coi commit chính là các nút (node) hoặc cũng có thể là một điểm nào đó trên nhánh.
 * Người ta lưu lịch sử làm việc trong các commit, nói cách khác nếu bạn commit dữ liệu của bạn không thể mất trừ khi bạn xóa hoàn toàn project git.
-* Cách tạo commit cũng đơn giản: `git commit -m "Commit Message"` hoặc cũng có thể đơn giản là `git commit` sau đó làm theo hướng dẫn với giao diện text editor(thường là vi, vim, nano, etc, ..)
+* Cách tạo commit cũng đơn giản: `git commit -m "Commit Message"` hoặc cũng có thể đơn giản là [`git commit`](https://git-scm.com/docs/git-commit) sau đó làm theo hướng dẫn với giao diện text editor(thường là vi, vim, nano, etc, ..)
 * Mỗi commit đều có message và một ID đặc biệt (SHA –hash), từ đó có thể trace được commit
 
-```
-Nói đến đây mình đột nhiên nhiên phát hiện ra trình bay theo hướng này sẽ khiến mọi người khó hiểu một chút, vì vậy ngay sau đây mình sẽ trình bày về commit một cách rõ hơn, theo một cách nhin khác
-```
+> Nói đến đây mình đột nhiên nhiên phát hiện ra trình bay theo hướng này sẽ khiến mọi người khó hiểu một chút, vì vậy ngay sau đây mình sẽ trình bày về commit một cách rõ hơn, theo một cách nhin khác
 
 ### Git Concept
 
@@ -96,7 +92,4 @@ Nhìn chung một file sẽ có 4 trạng thái như hình thứ nhất
 * Staged: là trạng thái chuẩn bị được commit, thông thường người dùng không để ý đến trạng thái này, trạng thái này được trình bày khá rõ ràng ở hình thứ 2. 
 Một trạng thái kiểu như git đã ghi nhận sự thay đổi nhưng chưa tạo commit. Để chuyển sang trạng thái staged sử dụng câu lệnh [`git stage`](https://git-scm.com/docs/git-stage).
 
-```
-Một tips nhỏ với stage, khi bạn cần commit lên nhánh A mà lại làm việc trên nhánh B thì bạn có thể stage toàn bộ file cần thay đổi và checkout sang nhánh A và commit. Một cách khác đa số mọi người sẽ áp dụng đó là commit trên nhánh B, cherry-pick(sẽ nói ở dưới đây) commit sang A, ngoài ra cũng có cách chuyên nghiệp hơn đó là tạo ***pack diff***.
-```
-
+> Một tips nhỏ với stage, khi bạn cần commit lên nhánh A mà lại làm việc trên nhánh B thì bạn có thể stage toàn bộ file cần thay đổi và checkout sang nhánh A và commit. Một cách khác đa số mọi người sẽ áp dụng đó là commit trên nhánh B, cherry-pick(sẽ nói ở dưới đây) commit sang A, ngoài ra cũng có cách chuyên nghiệp hơn đó là tạo ***pack diff***.
