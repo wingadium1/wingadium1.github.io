@@ -1,11 +1,11 @@
 ---
 layout: post
-title:  "Note for project HK developement"
+title:  "Note for AWS Lambda + API Gateway + Route53 + S3 + RDS project developement"
 date:   2017-10-09 12:00:00
 categories: new
 ---
 
-Note for project HK developement
+Note for AWS Lambda + API Gateway + Route53 + S3 + RDS project developement
 ====
 
 AWS
