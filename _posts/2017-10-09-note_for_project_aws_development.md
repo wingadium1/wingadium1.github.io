@@ -36,5 +36,14 @@ Config lambda function with environment tag
 ### Node.js tips
 * [js async-await vs promises](https://hackernoon.com/6-reasons-why-javascripts-async-await-blows-promises-away-tutorial-c7ec10518dd9)
 
+### Lambda limitation investigation
+
+* [http://docs.aws.amazon.com/general/latest/gr/api-retries.html](http://docs.aws.amazon.com/general/latest/gr/api-retries.html)
+* [https://dzone.com/articles/the-rise-of-lambda](https://dzone.com/articles/the-rise-of-lambda)
+* [https://www.stratoscale.com/blog/cloud/aws-lambda-features-limitations-practical-examples/](https://www.stratoscale.com/blog/cloud/aws-lambda-features-limitations-practical-examples/)
+* [https://aws.amazon.com/blogs/compute/category/aws-lambda/](https://aws.amazon.com/blogs/compute/category/aws-lambda/)
+* [https://aws.amazon.com/blogs/aws/run-code-cloud/](https://aws.amazon.com/blogs/aws/run-code-cloud/)
+* [http://docs.aws.amazon.com/lambda/latest/dg/retries-on-errors.html](http://docs.aws.amazon.com/lambda/latest/dg/retries-on-errors.html)
+* [http://docs.aws.amazon.com/lambda/latest/dg/use-cases.html](http://docs.aws.amazon.com/lambda/latest/dg/use-cases.html)
 
 
