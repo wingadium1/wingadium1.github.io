@@ -46,4 +46,13 @@ Config lambda function with environment tag
 * [http://docs.aws.amazon.com/lambda/latest/dg/retries-on-errors.html](http://docs.aws.amazon.com/lambda/latest/dg/retries-on-errors.html)
 * [http://docs.aws.amazon.com/lambda/latest/dg/use-cases.html](http://docs.aws.amazon.com/lambda/latest/dg/use-cases.html)
 
+### Serving private content through CloudFront
+* To serve private content through CloudFront we use Origin Access Identity, signed URLs or signed cookies
+* [Setup serving private content througt CloudFront](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-task-list.html)
+* [http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-s3.html](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-s3.html)
+* [How to use signed cookies](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-signed-cookies.html)
+* [How to use singed URLs](http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-signed-urls.html)
 
+### Browser-base Upload using HTTP Post
+* To upload file to S3 we can upload directly to S3 instead of using webserver, when use this method Web Client must have S3 Signature
+* [How to implement browser-base upload](http://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-UsingHTTPPOST.html)
