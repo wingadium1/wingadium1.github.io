@@ -43,4 +43,65 @@ AWS CSA Professional Quiz ACloudGuru
     - [ ] Configuring your database to be multi-AZ
     - [ ] By adding new RDS instances and always writing to both databases from your application
     - [x] Setting up read replicas of your database
+
 > Read replicas leverage built-in database engine data replication functionality to scale elastically for read-heavy applications. If write performance is the limitation, you will need to look at upgrading to a larger instance size, or sharding, or a different solution. Multi-AZ deployments will improve fault tolerance but will not improve performance. Further information: https://aws.amazon.com/rds/faqs/https://aws.amazon.com/rds/details/read-replicas/
+
+7. True or False: The Pilot Light strategy will usually include a database server and AMIs as its core.
+    - [ ] False
+    - [x] True
+
+> A replicated database would most likely be kept in AWS to use in the event of an onsite failure, and AMIs would be used for application servers or webhosts.
+
+8. What's the maximum number of gateway-stored volumes supported?
+
+    - [ ] 8
+    - [ ] 12
+    - [x] 32
+    - [ ] 10
+
+> Further information: 
+> https://aws.amazon.com/storagegateway/faqs/
+> https://aws.amazon.com/storagegateway/details/
+> http://docs.aws.amazon.com/storagegateway/latest/userguide/resource-gateway-limits.html
+
+9. What ports are required to be open to run Storage Gateway on-premise?
+
+    - [ ] 80 inbound, 443 outbound, and 3260 outbound
+    - [x] 443 outbound, 80 inbound (from local network for activation), 3260 inbound (from iscsi clients connecting), and outbound 53 (dns)
+    - [ ] 80 outbound, 443 inbound, and UDP 53 outbound
+
+> Port 80 is only needed for activation and can be closed once that's complete. Further information: 
+> http://docs.aws.amazon.com/storagegateway/latest/userguide/Requirements.html
+
+10. AWS Import/Export can be used to export data from ________?
+
+    - [ ] S3 and Glacier
+    - [ ] S3, EBS, and Glacier
+    - [x] S3 only
+
+> Data that requires exporting will need to be moved to S3 first. Note that Import/Export SnowBall has slightly different options from Import/Export Disk Further information: http://docs.aws.amazon.com/AWSImportExport/latest/DG/introduction.html
+
+11. The Recovery Point Objective (RPO) is ________.
+
+    - [x] The maximum duration of time of which data might be lost from an IT service due to an incident
+    - [ ] The maximum time between a disruption and the most recent data recovery point
+    - [ ] A standards compliant point value which indicates the risk of having to perform a recovery due to a disruption
+    - [ ] The amount of time that it takes for your business to recover from an outage or disruption
+
+> How much data can your organization lose? One hour's worth? A day's worth? None at all? Further information: https://media.amazonwebservices.com/AWS_Disaster_Recovery.pdf
+
+12. Archive retrieval from Amazon Glacier takes ________.
+
+    - [ ] less than 1 hour maximum
+    - [x] 3 or more hours
+    - [ ] 3 - 12 hours
+    - [ ] 2 - 4 hours
+
+> Amazon Glacier data retrievals typically take 3 - 5 hours but can take longer than that. Further information: https://aws.amazon.com/glacier/faqs/#data-retrievals
+
+13. If you create a volume from an EC2 incremental snapshot, it will contain the base snapshot data plus any incremental changes up to that point in time.
+
+    - [ ] False
+    - [x] True
+
+> Further information: http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-creating-snapshot.html http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-restoring-volume.html http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-deleting-snapshot.html
