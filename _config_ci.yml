@@ -3,7 +3,7 @@ title: wingadium's blog
 email: wingadium1@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
   wingadium's blog about Linux, FOSS, Web, music, movies, book and social problem
-baseurl: "" # the subpath of your site, e.g. /blog/
+baseurl: wingadium.icetea.space # the subpath of your site, e.g. /blog/
 twitter_username: wingadium1
 github_username:  wingadium1
 encoding: utf-8
