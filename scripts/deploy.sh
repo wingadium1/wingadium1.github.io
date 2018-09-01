@@ -8,6 +8,7 @@ if [[ $TRAVIS_BRANCH == 'gh-pages' ]] ; then
   git config user.email "wingadium1@gmail.com"
   
   echo 'Add file to repository'
+  echo wingadium.icetea.space > CNAME
   git add .
   git commit -m "Deploy"
   echo 'Start push'
