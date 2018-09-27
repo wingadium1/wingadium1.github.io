@@ -2,7 +2,8 @@
 layout: post
 title:  "AWS CSA Professional Quiz ACloudGuru"
 date:   2018-02-25 12:00:00
-categories: new
+categories: AWS Cert
+tags: [AWS, ACloudGuru]
 ---
 
 AWS CSA Professional Quiz ACloudGuru

@@ -3,6 +3,7 @@ layout: post
 title:  "Git from noob to master (Chapter 1)"
 date:   2017-08-03 12:00:00
 categories: new
+tags: [Git]
 ---
 
 Git from noob to master - Chapter 1

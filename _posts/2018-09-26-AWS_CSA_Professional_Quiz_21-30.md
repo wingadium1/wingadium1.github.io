@@ -2,7 +2,8 @@
 layout: post 
 title:  AWS CSA Professional Quiz 21-30 
 date:   2018-09-26 12:00:00
-categories: new
+categories: AWS Cert
+tag: [AWS Cert]
 ---
 
 AWS CSA Professional Quiz 21-30 

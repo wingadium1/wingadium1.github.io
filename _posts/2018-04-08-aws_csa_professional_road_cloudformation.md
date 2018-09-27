@@ -2,7 +2,8 @@
 layout: post
 title:  "AWS CSA Professional Road - CloudFormation"
 date:   2018-04-08 08:32:00
-categories: new
+categories: AWS Cert
+tags: [AWS, ACloudGuru]
 ---
 
 AWS CSA Professional Road - CloudFormation

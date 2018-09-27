@@ -2,7 +2,7 @@
 layout: post
 title:  "Note for AWS Lambda + API Gateway + Route53 + S3 + RDS project developement"
 date:   2017-10-09 12:00:00
-categories: new
+categories: AWS Cert
 ---
 
 Note for AWS Lambda + API Gateway + Route53 + S3 + RDS project developement

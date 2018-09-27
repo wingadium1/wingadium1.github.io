@@ -2,7 +2,8 @@
 layout: post
 title:  "From Cognito to Auth0 - Part 1"
 date:   2018-07-04 10:00:00
-categories: new
+categories: AWS
+tags: [AWS, Auth0, Cognito]
 ---
 
 From Cognito to Auth0 - Part 1

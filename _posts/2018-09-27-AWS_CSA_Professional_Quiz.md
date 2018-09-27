@@ -2,7 +2,8 @@
 layout: post 
 title:  AWS CSA Professional Quiz
 date:   2018-09-27 12:00:00
-categories: new
+categories: AWS Cert
+tag: [AWS Cert]
 ---
 
 AWS CSA Professional Quiz
@@ -27,6 +28,5 @@ AWS CSA Professional Quiz
   * [AWS CSA Professional Quiz_181-190](AWS_CSA_Professional_Quiz_181-190.md)
   * [AWS CSA Professional Quiz_191-200](AWS_CSA_Professional_Quiz_191-200.md)
   * [AWS CSA Professional Quiz_201-210](AWS_CSA_Professional_Quiz_201-210.md)
-
 
 -----
