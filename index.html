@@ -4,6 +4,15 @@ layout: default
 
 <div class="home">
 
+    {% comment %}
+    =======================
+    The purpose of this snippet is to list all the tags you have in your site.
+    =======================
+    {% endcomment %}
+    {% for tag in tags %}
+      <a href="#{{ tag | slugify }}"> {{ tag }} </a>
+    {% endfor %}
+
   <h1 class="page-heading">Posts</h1>
 
   <ul class="post-list">
