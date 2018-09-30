@@ -27,6 +27,5 @@ AWS CSA Professional Quiz
   * [AWS CSA Professional Quiz_171-180](/aws/cert/2018/09/26/AWS_CSA_Professional_Quiz_171-180.md)
   * [AWS CSA Professional Quiz_181-190](/aws/cert/2018/09/26/AWS_CSA_Professional_Quiz_181-190.md)
   * [AWS CSA Professional Quiz_191-200](/aws/cert/2018/09/26/AWS_CSA_Professional_Quiz_191-200.md)
-  * [AWS CSA Professional Quiz_201-210](/aws/cert/2018/09/26/AWS_CSA_Professional_Quiz_201-210.md)
 
 -----
