@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>AWS CSA Professional Quiz 81-90</title>
+  <meta name="description" content="AWS CSA Professional Quiz 81-9081 | You have deployed a three-tier web application in a VPC with a CIDR block of 10 0 0 0/28. You initially deploy two web se...">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://wingadium.icetea.space/aws/cert/2018/09/26/AWS_CSA_Professional_Quiz_81-90.html">
+  <link rel="alternate" type="application/rss+xml" title="wingadium's blog" href="http://wingadium.icetea.space/feed.xml" />
+  <link rel="stylesheet" href="/assets/css/style.css" media="screen">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">wingadium</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+          <a class="page-link" href="/about/">About</a>
+          
+        
+          
+          <a class="page-link" href="/archives.html">wingadium</a>
+          
+        
+          
+          <a class="page-link" href="/categories.html">Category</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <a class="page-link" href="/tag.html">Tag</a>
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">AWS CSA Professional Quiz 81-90</h1>
+    <p class="post-meta">Sep 26, 2018</p>
+  </header>
+
+  <article class="post-content">
+    <h1 id="aws-csa-professional-quiz-81-90">AWS CSA Professional Quiz 81-90</h1>
+<hr />
+<hr />
+<p>81 | You have deployed a three-tier web application in a VPC with a CIDR block of 10 0 0 0/28. You initially deploy two web servers, two application servers, two database servers and one NAT instance for a total of seven EC2 instances. The web Application and database servers are deployed across two availability zones (AZs). You also deploy an ELB in front of the two web servers, and use Route53 for DNS Web (raffle gradually increases in the first few days following the deployment, so you attempt to double the number of instances in each tier of the application to handle the new load unfortunately some of these new instances fail to launch.
+Which of the following could be the root caused? (Choose 2 answers)</p>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />The Internet Gateway (IGW) of your VPC has scaled-up adding more instances to handle the traffic spike, 
+reducing the number of available private IP addresses for new instance launches.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />AWS reserves one IP address In each subnet’s CIDR block for Route53 so you do not have enough addresses 
+left to launch all of the new EC2 instances.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />AWS reserves the first and the last private IP address in each subnet’s CIDR block so you do not have enough 
+addresses left to launch all of the new EC2 instances.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />The ELB has scaled-up. Adding more instances to handle the traffic reducing the number of available private 
+IP addresses for new instance launches.</li>
+</ul>
+
+<hr />
+
+<p>82 | You’ve been brought in as solutions architect to assist an enterprise customer with their migration of an ecommerce platform to Amazon Virtual Private Cloud (VPC) The previous architect has already deployed a 3-tier VPC.
+The configuration is as follows:
+VPC vpc-2f8t&gt;C447
+IGW ig-2d8bc445
+NACL acl-2080c448
+Subnets and Route Tables:
+   Web server’s subnet-258Dc44d
+   Application server’s suDnet-248bc44c
+   Database server’s subnet-9189c6f9
+Route Tables:
+   rrb-218DC449
+   rtb-238bc44b
+Associations:
+   subnet-258bc44d: rtb-2i8bc449
+   Subnet-248DC44C rtb-238tX44b
+   subnet-9189c6f9 rtb-238Dc 44b
+You are now ready to begin deploying EC2 instances into the VPC. Web servers must have direct access to the internet. Application and database servers cannot have direct access to the internet.
+Which configuration below will allow you the ability to remotely administer your application and database servers, as well as allow these servers to retrieve updates from the Internet?</p>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Create a bastion and NAT Instance in subnet-248bc44c and add a route from rtb-238bc44b to subnet- 
+258bc44d.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Add a route from rtD-238bc44D to igw-2d8bc445 and add a bastion and NAT instance within suonet- 
+248bc44c.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Create a bastion and NAT Instance In subnet-258bc44d. Add a route from rtb-238bc44b to igw-2d8bc445. 
+And a new NACL that allows access between subnet-258bc44d and subnet-248bc44c.</li>
+</ul>
+
+<hr />
+
+<p>83 | You are designing Internet connectivity for your VPC. The Web servers must be available on the Internet. The application must have a highly available architecture.
+Which alternatives should you consider? (Choose 2 answers)</p>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Configure a NAT instance in your VPC Create a default route via the NAT instance and associate it with all 
+subnets Configure a DNS A record that points to the NAT instance public IP address.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Configure a CloudFront distribution and configure the origin to point to the private IP addresses of your 
+Web servers Configure a Route53 CNAME record to your CloudFront distribution.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Place all your web servers behind ELB Configure a Route53 CNAME to point to the ELB DNS name.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Assign EIPs to all web servers. Configure a Route53 record set with all EIPs. With health checks and DNS 
+failover.</li>
+</ul>
+
+<hr />
+
+<p>84 | You are tasked with moving a legacy application from a virtual machine running Inside your datacenter to an Amazon VPC Unfortunately this app requires access to a number of on-premises services and no one who
+configured the app still works for your company. Even worse there’s no documentation for it. What will allow the application running inside the VPC to reach back and access its internal dependencies without being
+reconfigured? (Choose 3 answers)</p>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />An AWS Direct Connect link between the VPC and the network housing the internal services.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />An Internet Gateway to allow a VPN connection.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />An Elastic IP address on the VPC instance</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />An IP address space that does not conflict with the one on-premises</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Entries in Amazon Route 53 that allow the Instance to resolve its dependencies’ IP addresses</li>
+</ul>
+
+<hr />
+
+<table>
+  <tbody>
+    <tr>
+      <td>85</td>
+      <td>You are migrating a legacy client-server application to AWS The application responds to a specific DNS domain (e g www example com) and has a 2-tier architecture, with multiple application servers and a database server Remote clients use TCP to connect to the application servers. The application servers need to know the IP address of the clients in order to function properly and are currently taking that information from the TCP socket A Multi-AZ RDS MySQL instance will be used for the database. During the migration you can change the application code but you have to find a change request. How would you implement the architecture on AWS In order to maximize scalability and high ability?</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Find a change request to implement Proxy Protocol support In the application Use an ELB with a TCP Listener 
+and Proxy Protocol enabled to distribute load on two application servers in different AZs.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Find a change request to Implement Cross-Zone support in the application Use an ELB with a TCP Listener 
+and Cross-Zone Load Balancing enabled, two application servers in different AZs.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Find a change request to implement Latency Based Routing support in the application Use Route 53 with 
+Latency Based Routing enabled to distribute load on two application servers in different AZs.</li>
+</ul>
+
+<hr />
+
+<table>
+  <tbody>
+    <tr>
+      <td>86</td>
+      <td>A newspaper organization has a on-premises application which allows the public to search its back catalogue and retrieve individual newspaper pages via a website written in Java. They have scanned the old newspapers into JPEGs (approx 17TB) and used Optical Character Recognition (OCR) to populate a commercial search product. The hosting platform and software are now end of life and the organization wants to migrate Its archive to AWS and produce a cost efficient architecture and still be designed for availability and durability Which is the most appropriate?</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Use S3 with reduced redundancy to store and serve the scanned files, install the commercial search 
+application on EC2 Instances and configure with auto-scaling and an Elastic Load Balancer.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Model the environment using CloudFormation use an EC2 instance running Apache webserver and an open 
+source search application, stripe multiple standard EBS volumes together to store the JPEGs and search index.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Use S3 with standard redundancy to store and serve the scanned files, use CloudSearch for query 
+processing, and use Elastic Beanstalk to host the website across multiple availability zones.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Use a single-AZ RDS MySQL instance to store the search index 33d the JPEG images use an EC2 instance to 
+serve the website and translate user queries into SQL.</li>
+</ul>
+
+<hr />
+
+<p>87 | A corporate web application is deployed within an Amazon Virtual Private Cloud (VPC) and is connected to the corporate data center via an iPsec VPN. The application must authenticate against the on-premises LDAP
+server. After authentication, each logged-in user can only access an Amazon Simple Storage Space (S3) keyspace specific to that user.
+Which two approaches can satisfy these objectives? (Choose 2 answers)</p>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Develop an identity broker that authenticates against IAM security Token service to assume a IAM role in 
+order to get temporary AWS security credentials The application calls the identity broker to get AWS 
+temporary security credentials with access to the appropriate S3 bucket.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />The application authenticates against LDAP and retrieves the name of an IAM role associated with the user. 
+The application then cails the IAM Security Token Service to assume that IAM role The application can use the 
+temporary credentials to access the appropriate S3 bucket.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Develop an identity broker that authenticates against LDAP and then calls IAM Security Token Service to get 
+IAM federated user credentials The application calls the identity broker to get IAM federated user credentials 
+with access to the appropriate S3 bucket.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />The application authenticates against LDAP the application then calls the AWS identity and Access 
+Management (IAM) Security service to log in to IAM using the LDAP credentials the application can use the 
+IAM temporary credentials to access the appropriate S3 bucket.</li>
+</ul>
+
+<hr />
+
+<p>88 | You are designing a multi-platform web application for AWS. The application will run on EC2 instances and will be accessed from PCs. tablets and smart phones. Supported accessing platforms are Windows. MACOS. IOS and Android. Separate sticky session and SSL certificate setups are required for different platform types. 
+which of the following describes the most cost effective and performance efficient architecture setup?</p>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Setup a hybrid architecture to handle session state and SSL certificates on-premise and separate EC2 Instance 
+groups running web applications for different platform types running in a VPC.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Set up one ELB for all platforms to distribute load among multiple instance under it Each EC2 instance 
+implements ail functionality for a particular platform.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Set up two ELBs The first ELB handles SSL certificates for all platforms and the second ELB handles session 
+stickiness for all platforms for each ELB run separate EC2 instance groups to handle the web application for 
+each platform.</li>
+</ul>
+
+<hr />
+
+<p>89 | Your company has an on-premises multi-tier PHP web application, which recently experienced downtime due to a large burst In web traffic due to a company announcement Over the coming days, you are expecting
+similar announcements to drive similar unpredictable bursts, and are looking to find ways to quickly improve your infrastructures ability to handle unexpected increases in traffic. The application currently consists of 2 tiers A web tier which consists of a load balancer and several Linux
+Apache web servers as well as a database tier which hosts a Linux server hosting a MySQL database. Which scenario below will provide full site functionality, while helping to improve the ability of your application in the short timeframe required?</p>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Offload traffic from on-premises environment Setup a CloudFront distribution and configure CloudFront to 
+cache objects from a custom origin Choose to customize your object cache behavior, and select a TTL that 
+objects should exist in cache.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Migrate to AWS Use VM import ‘Export to quickly convert an on-premises web server to an AMI create an 
+Auto Scaling group, which uses the imported AMI to scale the web tier based on incoming traffic Create an RDS 
+read replica and setup replication between the RDS instance and on-premises MySQL server to migrate the 
+database.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Failover environment: Create an S3 bucket and configure it tor website hosting Migrate your DNS to 
+Route53 using zone (lie import and leverage Route53 DNS failover to failover to the S3 hosted website.</li>
+</ul>
+
+<hr />
+
+<p>90 | Your company produces customer commissioned one-of-a-kind skiing helmets combining nigh fashion with custom technical enhancements Customers can show oft their Individuality on the ski slopes and have access to head-up-displays. GPS rear-view cams and any other technical innovation they wish to embed in the helmet.
+The current manufacturing process is data rich and complex including assessments to ensure that the custom electronics and materials used to assemble the helmets are to the highest standards Assessments are a mixture of human and automated assessments you need to add a new set of assessment to model the failure modes of the custom electronics using GPUs with CUD</p>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />across a cluster of servers with low latency networking. 
+What architecture would allow you to automate the existing process using a hybrid approach and ensure that 
+the architecture can support the evolution of processes over time? 
+Use AWS Data Pipeline to manage movement of data &amp; meta-data and assessments Use an auto-scaling 
+group of G2 instances in a placement group.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Use Amazon Simple Workflow (SWF) 10 manages assessments, movement of data &amp; meta-data Use an autoscaling group of G2 instances in a placement group.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Use Amazon Simple Workflow (SWF) lo manages assessments movement of data &amp; meta-data Use an autoscaling group of C3 instances with SR-IOV (Single Root I/O Virtualization).</li>
+</ul>
+
+<hr />
+<p><a href="AWS_CSA_Professional_Quiz_71-80.html">AWS CSA Professional Quiz_71-80</a></p>
+
+<p><a href="AWS_CSA_Professional_Quiz_91-100.html">AWS CSA Professional Quiz_91-100</a></p>
+
+<ul>
+  <li><a href="AWS_CSA_Professional_Quiz_11-20.html">AWS CSA Professional Quiz_11-20</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_21-30.html">AWS CSA Professional Quiz_21-30</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_31-40.html">AWS CSA Professional Quiz_31-40</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_41-50.html">AWS CSA Professional Quiz_41-50</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_51-60.html">AWS CSA Professional Quiz_51-60</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_61-70.html">AWS CSA Professional Quiz_61-70</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_71-80.html">AWS CSA Professional Quiz_71-80</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_81-90.html">AWS CSA Professional Quiz_81-90</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_91-100.html">AWS CSA Professional Quiz_91-100</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_101-110.html">AWS CSA Professional Quiz_101-110</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_111-120.html">AWS CSA Professional Quiz_111-120</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_121-130.html">AWS CSA Professional Quiz_121-130</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_131-140.html">AWS CSA Professional Quiz_131-140</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_141-150.html">AWS CSA Professional Quiz_141-150</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_151-160.html">AWS CSA Professional Quiz_151-160</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_161-170.html">AWS CSA Professional Quiz_161-170</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_171-180.html">AWS CSA Professional Quiz_171-180</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_181-190.html">AWS CSA Professional Quiz_181-190</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_191-200.html">AWS CSA Professional Quiz_191-200</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_201-210.html">AWS CSA Professional Quiz_201-210</a></li>
+</ul>
+
+  </article>
+
+</div>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">wingadium's blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-1">
+        <ul class="contact-list">
+          <li>wingadium's blog</li>
+          <li><a href="mailto:wingadium1@gmail.com">wingadium1@gmail.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/wingadium1">
+              <span class="icon  icon--github">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+                </svg>
+              </span>
+
+              <span class="username">wingadium1</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/wingadium1">
+              <span class="icon  icon--twitter">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809
+                  c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/>
+                </svg>
+              </span>
+
+              <span class="username">wingadium1</span>
+            </a>
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-3">
+        <p class="text">wingadium's blog about Linux, FOSS, Web, music, movies, book and social problem
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

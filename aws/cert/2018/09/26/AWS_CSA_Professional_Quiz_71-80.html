@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>AWS CSA Professional Quiz 71-80</title>
+  <meta name="description" content="AWS CSA Professional Quiz 71-8071 | An ERP application is deployed across multiple AZs in a single region. In the event of failure, the Recovery Time Objecti...">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://wingadium.icetea.space/aws/cert/2018/09/26/AWS_CSA_Professional_Quiz_71-80.html">
+  <link rel="alternate" type="application/rss+xml" title="wingadium's blog" href="http://wingadium.icetea.space/feed.xml" />
+  <link rel="stylesheet" href="/assets/css/style.css" media="screen">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">wingadium</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+          <a class="page-link" href="/about/">About</a>
+          
+        
+          
+          <a class="page-link" href="/archives.html">wingadium</a>
+          
+        
+          
+          <a class="page-link" href="/categories.html">Category</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <a class="page-link" href="/tag.html">Tag</a>
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">AWS CSA Professional Quiz 71-80</h1>
+    <p class="post-meta">Sep 26, 2018</p>
+  </header>
+
+  <article class="post-content">
+    <h1 id="aws-csa-professional-quiz-71-80">AWS CSA Professional Quiz 71-80</h1>
+<hr />
+<hr />
+<p>71 | An ERP application is deployed across multiple AZs in a single region. In the event of failure, the Recovery Time Objective (RTO) must be less than 3 hours, and the Recovery Point Objective (RPO) must be 15 minutes the customer realizes that data corruption occurred roughly 1.5 hours ago.
+What DR strategy could be used to achieve this RTO and RPO in the event of this kind of failure?</p>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Take hourly DB backups to S3, with transaction logs stored in S3 every 5 minutes.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Use synchronous database master-slave replication between two availability zones</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Take hourly DB backups to EC2 Instance store volumes with transaction logs stored In S3 every 5 minutes.</li>
+</ul>
+
+<hr />
+
+<p>72 | Your startup wants to implement an order fulfillment process for selling a personalized gadget that needs an average of 3-4 days to produce with some orders taking up to 6 months you expect 10 orders per day on your
+first day. 1000 orders per day after 6 months and 10,000 orders after 12 months.
+Orders coming in are checked for consistency men dispatched to your manufacturing plant for production quality control packaging shipment and payment processing If the product does not meet the quality standards at any stage of the process employees may force the process to repeat a step Customers are notified via email about order status and any critical issues with their orders such as payment failure.
+Your case architecture includes AWS Elastic Beanstalk for your website with an RDS MySQL instance for customer data and orders.
+How can you implement the order fulfillment process while making sure that the emails are delivered reliably?</p>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Add a business process management application to your Elastic Beanstalk app servers and re-use the ROS 
+database for tracking order status use one of the Elastic Beanstalk instances to send emails to customers.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Use SWF with an Auto Scaling group of activity workers and a decider instance in another Auto Scaling group 
+with min/max=1 Use the decider instance to send emails to customers.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Use SWF with an Auto Scaling group of activity workers and a decider instance in another Auto Scaling group 
+with min/max=1 use SES to send emails to customers.</li>
+</ul>
+
+<hr />
+
+<p>73 | You have deployed a web application targeting a global audience across multiple AWS Regions under the domain name.example.com. You decide to use Route53 Latency-Based Routing to serve web requests to users
+from the region closest to the user. To provide business continuity in the event of server downtime you configure weighted record sets associated with two web servers in separate Availability Zones per region.
+Dunning a DR test you notice that when you disable all web servers in one of the regions Route53 does not automatically direct all users to the other region. What could be happening? (Choose 2 answers)</p>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Latency resource record sets cannot be used in combination with weighted resource record sets.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />You did not setup an http health check for one or more of the weighted resource record sets associated 
+with the disabled web servers.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />The value of the weight associated with the latency alias resource record set in the region with the disabled 
+servers is higher than the weight for the other region.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />One of the two working web servers in the other region did not pass its HTTP health check.</li>
+</ul>
+
+<hr />
+
+<p>74 | Your company hosts a social media site supporting users in multiple countries. You have been asked to provide a highly available design tor the application that leverages multiple regions tor the most recently accessed content and latency sensitive portions of the wet) site The most latency sensitive component of the application involves reading user preferences to support web site personalization and ad selection.
+In addition to running your application in multiple regions, which option will support this application’s requirements?</p>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Serve user content from S3. CloudFront and use Route53 latency-based routing between ELBs in each region 
+Retrieve user preferences from a local DynamoDB table in each region and leverage SQS to capture changes to 
+user preferences with SOS workers for propagating updates to each table.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Use the S3 Copy API to copy recently accessed content to multiple regions and serve user content from S3. 
+CloudFront with dynamic content and an ELB in each region Retrieve user preferences from an ElasticCache 
+cluster in each region and leverage SNS notifications to propagate user preference changes to a worker node 
+in each region.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Use the S3 Copy API to copy recently accessed content to multiple regions and serve user content from S3 
+CloudFront and Route53 latency-based routing Between ELBs In each region Retrieve user preferences from a 
+DynamoDB table and leverage SQS to capture changes to user preferences with SOS workers for propagating 
+DynamoDB updates.</li>
+</ul>
+
+<hr />
+
+<p>75 | Your system recently experienced down time during the troubleshooting process. You found that a new administrator mistakenly terminated several production EC2 instances.
+Which of the following strategies will help prevent a similar situation in the future?
+The administrator still must be able to:
+– launch, start stop, and terminate development resources.
+– launch and start production instances.</p>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Create an IAM user, which is not allowed to terminate instances by leveraging production EC2 termination 
+protection.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Leverage resource based tagging along with an IAM user, which can prevent specific users from terminating 
+production EC2 resources.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Leverage EC2 termination protection and multi-factor authentication, which together require users to 
+authenticate before terminating EC2 instances</li>
+</ul>
+
+<hr />
+
+<p>76 | A customer has established an AWS Direct Connect connection to AWS. The link is up and routes are being advertised from the customer’s end, however the customer is unable to connect from EC2 instances inside its
+VPC to servers residing in its datacenter.
+Which of the following options provide a viable solution to remedy this situation? (Choose 2 answers)</p>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Add a route to the route table with an iPsec VPN connection as the target.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Enable route propagation to the virtual private gateway (VGW).</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Enable route propagation to the customer gateway (CGW).</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Modify the route table of all Instances using the ‘route’ command.</li>
+</ul>
+
+<hr />
+
+<p>77 | Your company previously configured a heavily used, dynamically routed VPN connection between your onpremises data center and AWS. You recently provisioned a DirectConnect connection and would like to start
+using the new connection. After configuring DirectConnect settings in the AWS Console, which of the following options will provide the most seamless transition for your users?</p>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Delete your existing VPN connection to avoid routing loops configure your DirectConnect router with the 
+appropriate settings and verity network traffic is leveraging DirectConnect.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Configure your DirectConnect router with a higher BGP priority than your VPN router, verify network traffic 
+is leveraging Directconnect and then delete your existing VPN connection.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Update your VPC route tables to point to the DirectConnect connection configure your DirectConnect router 
+with the appropriate settings verify network traffic is leveraging DirectConnect and then delete the VPN 
+connection.</li>
+</ul>
+
+<hr />
+
+<p>78 | A web company is looking to implement an external payment service into their highly available application deployed in a VPC. Their application EC2 instances are behind a public lacing ELB. Auto scaling is used to add
+additional instances as traffic increases under normal load.  the application runs 2 instances in the Auto Scaling group but at peak it can scale 3x in size. The application instances need to communicate with the payment service over the Internet which requires whitelisting of all public IP addresses used to communicate with it. A maximum of 4 whitelisting IP addresses are allowed at a time and can be added through an API.
+How should they architect their solution?</p>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Route payment requests through two NAT instances setup for High Availability and whitelist the Elastic IP 
+addresses attached to the NAT instances.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Whitelist the VPC Internet Gateway Public IP and route payment requests through the Internet Gateway.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Whitelist the ELB IP addresses and route payment requests from the Application servers through the ELB.</li>
+</ul>
+
+<hr />
+
+<p>79 | You are designing the network infrastructure for an application server in Amazon VPC. Users will access all the application instances from the Internet as well as from an on-premises network. The on-premises network is connected to your VPC over an AWS Direct Connect link.
+How would you design routing to meet the above requirements?</p>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Configure a single routing Table with a default route via the Internet gateway. Propagate a default route via 
+BGP on the AWS Direct Connect customer router. Associate the routing table with all VPC subnets.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Configure a single routing table with a default route via the internet gateway Propagate specific routes for 
+the on-premises networks via BGP on the AWS Direct Connect customer router Associate the routing table 
+with all VPC subnets.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Configure a single routing table with two default routes: one to the internet via an Internet gateway the 
+other to the on-premises network via the VPN gateway use this routing table across all subnets in your VPC.</li>
+</ul>
+
+<hr />
+
+<p>80 | You are implementing AWS Direct Connect. You intend to use AWS public service end points such as Amazon S3, across the AWS Direct Connect link. You want other Internet traffic to use your existing link to an Internet
+Service Provider.
+What is the correct way to configure AWS Direct connect for access to services such as Amazon S3?</p>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Configure a public Interface on your AWS Direct Connect link Configure a static route via your AWS Direct 
+Connect link that points to Amazon S3 Advertise a default route to AWS using BGP.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Create a private interface on your AWS Direct Connect link. Configure a static route via your AWS Direct 
+connect link that points to Amazon S3 Configure specific routes to your network in your VPC.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Create a public interface on your AWS Direct Connect link Redistribute BGP routes into your existing routing 
+infrastructure advertise specific routes for your network to AWS.</li>
+</ul>
+
+<hr />
+<p><a href="AWS_CSA_Professional_Quiz_61-70.html">AWS CSA Professional Quiz_61-70</a></p>
+
+<p><a href="AWS_CSA_Professional_Quiz_81-90.html">AWS CSA Professional Quiz_81-90</a></p>
+
+<ul>
+  <li><a href="AWS_CSA_Professional_Quiz_11-20.html">AWS CSA Professional Quiz_11-20</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_21-30.html">AWS CSA Professional Quiz_21-30</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_31-40.html">AWS CSA Professional Quiz_31-40</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_41-50.html">AWS CSA Professional Quiz_41-50</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_51-60.html">AWS CSA Professional Quiz_51-60</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_61-70.html">AWS CSA Professional Quiz_61-70</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_71-80.html">AWS CSA Professional Quiz_71-80</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_81-90.html">AWS CSA Professional Quiz_81-90</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_91-100.html">AWS CSA Professional Quiz_91-100</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_101-110.html">AWS CSA Professional Quiz_101-110</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_111-120.html">AWS CSA Professional Quiz_111-120</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_121-130.html">AWS CSA Professional Quiz_121-130</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_131-140.html">AWS CSA Professional Quiz_131-140</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_141-150.html">AWS CSA Professional Quiz_141-150</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_151-160.html">AWS CSA Professional Quiz_151-160</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_161-170.html">AWS CSA Professional Quiz_161-170</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_171-180.html">AWS CSA Professional Quiz_171-180</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_181-190.html">AWS CSA Professional Quiz_181-190</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_191-200.html">AWS CSA Professional Quiz_191-200</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_201-210.html">AWS CSA Professional Quiz_201-210</a></li>
+</ul>
+
+  </article>
+
+</div>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">wingadium's blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-1">
+        <ul class="contact-list">
+          <li>wingadium's blog</li>
+          <li><a href="mailto:wingadium1@gmail.com">wingadium1@gmail.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/wingadium1">
+              <span class="icon  icon--github">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+                </svg>
+              </span>
+
+              <span class="username">wingadium1</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/wingadium1">
+              <span class="icon  icon--twitter">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809
+                  c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/>
+                </svg>
+              </span>
+
+              <span class="username">wingadium1</span>
+            </a>
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-3">
+        <p class="text">wingadium's blog about Linux, FOSS, Web, music, movies, book and social problem
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>
