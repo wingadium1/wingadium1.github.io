@@ -3,7 +3,7 @@ layout: post
 title:  "F*** the people, who do not add Newline at End of File"
 date:   2019-08-29 12:00:00
 categories: new
-tags: [Git]
+tags: [Git, F***, Coding]
 ---
 
 F*** the people, who do not add Newline at End of File
