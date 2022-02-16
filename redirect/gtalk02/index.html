@@ -23,7 +23,7 @@
 
     html,
     body {
-      background-image: url('kv3.png');
+      background-image: url('16x9.png');
       background-color: #cccccc;
       background-repeat: no-repeat;
       background-attachment: fixed;
@@ -31,7 +31,7 @@
       background-position: center;
       width: 100%;
       height: 100%;
-      margin: 0; overflow: hidden
+      margin: 0; overflow: hidden;
     }
 
     #container {
@@ -40,40 +40,44 @@
       font-weight: bold;
       background-size: cover;
       background-color: #22222295;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     ul#countdown {
       position: relative;
-      top: 50%;
-      transform:translateY(-50%);
-      width: 50%;
+      width: 100%;
       margin: 0 auto;
       padding: 15px 0 20px 0;
       color: #fff;
-      border: 1px solid #adafb2;
+      border-top: 1px solid #adafb2;
       border-width: 1px 0;
       overflow: hidden;
-      font-family: "Arial Narrow", Arial, sans-serif;
+      font-family: "Monaco";
+      display: flex;
+      justify-content: space-evenly;
     }
 
     ul#countdown li {
-      margin: 0 -3px 0 0;
-      padding: 0;
-      display: inline-block;
-      width: 25%;
-      font-size: 72px;
       font-size: 6vw;
       text-align: center;
+      list-style: none;
     }
 
-    ul#countdown li#t1 {
-      margin: 0 -3px 0 0;
+    .text {
       padding: 0;
       display: inline-block;
       width: 100%;
       font-size: 72px;
       font-size: 6vw;
       text-align: center;
+      color: white;      
+      font-family: "Monaco";
+      margin-bottom: 2rem;
+    }
+    .content {
+      width: 70%;
     }
 
     ul#countdown li .label {
@@ -101,27 +105,27 @@
 
 <body translate="no" data-new-gr-c-s-check-loaded="14.1047.0" data-gr-ext-installed="">
   <div id="container">
-    <ul id="countdown">
-      <li id="t1">
+    <div class="content">
       <div class="text">Coming Soon</div>
-      </li><br>
-      <li id="days">
-        <div class="number">0</div>
-        <div class="label">Days</div>
-      </li>
-      <li id="hours">
-        <div class="number">9</div>
-        <div class="label">Hours</div>
-      </li>
-      <li id="minutes">
-        <div class="number">22</div>
-        <div class="label">Minutes</div>
-      </li>
-      <li id="seconds">
-        <div class="number">58</div>
-        <div class="label">Seconds</div>
-      </li>
-    </ul>
+      <ul id="countdown">
+        <li id="days">
+          <div class="number">0</div>
+          <div class="label">Days</div>
+        </li>
+        <li id="hours">
+          <div class="number">9</div>
+          <div class="label">Hours</div>
+        </li>
+        <li id="minutes">
+          <div class="number">22</div>
+          <div class="label">Minutes</div>
+        </li>
+        <li id="seconds">
+          <div class="number">58</div>
+          <div class="label">Seconds</div>
+        </li>
+      </ul>
+    </div>    
   </div>
   <script
     src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-1b93190375e9ccc259df3a57c1abc0e64599724ae30d7ea4c6877eb615f89387.js"></script>
@@ -168,9 +172,7 @@
       var diff = (currentDate - targetDate) / 1000;
       if (diff > 0) {
         diff = 0;
-        setTimeout(function(){
-          window.location.href = "http://gdp.fsoft.com.vn"
-        }, 5000);
+        $('#container').hide();
       }
       var diff = Math.abs(Math.floor(diff));
 
