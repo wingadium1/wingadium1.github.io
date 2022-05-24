@@ -31,4 +31,6 @@ deploy:
   github_token: $DEPLOY_TOKEN # Set in the settings page of your repository, as a secure variable
   keep_history: true
   on:
-    branch: master
+    branch: gh-pages
+  target_branch: master
+  email: "wingadium1@gmail.com"
