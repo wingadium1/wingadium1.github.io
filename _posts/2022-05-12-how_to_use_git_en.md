@@ -6,8 +6,6 @@ categories: new
 tags: [Git, F***, Coding]
 ---
 
-https://github.com/wingadium1/wingadium1.github.io/raw/master
-
 How to use Git
 ================
 
@@ -24,18 +22,18 @@ From the beginning of the project, for quite a long time, the project used the r
 
 When the client arose the above need, the mistake was made, the developer tried to use cherry-pick to select the commits from the staging branch to production, it was obvious that there was a very high chance that the commit would be lacking.
 
-![alt text](../img/Git-Page-1.png)
+![alt text](https://github.com/wingadium1/wingadium1.github.io/raw/master/img/Git-Page-1.png)
 
 ### So what did the team do?
 
 It is easy to see the need here to maintain the source code between independent features/tasks/fixbugs. Besides, these branches still merge into the develop branch for verifying features and maintaining the latest live version.
 
-![alt text](../img/Git-Page-2.png)
+![alt text](https://github.com/wingadium1/wingadium1.github.io/raw/master/img/Git-Page-2.png)
 
 To make it easy to understand, we still code on the feature branch as usual and merge but the source code in the feature is then more complete (after the tester has tested it) and merge when that feature or bug (this bug is a detected bug). currently in production) is decided to release, let's call this branch ***staging***
 Previously the version that tester received to verify feature or bug would be merged more often like develop branch like in old git flow. (temporarily called ***develop***)
 
-![alt text](../img/Git-Page-3.png)
+![alt text](https://github.com/wingadium1/wingadium1.github.io/raw/master/img/Git-Page-3.png)
 
 We deal with follow-up questions related to daily team activities.
 
