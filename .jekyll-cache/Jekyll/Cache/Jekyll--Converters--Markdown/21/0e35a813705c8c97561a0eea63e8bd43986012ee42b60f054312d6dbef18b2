@@ -1,6 +1,0 @@
-I"0<h1 id="aws-csa-professional-quiz-81-90">AWS CSA Professional Quiz 81-90</h1>
-<hr />
-<hr />
-<p>81 | You have deployed a three-tier web application in a VPC with a CIDR block of 10 0 0 0/28. You initially deploy two web servers, two application servers, two database servers and one NAT instance for a total of seven EC2 instances. The web Application and database servers are deployed across two availability zones (AZs). You also deploy an ELB in front of the two web servers, and use Route53 for DNS Web (raffle gradually increases in the first few days following the deployment, so you attempt to double the number of instances in each tier of the application to handle the new load unfortunately some of these new instances fail to launch.
-Which of the following could be the root caused? (Choose 2 answers)</p>
-:ET

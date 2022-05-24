@@ -1,6 +1,0 @@
-I"P<h1 id="aws-csa-professional-quiz-131-140">AWS CSA Professional Quiz 131-140</h1>
-<hr />
-<hr />
-<p>131 | Your firm has uploaded a large amount of aerial image data to S3 In the past, in your on-premises environment, you used a dedicated group of servers to oaten process this data and used Rabbit MQ – An open
-source messaging system to get job information to the servers. Once processed the data would go to tape and be shipped offsite. Your manager told you to stay with the current design, and leverage AWS archival storage and messaging services to minimize cost. Which is correct?</p>
-:ET

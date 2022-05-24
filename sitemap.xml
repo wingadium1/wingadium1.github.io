@@ -1,28 +1,329 @@
----
-layout: null
----
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://www.sitemaps.org/schemas/sitemap/0.9 https://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
-  {% for post in site.posts %}
+  
   <url>
-    <loc>{{ site.url }}{{ site.baseurl }}{{ post.url }}</loc>
-    {% if post.lastmod == null %}
-    <lastmod>{{ post.date | date_to_xmlschema }}</lastmod>
-    {% else %}
-    <lastmod>{{ post.lastmod | date_to_xmlschema }}</lastmod>
-    {% endif %}
+    <loc>http://wingadium.icetea.space/new/2022/05/12/how_to_use_git_en.html</loc>
+    
+    <lastmod>2022-05-12T12:00:00+00:00</lastmod>
+    
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-  {% endfor %}
-  {% for page in site.pages %}
-  {% if page.sitemap != null and page.sitemap != empty %}
+  
   <url>
-    <loc>{{ site.url }}{{ site.baseurl }}{{ page.url }}</loc>
-    <lastmod>{{ page.sitemap.lastmod | date_to_xmlschema }}</lastmod>
-    <changefreq>{{ page.sitemap.changefreq }}</changefreq>
-    <priority>{{ page.sitemap.priority }}</priority>
+    <loc>http://wingadium.icetea.space/new/2022/05/12/how_to_use_git.html</loc>
+    
+    <lastmod>2022-05-12T12:00:00+00:00</lastmod>
+    
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
   </url>
-  {% endif %}
-  {% endfor %}
+  
+  <url>
+    <loc>http://wingadium.icetea.space/new/2019/08/29/f_the_people_who_do_not_add_blank_line_at_end_of_file.html</loc>
+    
+    <lastmod>2019-08-29T12:00:00+00:00</lastmod>
+    
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <url>
+    <loc>http://wingadium.icetea.space/new/2019/04/20/gitfromnoobtomaster_2.html</loc>
+    
+    <lastmod>2019-04-20T12:00:00+00:00</lastmod>
+    
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <url>
+    <loc>http://wingadium.icetea.space/aws/cert/2018/09/26/AWS_CSA_Professional_Quiz_91-100.html</loc>
+    
+    <lastmod>2018-09-26T12:00:00+00:00</lastmod>
+    
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <url>
+    <loc>http://wingadium.icetea.space/aws/cert/2018/09/26/AWS_CSA_Professional_Quiz_81-90.html</loc>
+    
+    <lastmod>2018-09-26T12:00:00+00:00</lastmod>
+    
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <url>
+    <loc>http://wingadium.icetea.space/aws/cert/2018/09/26/AWS_CSA_Professional_Quiz_71-80.html</loc>
+    
+    <lastmod>2018-09-26T12:00:00+00:00</lastmod>
+    
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <url>
+    <loc>http://wingadium.icetea.space/aws/cert/2018/09/26/AWS_CSA_Professional_Quiz_61-70.html</loc>
+    
+    <lastmod>2018-09-26T12:00:00+00:00</lastmod>
+    
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <url>
+    <loc>http://wingadium.icetea.space/aws/cert/2018/09/26/AWS_CSA_Professional_Quiz_51-60.html</loc>
+    
+    <lastmod>2018-09-26T12:00:00+00:00</lastmod>
+    
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <url>
+    <loc>http://wingadium.icetea.space/aws/cert/2018/09/26/AWS_CSA_Professional_Quiz_41-50.html</loc>
+    
+    <lastmod>2018-09-26T12:00:00+00:00</lastmod>
+    
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <url>
+    <loc>http://wingadium.icetea.space/aws/cert/2018/09/26/AWS_CSA_Professional_Quiz_31-40.html</loc>
+    
+    <lastmod>2018-09-26T12:00:00+00:00</lastmod>
+    
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <url>
+    <loc>http://wingadium.icetea.space/aws/cert/2018/09/26/AWS_CSA_Professional_Quiz_21-30.html</loc>
+    
+    <lastmod>2018-09-26T12:00:00+00:00</lastmod>
+    
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <url>
+    <loc>http://wingadium.icetea.space/aws/cert/2018/09/26/AWS_CSA_Professional_Quiz_191-200.html</loc>
+    
+    <lastmod>2018-09-26T12:00:00+00:00</lastmod>
+    
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <url>
+    <loc>http://wingadium.icetea.space/aws/cert/2018/09/26/AWS_CSA_Professional_Quiz_181-190.html</loc>
+    
+    <lastmod>2018-09-26T12:00:00+00:00</lastmod>
+    
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <url>
+    <loc>http://wingadium.icetea.space/aws/cert/2018/09/26/AWS_CSA_Professional_Quiz_171-180.html</loc>
+    
+    <lastmod>2018-09-26T12:00:00+00:00</lastmod>
+    
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <url>
+    <loc>http://wingadium.icetea.space/aws/cert/2018/09/26/AWS_CSA_Professional_Quiz_161-170.html</loc>
+    
+    <lastmod>2018-09-26T12:00:00+00:00</lastmod>
+    
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <url>
+    <loc>http://wingadium.icetea.space/aws/cert/2018/09/26/AWS_CSA_Professional_Quiz_151-160.html</loc>
+    
+    <lastmod>2018-09-26T12:00:00+00:00</lastmod>
+    
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <url>
+    <loc>http://wingadium.icetea.space/aws/cert/2018/09/26/AWS_CSA_Professional_Quiz_141-150.html</loc>
+    
+    <lastmod>2018-09-26T12:00:00+00:00</lastmod>
+    
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <url>
+    <loc>http://wingadium.icetea.space/aws/cert/2018/09/26/AWS_CSA_Professional_Quiz_131-140.html</loc>
+    
+    <lastmod>2018-09-26T12:00:00+00:00</lastmod>
+    
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <url>
+    <loc>http://wingadium.icetea.space/aws/cert/2018/09/26/AWS_CSA_Professional_Quiz_121-130.html</loc>
+    
+    <lastmod>2018-09-26T12:00:00+00:00</lastmod>
+    
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <url>
+    <loc>http://wingadium.icetea.space/aws/cert/2018/09/26/AWS_CSA_Professional_Quiz_111-120.html</loc>
+    
+    <lastmod>2018-09-26T12:00:00+00:00</lastmod>
+    
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <url>
+    <loc>http://wingadium.icetea.space/aws/cert/2018/09/26/AWS_CSA_Professional_Quiz_11-20.html</loc>
+    
+    <lastmod>2018-09-26T12:00:00+00:00</lastmod>
+    
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <url>
+    <loc>http://wingadium.icetea.space/aws/cert/2018/09/26/AWS_CSA_Professional_Quiz_101-110.html</loc>
+    
+    <lastmod>2018-09-26T12:00:00+00:00</lastmod>
+    
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <url>
+    <loc>http://wingadium.icetea.space/aws/cert/2018/09/26/AWS_CSA_Professional_Quiz_1-10.html</loc>
+    
+    <lastmod>2018-09-26T12:00:00+00:00</lastmod>
+    
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <url>
+    <loc>http://wingadium.icetea.space/aws/cert/2018/09/26/AWS_CSA_Professional_Quiz.html</loc>
+    
+    <lastmod>2018-09-26T12:00:00+00:00</lastmod>
+    
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <url>
+    <loc>http://wingadium.icetea.space/aws/2018/07/04/from-cogntio-to-auth0.html</loc>
+    
+    <lastmod>2018-07-04T10:00:00+00:00</lastmod>
+    
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <url>
+    <loc>http://wingadium.icetea.space/til/2018/07/04/TIL.html</loc>
+    
+    <lastmod>2018-07-04T10:00:00+00:00</lastmod>
+    
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <url>
+    <loc>http://wingadium.icetea.space/aws/cert/2018/04/08/aws_csa_professional_road_cloudformation.html</loc>
+    
+    <lastmod>2018-04-08T08:32:00+00:00</lastmod>
+    
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <url>
+    <loc>http://wingadium.icetea.space/aws/cert/2018/02/25/aws_aws_csa_professional_domain1_quiz.html</loc>
+    
+    <lastmod>2018-02-25T12:00:00+00:00</lastmod>
+    
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <url>
+    <loc>http://wingadium.icetea.space/aws/cert/2018/02/25/aws_aws_csa_professional_cross_account_access.html</loc>
+    
+    <lastmod>2018-02-25T12:00:00+00:00</lastmod>
+    
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <url>
+    <loc>http://wingadium.icetea.space/new/2018/01/15/how_to_recover_corrupted_git_repository.html</loc>
+    
+    <lastmod>2018-01-15T12:00:00+00:00</lastmod>
+    
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <url>
+    <loc>http://wingadium.icetea.space/aws/cert/2017/10/09/note_for_project_aws_development.html</loc>
+    
+    <lastmod>2017-10-09T12:00:00+00:00</lastmod>
+    
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <url>
+    <loc>http://wingadium.icetea.space/new/2017/08/03/gitfromnoobtomaster.html</loc>
+    
+    <lastmod>2017-08-03T12:00:00+00:00</lastmod>
+    
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <url>
+    <loc>http://wingadium.icetea.space/new/2016/05/08/tubaitoandenktcb.html</loc>
+    
+    <lastmod>2016-05-08T21:36:44+00:00</lastmod>
+    
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 </urlset>

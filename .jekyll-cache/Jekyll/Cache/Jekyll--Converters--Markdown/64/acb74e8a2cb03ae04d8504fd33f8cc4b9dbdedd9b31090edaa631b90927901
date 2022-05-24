@@ -1,5 +1,0 @@
-I"&<h1 id="aws-csa-professional-quiz-11-20">AWS CSA Professional Quiz 11-20</h1>
-<hr />
-<hr />
-<p>11 | You have an environment that consists of a public subnet using Amazon VPC and 3 instances that are running in this subnet. These three instances can successfully communicate with other hosts on the Internet. You launch a fourth instance in the same subnet, using the same AMI and security group configuration you used for the others, but find that this instance cannot be accessed from the internet. What should you do to enable Internet access?</p>
-:ET

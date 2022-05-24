@@ -1,6 +1,0 @@
-I"‡<h1 id="aws-csa-professional-quiz-181-190">AWS CSA Professional Quiz 181-190</h1>
-<hr />
-<hr />
-<p>181 | Typically, you want your application to check whether a request generated an error before you spend any time processing results. The easiest way to find out if an error occurred is to look for an <strong>__</strong><strong>__</strong>_ node in the
-response from the Amazon RDS API.</p>
-:ET

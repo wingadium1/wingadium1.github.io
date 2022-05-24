@@ -1,30 +1,1636 @@
----
-layout: null
----
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>{{ site.title | xml_escape }}</title>
-    <description>{{ site.description | xml_escape }}</description>
-    <link>{{ site.url }}{{ site.baseurl }}/</link>
-    <atom:link href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}" rel="self" type="application/rss+xml"/>
-    <pubDate>{{ site.time | date_to_rfc822 }}</pubDate>
-    <lastBuildDate>{{ site.time | date_to_rfc822 }}</lastBuildDate>
-    <generator>Jekyll v{{ jekyll.version }}</generator>
-    {% for post in site.posts limit:10 %}
+    <title>wingadium's blog</title>
+    <description>wingadium's blog about Linux, FOSS, Web, music, movies, book and social problem
+</description>
+    <link>http://wingadium.icetea.space/</link>
+    <atom:link href="http://wingadium.icetea.space/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Tue, 24 May 2022 02:43:36 +0000</pubDate>
+    <lastBuildDate>Tue, 24 May 2022 02:43:36 +0000</lastBuildDate>
+    <generator>Jekyll v4.2.2</generator>
+    
       <item>
-        <title>{{ post.title | xml_escape }}</title>
-        <description>{{ post.content | xml_escape }}</description>
-        <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
-        <link>{{ post.url | prepend: site.baseurl | prepend: site.url }}</link>
-        <guid isPermaLink="true">{{ post.url | prepend: site.baseurl | prepend: site.url }}</guid>
-        {% for tag in post.tags %}
-        <category>{{ tag | xml_escape }}</category>
-        {% endfor %}
-        {% for cat in post.categories %}
-        <category>{{ cat | xml_escape }}</category>
-        {% endfor %}
+        <title>How to use Git</title>
+        <description>&lt;h1 id=&quot;how-to-use-git&quot;&gt;How to use Git&lt;/h1&gt;
+
+&lt;p&gt;Programmers use Git every day, but most people are still using basic commands like commit, push, pull; and when needing to be a participant or starting to manage the repository and Version Releases, it starts to get awkward.&lt;/p&gt;
+
+&lt;p&gt;Here I would like to share some stories in the company that I have encountered.&lt;/p&gt;
+
+&lt;h2 id=&quot;case-1-choose-feature-to-release&quot;&gt;Case 1: Choose feature to release.&lt;/h2&gt;
+
+&lt;p&gt;A project that combines both mobile and backend, a customer can request a lot of features during a Sprint or a phase of the project. However, from the demand from the marketing department, many features may not be selected for golive, but the Test team still needs a version with full features to complete the task.&lt;/p&gt;
+
+&lt;p&gt;From the beginning of the project, for quite a long time, the project used the release branch workflow, of course due to the initial situation of the project at that time, just moved all the features from the &lt;strong&gt;&lt;em&gt;develop&lt;/em&gt;&lt;/strong&gt; environment. to &lt;strong&gt;&lt;em&gt;staging&lt;/em&gt;&lt;/strong&gt; then to &lt;strong&gt;&lt;em&gt;production&lt;/em&gt;&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;When the client arose the above need, the mistake was made, the developer tried to use cherry-pick to select the commits from the staging branch to production, it was obvious that there was a very high chance that the commit would be lacking.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://github.com/wingadium1/wingadium1.github.io/raw/master/img/Git-Page-1.png&quot; alt=&quot;alt text&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;so-what-did-the-team-do&quot;&gt;So what did the team do?&lt;/h3&gt;
+
+&lt;p&gt;It is easy to see the need here to maintain the source code between independent features/tasks/fixbugs. Besides, these branches still merge into the develop branch for verifying features and maintaining the latest live version.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://github.com/wingadium1/wingadium1.github.io/raw/master/img/Git-Page-2.png&quot; alt=&quot;alt text&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;To make it easy to understand, we still code on the feature branch as usual and merge but the source code in the feature is then more complete (after the tester has tested it) and merge when that feature or bug (this bug is a detected bug). currently in production) is decided to release, let’s call this branch &lt;strong&gt;&lt;em&gt;staging&lt;/em&gt;&lt;/strong&gt;
+Previously the version that tester received to verify feature or bug would be merged more often like develop branch like in old git flow. (temporarily called &lt;strong&gt;&lt;em&gt;develop&lt;/em&gt;&lt;/strong&gt;)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://github.com/wingadium1/wingadium1.github.io/raw/master/img/Git-Page-3.png&quot; alt=&quot;alt text&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;We deal with follow-up questions related to daily team activities.&lt;/p&gt;
+
+&lt;h4 id=&quot;new-features&quot;&gt;New features&lt;/h4&gt;
+
+&lt;p&gt;There is no different with the old way.&lt;/p&gt;
+
+&lt;h4 id=&quot;fix-bug&quot;&gt;Fix bug&lt;/h4&gt;
+&lt;p&gt;So how are bugs handled? The principle is also very simple, but the implementation is a bit more complicated.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Bugs where will be fixed there. That is, when you find a bug somewhere, it will be fixed there first: for example, the above golived version or develop or staging&lt;/li&gt;
+  &lt;li&gt;Identify the source of the bug
+    &lt;ul&gt;
+      &lt;li&gt;It’s best to identify which commit the bug was created from or when the team was working on something.&lt;/li&gt;
+      &lt;li&gt;If it can’t be determined (possibly due to many reasons leading to the bug), it is possible to identify the feature or fix the bug that leads to the degradation.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;After identifying the above 2 points and patching the bug in the branch we discovered (split branch to fix bug and merge)
+    &lt;ul&gt;
+      &lt;li&gt;Cherry-pick merge commits on related branches:
+        &lt;ul&gt;
+          &lt;li&gt;For example, you find a bug in version 2.0.1, but 2.0 and 1.0 are 2 versions running in parallel (1.0 is still LTS) but you identify a bug that appears from 1.0, you still have to patch it for 1.0, however in this case sometimes we often consider it as 2 bugs for ease of handling&lt;/li&gt;
+          &lt;li&gt;More common case is bug in staging (tester branch), since &lt;strong&gt;&lt;em&gt;staging&lt;/em&gt;&lt;/strong&gt; is not merged with &lt;strong&gt;&lt;em&gt;develop&lt;/em&gt;&lt;/strong&gt; we need to cherry-pick on &lt;strong&gt;&lt;em&gt;develop&lt;/em&gt;&lt;/strong&gt; and the branch that implements that feature.&lt;/li&gt;
+          &lt;li&gt;If the feature has been released in the golived version, you only need to care about &lt;strong&gt;&lt;em&gt;develop&lt;/em&gt;&lt;/strong&gt;, &lt;strong&gt;&lt;em&gt;staging&lt;/em&gt;&lt;/strong&gt;, but actually before that, the bug fix branch was also implemented as shown in the 3rd picture. .&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;So it can simply be summed up as follows: when a bug is discovered, fix it right there and cherry-pick related branches that have not been released: &lt;strong&gt;&lt;em&gt;staging&lt;/em&gt;&lt;/strong&gt;, &lt;strong&gt;*develop&lt;/strong&gt; * is require.&lt;/p&gt;
+
+&lt;h4 id=&quot;release&quot;&gt;Release&lt;/h4&gt;
+
+&lt;p&gt;Quite simply, when the source code has been tested in &lt;strong&gt;&lt;em&gt;staging&lt;/em&gt;&lt;/strong&gt; and cherry-picks the patches on the &lt;strong&gt;&lt;em&gt;feature&lt;/em&gt;&lt;/strong&gt; branch and fixbug, it means the source code in those branches is complete. and ready to release, when needed, any functionality can be completely merged into the &lt;strong&gt;&lt;em&gt;production&lt;/em&gt;&lt;/strong&gt; branch or more carefully, you can add the &lt;strong&gt;&lt;em&gt;pre-production&lt;/em&gt;&lt;/strong&gt; branch to use so that users can check again one last time.&lt;/p&gt;
+</description>
+        <pubDate>Thu, 12 May 2022 12:00:00 +0000</pubDate>
+        <link>http://wingadium.icetea.space/new/2022/05/12/how_to_use_git_en.html</link>
+        <guid isPermaLink="true">http://wingadium.icetea.space/new/2022/05/12/how_to_use_git_en.html</guid>
+        
+        <category>Git</category>
+        
+        <category>F***</category>
+        
+        <category>Coding</category>
+        
+        
+        <category>new</category>
+        
       </item>
-    {% endfor %}
+    
+      <item>
+        <title>How to use Git</title>
+        <description>&lt;h1 id=&quot;how-to-use-git&quot;&gt;How to use Git&lt;/h1&gt;
+
+&lt;p&gt;Lập trình viên sử dụng Git hằng ngày, tuy nhiên phần lớn mọi người vẫn đang sử dụng các câu lệnh cơ bản như commit, push, pull; và khi cần là người tham gia hoặc bắt đầu vào việc quản lý repository và các Version Release thì bắt đầu lúng túng.
+Sau đây mình mong muốn chia sẻ một số câu chuyện trong công ty mà mình đã gặp phải.&lt;/p&gt;
+
+&lt;h2 id=&quot;case-1-chọn-feature-release&quot;&gt;Case 1: Chọn feature release.&lt;/h2&gt;
+
+&lt;p&gt;Một dự án làm kết hợp cả mobile và backend, khách hàng có thể yêu cầu rất nhiều feature trong Sprint hay một giai đoạn của dự án. Tuy nhiên, từ nhu cầu từ phòng marketing có thể nhiều feature sẽ không được chọn để golive, thế nhưng Test team vẫn cần một phiên bản với đầy đủ các tính năng để hoàn thiện task.&lt;/p&gt;
+
+&lt;p&gt;Từ đầu dự án, trong một thời gian khá dài, dự án sử dụng release branch workflow, tất nhiên do tình hình ban đầu của dự án lúc đó, chỉ cần chuyển toàn bộ tính năng từ môi trường &lt;strong&gt;&lt;em&gt;develop&lt;/em&gt;&lt;/strong&gt; đến &lt;strong&gt;&lt;em&gt;staging&lt;/em&gt;&lt;/strong&gt; rồi đến &lt;strong&gt;&lt;em&gt;production&lt;/em&gt;&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Khi khách hảng nảy sinh nhu cầu kể trên, sai lầm đã xảy ra, developer đã cố gắng sử dụng cherry-pick để chọn các commit từ nhánh staging sang production, dễ nhận thấy là có khả năng rất lớn commit sẽ bị lack.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://github.com/wingadium1/wingadium1.github.io/raw/master/img/Git-Page-1.png&quot; alt=&quot;alt text&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;vậy-team-đã-làm-như-nào&quot;&gt;Vậy team đã làm như nào&lt;/h3&gt;
+
+&lt;p&gt;Dễ thấy nhu cầu ở đây là duy trì source code giữa các feature/task/fixbug độc lập với nhau. Bên cạnh đó những nhánh này vẫn merge về nhánh develop dành cho việc verify feature và duy trì latest live version.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://github.com/wingadium1/wingadium1.github.io/raw/master/img/Git-Page-2.png&quot; alt=&quot;alt text&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Để cho dễ hiểu, chúng ta vẫn code trên nhánh feature như bình thường và merge tuy nhiên source code ở feature khi đó hoàn thiện hơn (sau khi tester đã kiểm thử) và merge khi feature hay bug đó (bug này là bug được phát hiện ở production) được quyết định release, tạm gọi nhánh này là nhánh &lt;strong&gt;&lt;em&gt;staging&lt;/em&gt;&lt;/strong&gt;
+Trước đó phiên bản mà tester nhận được để verify feature hay bug sẽ được merge thường xuyên hơn giống như nhánh develop như ở git flow cũ. (tạm gọi là &lt;strong&gt;&lt;em&gt;develop&lt;/em&gt;&lt;/strong&gt;)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://github.com/wingadium1/wingadium1.github.io/raw/master/img/Git-Page-3.png&quot; alt=&quot;alt text&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Chúng ta đi giải quyết các câu hỏi tiếp theo gắn liền với các hoạt động trong team hằng ngày.&lt;/p&gt;
+
+&lt;h4 id=&quot;tính-năng-mới&quot;&gt;Tính năng mới&lt;/h4&gt;
+
+&lt;p&gt;Gần như không có sự khác biệt với cách làm cũ&lt;/p&gt;
+
+&lt;h4 id=&quot;fix-bug&quot;&gt;Fix bug&lt;/h4&gt;
+
+&lt;p&gt;Vậy bug được xử lý như nào. Nguyên tắc đưa ra cũng rất đơn giản, nhưng implement thì phức tạp hơn chút.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Bug ở đâu sẽ được fix ở đó. Tức là khi bạn phát hiện bug ở đâu thì sẽ được fix ở đó trước: ví dụ ở trên golived version hay develop hay staging&lt;/li&gt;
+  &lt;li&gt;Xác định nguồn gốc của bug
+    &lt;ul&gt;
+      &lt;li&gt;Tốt nhất bạn nên xác định được bug được tạo ra từ commit nào hoặc lúc team đang làm một thứ gì đó.&lt;/li&gt;
+      &lt;li&gt;Nếu không thể xác định được (có thể do có nhiều nguyên nhân dẫn đến bug) thì có thể xác định được feature hoặc khi fix bug nào đó mà dẫn đến degrade.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Sau khi xác định được 2 điểm bên trên và vá xong bug ở nhánh chúng ta phát hiện (tách nhánh fix bug và merge)
+    &lt;ul&gt;
+      &lt;li&gt;Cherry-pick/merge merge commit về các nhánh liên quan:
+        &lt;ul&gt;
+          &lt;li&gt;Ví dụ bạn phát hiện bug ở phiên bản 2.0.1, tuy nhiên bản 2.0 và 1.0 là 2 phiên bản chạy song song (1.0 vẫn là LTS) mà bạn xác định được bug xuất hiện từ 1.0 thì vẫn phải vá cho 1.0, tuy nhiên trong trường hợp này đôi khi chúng ta thường coi nó là 2 bug cho dễ xử lý&lt;/li&gt;
+          &lt;li&gt;Trường hợp phổ biến hơn là bug ở staging (nhánh cho tester), vì &lt;strong&gt;&lt;em&gt;staging&lt;/em&gt;&lt;/strong&gt; không được merge với &lt;strong&gt;&lt;em&gt;develop&lt;/em&gt;&lt;/strong&gt; nên chúng ta cần cherry-pick/merge về &lt;strong&gt;&lt;em&gt;develop&lt;/em&gt;&lt;/strong&gt; và nhánh implement feature đó, với nhánh &lt;strong&gt;&lt;em&gt;develop&lt;/em&gt;&lt;/strong&gt; chúng ta có thể sử dụng &lt;strong&gt;&lt;em&gt;merge&lt;/em&gt;&lt;/strong&gt; do &lt;strong&gt;&lt;em&gt;develop&lt;/em&gt;&lt;/strong&gt; luôn chứa latest source code&lt;/li&gt;
+          &lt;li&gt;Nếu feature đã được release ở golived version thì chỉ cần quan tâm đến &lt;strong&gt;&lt;em&gt;develop&lt;/em&gt;&lt;/strong&gt;, &lt;strong&gt;&lt;em&gt;staging&lt;/em&gt;&lt;/strong&gt; là ổn, nhưng thực ra trước đó nhánh fix bug cũng được implement như trên hình thứ 3 rồi.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://github.com/wingadium1/wingadium1.github.io/raw/master/img/Git-Page-4.png&quot; alt=&quot;alt text&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Như vậy đơn giản có thể tóm lược lại như sau: khi bug được phát hiện thì fix ngay ở đó và cherry-pick/merge về các nhánh liên quan mà chưa được release: &lt;strong&gt;&lt;em&gt;staging&lt;/em&gt;&lt;/strong&gt;, &lt;strong&gt;&lt;em&gt;develop&lt;/em&gt;&lt;/strong&gt; là require.&lt;/p&gt;
+
+&lt;h4 id=&quot;release&quot;&gt;Release&lt;/h4&gt;
+
+&lt;p&gt;Khá đơn giản, khi source code đã được kiểm thử ở &lt;strong&gt;&lt;em&gt;staging&lt;/em&gt;&lt;/strong&gt; và cherry-pick/merge các bản vá về nhánh &lt;strong&gt;&lt;em&gt;feature&lt;/em&gt;&lt;/strong&gt; và fixbug thì có nghĩa là source code ở các nhánh đó được hoàn thiện và sẵn sàng để release, khi cần chức năng nào hoàn toàn có thể merge vào nhánh &lt;strong&gt;&lt;em&gt;production&lt;/em&gt;&lt;/strong&gt; hoặc cẩn thận hơn có thể đưa thêm nhánh &lt;strong&gt;&lt;em&gt;pre-production&lt;/em&gt;&lt;/strong&gt; vào sử dụng để user có thể kiểm tra lại lần cuối.&lt;/p&gt;
+</description>
+        <pubDate>Thu, 12 May 2022 12:00:00 +0000</pubDate>
+        <link>http://wingadium.icetea.space/new/2022/05/12/how_to_use_git.html</link>
+        <guid isPermaLink="true">http://wingadium.icetea.space/new/2022/05/12/how_to_use_git.html</guid>
+        
+        <category>Git</category>
+        
+        <category>F***</category>
+        
+        <category>Coding</category>
+        
+        
+        <category>new</category>
+        
+      </item>
+    
+      <item>
+        <title>F*** the people, who do not add Newline at End of File</title>
+        <description>&lt;h1 id=&quot;f-the-people-who-do-not-add-newline-at-end-of-file&quot;&gt;F*** the people, who do not add Newline at End of File&lt;/h1&gt;
+
+&lt;p&gt;Nghe có vẻ cứt bò, tuy nhiên sự thật là việc không add một trong trống ở cuối file thực sự là một tội ác&lt;/p&gt;
+
+&lt;h1 id=&quot;no-newline-at-end-of-file&quot;&gt;No Newline at End of File&lt;/h1&gt;
+
+&lt;p&gt;Bạn đã bao giờ nhìn thấy dòng chữ ở git&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://github.com/wingadium1/wingadium1.github.io/raw/master/img/git_diff_no_line_eof.png&quot; alt=&quot;alt text&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;hay ở vim&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://github.com/wingadium1/wingadium1.github.io/raw/master/img/vim_no_line_eol.png&quot; alt=&quot;alt text&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Ờ thế tại sao git lại báo thế, nó đến từ một quyết định trong quá khứ của Unix&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Một tệp nguồn không trống sẽ kết thúc bằng một ký tự dòng mới, không được đặt ngay trước ký tự dấu gạch chéo ngược (backslash).&lt;/p&gt;
+
+  &lt;p&gt;Vì đây là mệnh đề, nên chúng ta sẽ kiểm tra việc vi phạm quy tắc&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Vì vậy, nó chỉ ra rằng, theo POSIX, mọi tệp văn bản (bao gồm các tệp nguồn Ruby và JavaScript) phải kết thúc bằng một ký tự &lt;strong&gt;&lt;em&gt;\n&lt;/em&gt;&lt;/strong&gt;, hoặc mới newline (không phải là một dòng mới). Điều này đóng vai trò là eol, hoặc kết thúc của dòng nhân vật. Nó là một dòng &lt;strong&gt;&lt;em&gt;Terminator&lt;/em&gt;&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Bây giờ thì gần như mọi chương trình text editor đều hỗ trợ việc tự động thêm 1 dòng trống vào cuối file, ví dụ:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;vim: mặc định rồi, nên là cứ để nó mặc định thôi&lt;/li&gt;
+  &lt;li&gt;VSCode: dùng setting &lt;strong&gt;Files: Insert Final Newline&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Sublime: dùng setting &lt;strong&gt;ensure_newline_at_eof_on_save&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Tóm lại là anh em nên thêm 1 dòng vào cuối file code nếu chưa có thì hãy sửa như sau:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git ls-files &lt;span class=&quot;nt&quot;&gt;-z&lt;/span&gt; | &lt;span class=&quot;k&quot;&gt;while &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;IFS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;read&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-rd&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;''&lt;/span&gt; f&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;tail&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-c1&lt;/span&gt; &amp;lt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$f&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;read&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-r&lt;/span&gt; _ &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$f&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;ref: https://unix.stackexchange.com/questions/31947/how-to-add-a-newline-to-the-end-of-a-file&lt;/p&gt;
+</description>
+        <pubDate>Thu, 29 Aug 2019 12:00:00 +0000</pubDate>
+        <link>http://wingadium.icetea.space/new/2019/08/29/f_the_people_who_do_not_add_blank_line_at_end_of_file.html</link>
+        <guid isPermaLink="true">http://wingadium.icetea.space/new/2019/08/29/f_the_people_who_do_not_add_blank_line_at_end_of_file.html</guid>
+        
+        <category>Git</category>
+        
+        <category>F***</category>
+        
+        <category>Coding</category>
+        
+        
+        <category>new</category>
+        
+      </item>
+    
+      <item>
+        <title>Git from noob to master (Chapter 2)</title>
+        <description>&lt;h1 id=&quot;git-from-noob-to-master---chapter-2&quot;&gt;Git from noob to master - Chapter 2&lt;/h1&gt;
+&lt;blockquote&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&quot;gitfromnoobtomaster.html&quot;&gt;Chapter 1&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Trong một vài lần chém gió về Git, thấy mọi người có vẻ chưa chú ý nhiều đến Git và sử dụng nó một cách hiệu quả.
+Nhân đây xin mạn phép chém gió sơ qua để mọi người hoàn thiện.&lt;/p&gt;
+
+&lt;h2 id=&quot;git-command&quot;&gt;Git command&lt;/h2&gt;
+
+&lt;h3 id=&quot;merge-và-rebase-cont&quot;&gt;Merge và Rebase (cont.)&lt;/h3&gt;
+&lt;p&gt;Tiếp theo lần trước, mình sẽ bắt đầu với &lt;strong&gt;&lt;em&gt;merge&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Tại sao cần &lt;em&gt;“merge”&lt;/em&gt;?.&lt;/p&gt;
+
+&lt;p&gt;Đơn giản là vì chúng ta lập trình cùng nhau, nếu bạn quen dùng SVN, sẽ thấy là khi 2 người cùng làm việc (tất nhiên là song song với nhau), sẽ nảy sinh nhu cầu tạo một phiên bản là sự kết hợp giữa 2 phiên bản source code của 2 người&lt;/p&gt;
+
+&lt;p&gt;Để merge được chúng ta cần 2 branch, dưới dây là một ví dụ&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://github.com/wingadium1/wingadium1.github.io/raw/master/img/git_branch_1.png&quot; alt=&quot;alt text&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Chúng ta có 2 issue 55 và 56 trên hệ thống tracking, một cách nào đó developer có thể giải quyết 2 issues bằng một commit nhưng không phải lúc nào cũng thế và đặc biệt là không phải lúc nào cũng tốt, như là khi 1 trong 2 issues đó chưa được giải quyết triệt để tức là commit đó có vấn đề, rất khó để trace.&lt;/p&gt;
+
+&lt;p&gt;Mọi người nên làm cách clear hơn, 1 hoặc 2 developer sẽ fix nó, ở các nhánh khác nhau.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git checkout &lt;span class=&quot;nt&quot;&gt;-b&lt;/span&gt; issue55
+git checkout &lt;span class=&quot;nt&quot;&gt;-b&lt;/span&gt; issue56
+
+&lt;span class=&quot;c&quot;&gt;# -b for new branch&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://github.com/wingadium1/wingadium1.github.io/raw/master/img/git_branch_2.png&quot; alt=&quot;alt text&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Họ modify source code ở mỗi nhánh và commit&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://github.com/wingadium1/wingadium1.github.io/raw/master/img/git_branch_3.png&quot; alt=&quot;alt text&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Giờ chúng ta cần đưa phần thay đổi của 2 branch issue55 và issue56 vào master.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git checkout master &lt;span class=&quot;c&quot;&gt;# change currrent branch to master&lt;/span&gt;
+git merge issue55
+...
+git merge issue56
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://github.com/wingadium1/wingadium1.github.io/raw/master/img/git_branch_4.png&quot; alt=&quot;alt text&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://github.com/wingadium1/wingadium1.github.io/raw/master/img/git_branch_5.png&quot; alt=&quot;alt text&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Như vậy mỗi khi merge, chúng ta kết hợp 2 branch (hoặc commit, phần 3 mình sẽ giải thích kỹ hơn tại sao lại là commit) vào một nhánh, hoặc nghĩ đơn giản hơn là đưa những thay đổi ở nhánh này vào nhánh kia bằng một commit mới (chứa toàn bộ thay đổi).&lt;/p&gt;
+
+&lt;h4 id=&quot;ops-git-merge-conflict&quot;&gt;Ops!!! Git merge conflict&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://github.com/wingadium1/wingadium1.github.io/raw/master/img/git_conflict_1.png&quot; alt=&quot;alt text&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Tại sao conflict, đơn giản thôi, khi ở nhánh bạn merge vào, trong ví dụ issues55 là master bạn cũng có thay đổi. Ở ví dụ này là chúng ta có như sau&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://github.com/wingadium1/wingadium1.github.io/raw/master/img/git_conflict_3.png&quot; alt=&quot;alt text&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Mình có thay đổi ở master và issues1 cùng một dòng, git sẽ không biết chọn sự thay đổi nào. Nhiêu bạn sẽ sợ conflict và không biết làm thế nào và hỏi, câu trả lời là không thế nào cả, người merge sẽ là người quyết định. Có thể là chọn một trong 2, chọn cả 2 hoặc có thể phải làm lại cả đoạn đó.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://github.com/wingadium1/wingadium1.github.io/raw/master/img/git_conflict_2.png&quot; alt=&quot;alt text&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Nghe nè&lt;/em&gt;&lt;/strong&gt;: đừng bao giờ giải quyết conflict khi bạn không biết người khác vừa thay đổi cái gì, thật đấy.&lt;/p&gt;
+
+&lt;h4 id=&quot;rebase&quot;&gt;Rebase&lt;/h4&gt;
+
+&lt;p&gt;Cũng là một cách khác để đưa những thay đổi từ nhánh này sang nhánh khác nhưng khác hơn một chút: Bạn sẽ không tạo thêm commit mới mà đưa toàn bộ commit từ nhánh này sang nhánh kia.&lt;/p&gt;
+
+&lt;p&gt;Quay lại với ví dụ conflict ở bên trên. Khi merge &lt;strong&gt;master&lt;/strong&gt; vào nhánh &lt;strong&gt;issues1&lt;/strong&gt; chúng ta có&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://github.com/wingadium1/wingadium1.github.io/raw/master/img/git_rebase_1.png&quot; alt=&quot;alt text&quot; /&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Rebase&lt;/em&gt;&lt;/strong&gt; thì sao:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git checkout issues1
+git rebase master
+.... # conflict and resolve
+git add HelloWorldApp.java # add conflict file to tracking again
+git rebase --continue
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://github.com/wingadium1/wingadium1.github.io/raw/master/img/git_rebase_2.png&quot; alt=&quot;alt text&quot; /&gt;.&lt;/p&gt;
+
+&lt;p&gt;Như vậy có thể thấy là thay vì tạo commit mới, &lt;strong&gt;&lt;em&gt;rebase&lt;/em&gt;&lt;/strong&gt; sẽ đưa toàn bộ commit ở branch &lt;strong&gt;issues1&lt;/strong&gt; từ lúc branch out đặt lên cuối branch &lt;strong&gt;master&lt;/strong&gt;, như vậy coi như là chúng ta không branch out từ một điểm trong quá khứ mà branch out từ lastest commit của &lt;strong&gt;master&lt;/strong&gt;. À quên, vẫn có conflict và giải quyết nó như bình thường nhé :D.&lt;/p&gt;
+
+&lt;h4 id=&quot;advance-rebase-super-strong&quot;&gt;Advance Rebase (super strong)&lt;/h4&gt;
+
+&lt;p&gt;Thế giờ nếu có một nhánh khác được branch out từ nhánh issues1 mình có rebase lên master được không.&lt;/p&gt;
+
+&lt;p&gt;Câu trả lời là có:&lt;/p&gt;
+
+&lt;p&gt;Giả sử chúng ta có nhánh &lt;strong&gt;issues2&lt;/strong&gt; được branch out từ &lt;strong&gt;master&lt;/strong&gt; và &lt;strong&gt;issues3&lt;/strong&gt; được branch out từ &lt;strong&gt;issues2&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://github.com/wingadium1/wingadium1.github.io/raw/master/img/git_rebase_3.png&quot; alt=&quot;alt text&quot; /&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git rebase --onto master issues2 issues3
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Về cơ bản nó có ý nghĩa như sau:&lt;/p&gt;
+
+&lt;p&gt;Hãy checkout nhánh &lt;strong&gt;issues3&lt;/strong&gt;, và tìm các commit từ commit chung của nhánh &lt;strong&gt;issues3&lt;/strong&gt; và &lt;strong&gt;issues2&lt;/strong&gt;, sau đó apply chúng vào nhánh master.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://github.com/wingadium1/wingadium1.github.io/raw/master/img/git_rebase_4.png&quot; alt=&quot;alt text&quot; /&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;Chú ý&lt;/em&gt;&lt;/strong&gt;: không được &lt;strong&gt;&lt;em&gt;rebase&lt;/em&gt;&lt;/strong&gt; các commit mà bạn đã push lên repository. Nếu không ai cũng ghét và mọi người sẽ sỉ nhục và coi thường.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Cơ bản là thế này, khi &lt;strong&gt;&lt;em&gt;rebase&lt;/em&gt;&lt;/strong&gt; bạn bỏ đi các commit và chuyển chúng sang chỗ khác. Khi bạn sửa các commit bằng &lt;strong&gt;&lt;em&gt;rebase&lt;/em&gt;&lt;/strong&gt;, từ một nhánh bạn pull từ repository, và push lên. Mọi người sẽ phải apply lại commit của họ và sẽ xảy ra nhất nhiều conflict khi bạn pull change các commit đó của họ về local.&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+        <pubDate>Sat, 20 Apr 2019 12:00:00 +0000</pubDate>
+        <link>http://wingadium.icetea.space/new/2019/04/20/gitfromnoobtomaster_2.html</link>
+        <guid isPermaLink="true">http://wingadium.icetea.space/new/2019/04/20/gitfromnoobtomaster_2.html</guid>
+        
+        <category>Git</category>
+        
+        
+        <category>new</category>
+        
+      </item>
+    
+      <item>
+        <title>AWS CSA Professional Quiz 91-100</title>
+        <description>&lt;h1 id=&quot;aws-csa-professional-quiz-91-100&quot;&gt;AWS CSA Professional Quiz 91-100&lt;/h1&gt;
+&lt;hr /&gt;
+&lt;hr /&gt;
+&lt;p&gt;91 | You’re running an application on-premises due to its dependency on non-x86 hardware and want to use AWS for data backup. Your backup application is only able to write to POSIX-compatible block-based storage. You have 140TB of data and would like to mount it as a single folder on your file server Users must be able to access portions of this data while the backups are taking place. What backup solution would be most
+appropriate for this use case?&lt;/p&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Use Storage Gateway and configure it to use Gateway Cached volumes.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Configure your backup software to use S3 as the target for your data backups.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Configure your backup software to use Glacier as the target for your data backups.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;92 | You require the ability to analyze a large amount of data, which is stored on Amazon S3 using Amazon Elastic Map Reduce. You are using the cc2 8x large Instance type, whose CPUs are mostly idle during processing.
+Which of the below would be the most cost efficient way to reduce the runtime of the job?&lt;/p&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Create more smaller flies on Amazon S3.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Add additional cc2 8x large instances by introducing a task group.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Use smaller instances that have higher aggregate I/O performance.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;93 | Your department creates regular analytics reports from your company’s log files All log data is collected in
+Amazon S3 and processed by daily Amazon Elastic MapReduce (EMR) jobs that generate daily PDF reports and
+aggregated tables in CSV format for an Amazon Redshift data warehouse.
+Your CFO requests that you optimize the cost structure for this system.
+Which of the following alternatives will lower costs without compromising average performance of the system
+or data integrity for the raw data?&lt;/p&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Use reduced redundancy storage (RRS) for PDF and csv data in Amazon S3. Add Spot instances to Amazon 
+EMR jobs Use Reserved Instances for Amazon Redshift.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Use reduced redundancy storage (RRS) for all data in S3. Use a combination of Spot instances and Reserved 
+Instances for Amazon EMR jobs use Reserved instances for Amazon Redshift.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Use reduced redundancy storage (RRS) for all data in Amazon S3 Add Spot Instances to Amazon EMR jobs 
+Use Reserved Instances for Amazon Redshitf.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;94 | You are the new IT architect in a company that operates a mobile sleep tracking application When activated at night, the mobile app is sending collected data points of 1 kilobyte every 5 minutes to your backend
+The backend takes care of authenticating the user and writing the data points into an Amazon DynamoDB table.
+Every morning, you scan the table to extract and aggregate last night’s data on a per user basis, and store the results in Amazon S3.
+Users are notified via Amazon SMS mobile push notifications that new data is available, which is parsed and visualized by (he mobile app Currently you have around 100k users who are mostly based out of North
+America. You have been tasked to optimize the architecture of the backend system to lower cost what would you
+recommend? (Choose 2 answers)&lt;/p&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Create a new Amazon DynamoDB (able each day and drop the one for the previous day after its data is on 
+Amazon S3.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Have the mobile app access Amazon DynamoDB directly instead of JSON files stored on Amazon S3.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Introduce an Amazon SQS queue to buffer writes to the Amazon DynamoDB table and reduce provisioned 
+write throughput.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Introduce Amazon Elasticache lo cache reads from the Amazon DynamoDB table and reduce provisioned 
+read throughput.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;95 | Your website is serving on-demand training videos to your workforce. Videos are uploaded monthly in high
+resolution MP4 format. Your workforce is distributed globally often on the move and using company-provided
+tablets that require the HTTP Live Streaming (HLS) protocol to watch a video. Your company has no video
+transcoding expertise and it required you may need to pay for a consultant.
+How do you implement the most cost-efficient architecture without compromising high availability and quality
+of video delivery’?&lt;/p&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Elastic Transcoder to transcode original high-resolution MP4 videos to HLS S3 to host videos with Lifecycle 
+Management to archive original flies to Glacier after a few days CloudFront to serve HLS transcoded videos 
+from S3&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;A video transcoding pipeline running on EC2 using SQS to distribute tasks and Auto Scaling to adjust the 
+number or nodes depending on the length of the queue S3 to host videos with Lifecycle Management to 
+archive all files to Glacier after a few days CloudFront to serve HLS transcoding videos from Glacier&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Elastic Transcoder to transcode original nigh-resolution MP4 videos to HLS EBS volumes to host videos and 
+EBS snapshots to incrementally backup original rues after a fe days. CloudFront to serve HLS transcoded videos 
+from EC2.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;96 | You’ve been hired to enhance the overall security posture for a very large e-commerce site They have a well architected multi-tier application running in a VPC that uses ELBs in front of both the web and the app tier with static assets served directly from S3 They are using a combination of RDS and DynamoOB for their dynamic data and then archiving nightly into S3 for further processing with EMR They are concerned because they
+found questionable log entries and suspect someone is attempting to gain unauthorized access.
+Which approach provides a cost effective scalable mitigation to this kind of attack?&lt;/p&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Recommend mat they lease space at a DirectConnect partner location and establish a 1G DirectConnect 
+connection to tneirvPC they would then establish Internet connectivity into their space, filter the traffic in 
+hardware Web Application Firewall (WAF). And then pass the traffic through the DirectConnect connection 
+into their application running in their VPC.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Add previously identified hostile source IPs as an explicit INBOUND DENY NACL to the web tier subnet.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Add a WAF tier by creating a new ELB and an AutoScalmg group of EC2 Instances running a host-based WAF 
+They would redirect Route 53 to resolve to the new WAF tier ELB The WAF tier would thier pass the traffic to 
+the current web tier The web tier Security Groups would be updated to only allow traffic from the WAF tier 
+Security Group&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;97 | You currently operate a web application In the AWS US-East region The application runs on an auto-scaled layer of EC2 instances and an RDS Multi-AZ database Your IT security compliance officer has tasked you to
+develop a reliable and durable logging solution to track changes made to your EC2.IAM And RDS resources. The solution must ensure the integrity and confidentiality of your log data. Which of these solutions would you recommend?&lt;/p&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Create a new CloudTrail trail with one new S3 bucket to store the logs and with the global services option 
+selected Use IAM roles S3 bucket policies and Multi Factor Authentication (MFA) Delete on the S3 bucket that 
+stores your logs.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Create a new cloudTrail with one new S3 bucket to store the logs Configure SNS to send log file delivery 
+notifications to your management system Use IAM roles and S3 bucket policies on the S3 bucket mat stores 
+your logs.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Create a new CloudTrail trail with an existing S3 bucket to store the logs and with the global services option 
+selected Use S3 ACLs and Multi Factor Authentication (MFA) Delete on the S3 bucket that stores your logs.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;98&lt;/td&gt;
+      &lt;td&gt;An enterprise wants to use a third-party SaaS application. The SaaS application needs to have access to issue several API commands to discover Amazon EC2 resources running within the enterprise’s account The enterprise has internal security policies that require any outside access to their environment must conform to the principles of least privilege and there must be controls in place to ensure that the credentials used by the SaaS vendor cannot be used by any other third party. Which of the following would meet all of these conditions?&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;From the AWS Management Console, navigate to the Security Credentials page and retrieve the access and 
+secret key for your account.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Create an IAM user within the enterprise account assign a user policy to the IAM user that allows only the 
+actions required by the SaaS application create a new access and secret key for the user and provide these 
+credentials to the SaaS provider.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Create an IAM role for cross-account access allows the SaaS provider’s account to assume the role and 
+assign it a policy that allows only the actions required by the SaaS application.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;99 | You are designing a data leak prevention solution for your VPC environment. You want your VPC Instances to be able to access software depots and distributions on the Internet for product updates. The depots and distributions are accessible via third party CONs by their URLs. You want to explicitly deny any other outbound connections from your VPC instances to hosts on the internet.
+Which of the following options would you consider?&lt;/p&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Configure a web proxy server in your VPC and enforce URL-based rules for outbound access Remove default 
+routes.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Implement security groups and configure outbound rules to only permit traffic to software depots.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Move all your instances into private VPC subnets remove default routes from all routing tables and add 
+specific routes to the software depots and distributions only.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;100 | An administrator is using Amazon CloudFormation to deploy a three tier web application that consists of a web tier and application tier that will utilize Amazon DynamoDB for storage when creating the CloudFormation
+template. which of the following would allow the application instance access to the DynamoDB tables without exposing API credentials?&lt;/p&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Create an Identity and Access Management Role that has the required permissions to read and write from 
+the required DynamoDB table and associate the Role to the application instances by referencing an instance 
+profile.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Use the Parameter section in the Cloud Formation template to have the user input Access and Secret Keys 
+from an already created IAM user that has the permissions required to read and write from the required 
+DynamoDB table.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Create an Identity and Access Management Role that has the required permissions to read and write from 
+the required DynamoDB table and reference the Role in the instance profile property of the application 
+instance.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_81-90.html&quot;&gt;AWS CSA Professional Quiz_81-90&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_101-110.html&quot;&gt;AWS CSA Professional Quiz_101-110&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_11-20.html&quot;&gt;AWS CSA Professional Quiz_11-20&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_21-30.html&quot;&gt;AWS CSA Professional Quiz_21-30&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_31-40.html&quot;&gt;AWS CSA Professional Quiz_31-40&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_41-50.html&quot;&gt;AWS CSA Professional Quiz_41-50&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_51-60.html&quot;&gt;AWS CSA Professional Quiz_51-60&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_61-70.html&quot;&gt;AWS CSA Professional Quiz_61-70&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_71-80.html&quot;&gt;AWS CSA Professional Quiz_71-80&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_81-90.html&quot;&gt;AWS CSA Professional Quiz_81-90&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_91-100.html&quot;&gt;AWS CSA Professional Quiz_91-100&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_101-110.html&quot;&gt;AWS CSA Professional Quiz_101-110&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_111-120.html&quot;&gt;AWS CSA Professional Quiz_111-120&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_121-130.html&quot;&gt;AWS CSA Professional Quiz_121-130&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_131-140.html&quot;&gt;AWS CSA Professional Quiz_131-140&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_141-150.html&quot;&gt;AWS CSA Professional Quiz_141-150&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_151-160.html&quot;&gt;AWS CSA Professional Quiz_151-160&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_161-170.html&quot;&gt;AWS CSA Professional Quiz_161-170&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_171-180.html&quot;&gt;AWS CSA Professional Quiz_171-180&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_181-190.html&quot;&gt;AWS CSA Professional Quiz_181-190&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_191-200.html&quot;&gt;AWS CSA Professional Quiz_191-200&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_201-210.html&quot;&gt;AWS CSA Professional Quiz_201-210&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Wed, 26 Sep 2018 12:00:00 +0000</pubDate>
+        <link>http://wingadium.icetea.space/aws/cert/2018/09/26/AWS_CSA_Professional_Quiz_91-100.html</link>
+        <guid isPermaLink="true">http://wingadium.icetea.space/aws/cert/2018/09/26/AWS_CSA_Professional_Quiz_91-100.html</guid>
+        
+        <category>AWS Cert</category>
+        
+        
+        <category>AWS</category>
+        
+        <category>Cert</category>
+        
+      </item>
+    
+      <item>
+        <title>AWS CSA Professional Quiz 81-90</title>
+        <description>&lt;h1 id=&quot;aws-csa-professional-quiz-81-90&quot;&gt;AWS CSA Professional Quiz 81-90&lt;/h1&gt;
+&lt;hr /&gt;
+&lt;hr /&gt;
+&lt;p&gt;81 | You have deployed a three-tier web application in a VPC with a CIDR block of 10 0 0 0/28. You initially deploy two web servers, two application servers, two database servers and one NAT instance for a total of seven EC2 instances. The web Application and database servers are deployed across two availability zones (AZs). You also deploy an ELB in front of the two web servers, and use Route53 for DNS Web (raffle gradually increases in the first few days following the deployment, so you attempt to double the number of instances in each tier of the application to handle the new load unfortunately some of these new instances fail to launch.
+Which of the following could be the root caused? (Choose 2 answers)&lt;/p&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;The Internet Gateway (IGW) of your VPC has scaled-up adding more instances to handle the traffic spike, 
+reducing the number of available private IP addresses for new instance launches.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;AWS reserves one IP address In each subnet’s CIDR block for Route53 so you do not have enough addresses 
+left to launch all of the new EC2 instances.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;AWS reserves the first and the last private IP address in each subnet’s CIDR block so you do not have enough 
+addresses left to launch all of the new EC2 instances.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;The ELB has scaled-up. Adding more instances to handle the traffic reducing the number of available private 
+IP addresses for new instance launches.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;82 | You’ve been brought in as solutions architect to assist an enterprise customer with their migration of an ecommerce platform to Amazon Virtual Private Cloud (VPC) The previous architect has already deployed a 3-tier VPC.
+The configuration is as follows:
+VPC vpc-2f8t&amp;gt;C447
+IGW ig-2d8bc445
+NACL acl-2080c448
+Subnets and Route Tables:
+   Web server’s subnet-258Dc44d
+   Application server’s suDnet-248bc44c
+   Database server’s subnet-9189c6f9
+Route Tables:
+   rrb-218DC449
+   rtb-238bc44b
+Associations:
+   subnet-258bc44d: rtb-2i8bc449
+   Subnet-248DC44C rtb-238tX44b
+   subnet-9189c6f9 rtb-238Dc 44b
+You are now ready to begin deploying EC2 instances into the VPC. Web servers must have direct access to the internet. Application and database servers cannot have direct access to the internet.
+Which configuration below will allow you the ability to remotely administer your application and database servers, as well as allow these servers to retrieve updates from the Internet?&lt;/p&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Create a bastion and NAT Instance in subnet-248bc44c and add a route from rtb-238bc44b to subnet- 
+258bc44d.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Add a route from rtD-238bc44D to igw-2d8bc445 and add a bastion and NAT instance within suonet- 
+248bc44c.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Create a bastion and NAT Instance In subnet-258bc44d. Add a route from rtb-238bc44b to igw-2d8bc445. 
+And a new NACL that allows access between subnet-258bc44d and subnet-248bc44c.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;83 | You are designing Internet connectivity for your VPC. The Web servers must be available on the Internet. The application must have a highly available architecture.
+Which alternatives should you consider? (Choose 2 answers)&lt;/p&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Configure a NAT instance in your VPC Create a default route via the NAT instance and associate it with all 
+subnets Configure a DNS A record that points to the NAT instance public IP address.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Configure a CloudFront distribution and configure the origin to point to the private IP addresses of your 
+Web servers Configure a Route53 CNAME record to your CloudFront distribution.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Place all your web servers behind ELB Configure a Route53 CNAME to point to the ELB DNS name.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Assign EIPs to all web servers. Configure a Route53 record set with all EIPs. With health checks and DNS 
+failover.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;84 | You are tasked with moving a legacy application from a virtual machine running Inside your datacenter to an Amazon VPC Unfortunately this app requires access to a number of on-premises services and no one who
+configured the app still works for your company. Even worse there’s no documentation for it. What will allow the application running inside the VPC to reach back and access its internal dependencies without being
+reconfigured? (Choose 3 answers)&lt;/p&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;An AWS Direct Connect link between the VPC and the network housing the internal services.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;An Internet Gateway to allow a VPN connection.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;An Elastic IP address on the VPC instance&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;An IP address space that does not conflict with the one on-premises&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Entries in Amazon Route 53 that allow the Instance to resolve its dependencies’ IP addresses&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;85&lt;/td&gt;
+      &lt;td&gt;You are migrating a legacy client-server application to AWS The application responds to a specific DNS domain (e g www example com) and has a 2-tier architecture, with multiple application servers and a database server Remote clients use TCP to connect to the application servers. The application servers need to know the IP address of the clients in order to function properly and are currently taking that information from the TCP socket A Multi-AZ RDS MySQL instance will be used for the database. During the migration you can change the application code but you have to find a change request. How would you implement the architecture on AWS In order to maximize scalability and high ability?&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Find a change request to implement Proxy Protocol support In the application Use an ELB with a TCP Listener 
+and Proxy Protocol enabled to distribute load on two application servers in different AZs.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Find a change request to Implement Cross-Zone support in the application Use an ELB with a TCP Listener 
+and Cross-Zone Load Balancing enabled, two application servers in different AZs.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Find a change request to implement Latency Based Routing support in the application Use Route 53 with 
+Latency Based Routing enabled to distribute load on two application servers in different AZs.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;86&lt;/td&gt;
+      &lt;td&gt;A newspaper organization has a on-premises application which allows the public to search its back catalogue and retrieve individual newspaper pages via a website written in Java. They have scanned the old newspapers into JPEGs (approx 17TB) and used Optical Character Recognition (OCR) to populate a commercial search product. The hosting platform and software are now end of life and the organization wants to migrate Its archive to AWS and produce a cost efficient architecture and still be designed for availability and durability Which is the most appropriate?&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Use S3 with reduced redundancy to store and serve the scanned files, install the commercial search 
+application on EC2 Instances and configure with auto-scaling and an Elastic Load Balancer.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Model the environment using CloudFormation use an EC2 instance running Apache webserver and an open 
+source search application, stripe multiple standard EBS volumes together to store the JPEGs and search index.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Use S3 with standard redundancy to store and serve the scanned files, use CloudSearch for query 
+processing, and use Elastic Beanstalk to host the website across multiple availability zones.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Use a single-AZ RDS MySQL instance to store the search index 33d the JPEG images use an EC2 instance to 
+serve the website and translate user queries into SQL.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;87 | A corporate web application is deployed within an Amazon Virtual Private Cloud (VPC) and is connected to the corporate data center via an iPsec VPN. The application must authenticate against the on-premises LDAP
+server. After authentication, each logged-in user can only access an Amazon Simple Storage Space (S3) keyspace specific to that user.
+Which two approaches can satisfy these objectives? (Choose 2 answers)&lt;/p&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Develop an identity broker that authenticates against IAM security Token service to assume a IAM role in 
+order to get temporary AWS security credentials The application calls the identity broker to get AWS 
+temporary security credentials with access to the appropriate S3 bucket.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;The application authenticates against LDAP and retrieves the name of an IAM role associated with the user. 
+The application then cails the IAM Security Token Service to assume that IAM role The application can use the 
+temporary credentials to access the appropriate S3 bucket.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Develop an identity broker that authenticates against LDAP and then calls IAM Security Token Service to get 
+IAM federated user credentials The application calls the identity broker to get IAM federated user credentials 
+with access to the appropriate S3 bucket.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;The application authenticates against LDAP the application then calls the AWS identity and Access 
+Management (IAM) Security service to log in to IAM using the LDAP credentials the application can use the 
+IAM temporary credentials to access the appropriate S3 bucket.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;88 | You are designing a multi-platform web application for AWS. The application will run on EC2 instances and will be accessed from PCs. tablets and smart phones. Supported accessing platforms are Windows. MACOS. IOS and Android. Separate sticky session and SSL certificate setups are required for different platform types. 
+which of the following describes the most cost effective and performance efficient architecture setup?&lt;/p&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Setup a hybrid architecture to handle session state and SSL certificates on-premise and separate EC2 Instance 
+groups running web applications for different platform types running in a VPC.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Set up one ELB for all platforms to distribute load among multiple instance under it Each EC2 instance 
+implements ail functionality for a particular platform.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Set up two ELBs The first ELB handles SSL certificates for all platforms and the second ELB handles session 
+stickiness for all platforms for each ELB run separate EC2 instance groups to handle the web application for 
+each platform.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;89 | Your company has an on-premises multi-tier PHP web application, which recently experienced downtime due to a large burst In web traffic due to a company announcement Over the coming days, you are expecting
+similar announcements to drive similar unpredictable bursts, and are looking to find ways to quickly improve your infrastructures ability to handle unexpected increases in traffic. The application currently consists of 2 tiers A web tier which consists of a load balancer and several Linux
+Apache web servers as well as a database tier which hosts a Linux server hosting a MySQL database. Which scenario below will provide full site functionality, while helping to improve the ability of your application in the short timeframe required?&lt;/p&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Offload traffic from on-premises environment Setup a CloudFront distribution and configure CloudFront to 
+cache objects from a custom origin Choose to customize your object cache behavior, and select a TTL that 
+objects should exist in cache.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Migrate to AWS Use VM import ‘Export to quickly convert an on-premises web server to an AMI create an 
+Auto Scaling group, which uses the imported AMI to scale the web tier based on incoming traffic Create an RDS 
+read replica and setup replication between the RDS instance and on-premises MySQL server to migrate the 
+database.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Failover environment: Create an S3 bucket and configure it tor website hosting Migrate your DNS to 
+Route53 using zone (lie import and leverage Route53 DNS failover to failover to the S3 hosted website.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;90 | Your company produces customer commissioned one-of-a-kind skiing helmets combining nigh fashion with custom technical enhancements Customers can show oft their Individuality on the ski slopes and have access to head-up-displays. GPS rear-view cams and any other technical innovation they wish to embed in the helmet.
+The current manufacturing process is data rich and complex including assessments to ensure that the custom electronics and materials used to assemble the helmets are to the highest standards Assessments are a mixture of human and automated assessments you need to add a new set of assessment to model the failure modes of the custom electronics using GPUs with CUD&lt;/p&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;across a cluster of servers with low latency networking. 
+What architecture would allow you to automate the existing process using a hybrid approach and ensure that 
+the architecture can support the evolution of processes over time? 
+Use AWS Data Pipeline to manage movement of data &amp;amp; meta-data and assessments Use an auto-scaling 
+group of G2 instances in a placement group.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Use Amazon Simple Workflow (SWF) 10 manages assessments, movement of data &amp;amp; meta-data Use an autoscaling group of G2 instances in a placement group.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Use Amazon Simple Workflow (SWF) lo manages assessments movement of data &amp;amp; meta-data Use an autoscaling group of C3 instances with SR-IOV (Single Root I/O Virtualization).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_71-80.html&quot;&gt;AWS CSA Professional Quiz_71-80&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_91-100.html&quot;&gt;AWS CSA Professional Quiz_91-100&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_11-20.html&quot;&gt;AWS CSA Professional Quiz_11-20&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_21-30.html&quot;&gt;AWS CSA Professional Quiz_21-30&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_31-40.html&quot;&gt;AWS CSA Professional Quiz_31-40&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_41-50.html&quot;&gt;AWS CSA Professional Quiz_41-50&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_51-60.html&quot;&gt;AWS CSA Professional Quiz_51-60&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_61-70.html&quot;&gt;AWS CSA Professional Quiz_61-70&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_71-80.html&quot;&gt;AWS CSA Professional Quiz_71-80&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_81-90.html&quot;&gt;AWS CSA Professional Quiz_81-90&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_91-100.html&quot;&gt;AWS CSA Professional Quiz_91-100&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_101-110.html&quot;&gt;AWS CSA Professional Quiz_101-110&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_111-120.html&quot;&gt;AWS CSA Professional Quiz_111-120&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_121-130.html&quot;&gt;AWS CSA Professional Quiz_121-130&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_131-140.html&quot;&gt;AWS CSA Professional Quiz_131-140&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_141-150.html&quot;&gt;AWS CSA Professional Quiz_141-150&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_151-160.html&quot;&gt;AWS CSA Professional Quiz_151-160&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_161-170.html&quot;&gt;AWS CSA Professional Quiz_161-170&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_171-180.html&quot;&gt;AWS CSA Professional Quiz_171-180&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_181-190.html&quot;&gt;AWS CSA Professional Quiz_181-190&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_191-200.html&quot;&gt;AWS CSA Professional Quiz_191-200&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_201-210.html&quot;&gt;AWS CSA Professional Quiz_201-210&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Wed, 26 Sep 2018 12:00:00 +0000</pubDate>
+        <link>http://wingadium.icetea.space/aws/cert/2018/09/26/AWS_CSA_Professional_Quiz_81-90.html</link>
+        <guid isPermaLink="true">http://wingadium.icetea.space/aws/cert/2018/09/26/AWS_CSA_Professional_Quiz_81-90.html</guid>
+        
+        <category>AWS Cert</category>
+        
+        
+        <category>AWS</category>
+        
+        <category>Cert</category>
+        
+      </item>
+    
+      <item>
+        <title>AWS CSA Professional Quiz 71-80</title>
+        <description>&lt;h1 id=&quot;aws-csa-professional-quiz-71-80&quot;&gt;AWS CSA Professional Quiz 71-80&lt;/h1&gt;
+&lt;hr /&gt;
+&lt;hr /&gt;
+&lt;p&gt;71 | An ERP application is deployed across multiple AZs in a single region. In the event of failure, the Recovery Time Objective (RTO) must be less than 3 hours, and the Recovery Point Objective (RPO) must be 15 minutes the customer realizes that data corruption occurred roughly 1.5 hours ago.
+What DR strategy could be used to achieve this RTO and RPO in the event of this kind of failure?&lt;/p&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Take hourly DB backups to S3, with transaction logs stored in S3 every 5 minutes.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Use synchronous database master-slave replication between two availability zones&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Take hourly DB backups to EC2 Instance store volumes with transaction logs stored In S3 every 5 minutes.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;72 | Your startup wants to implement an order fulfillment process for selling a personalized gadget that needs an average of 3-4 days to produce with some orders taking up to 6 months you expect 10 orders per day on your
+first day. 1000 orders per day after 6 months and 10,000 orders after 12 months.
+Orders coming in are checked for consistency men dispatched to your manufacturing plant for production quality control packaging shipment and payment processing If the product does not meet the quality standards at any stage of the process employees may force the process to repeat a step Customers are notified via email about order status and any critical issues with their orders such as payment failure.
+Your case architecture includes AWS Elastic Beanstalk for your website with an RDS MySQL instance for customer data and orders.
+How can you implement the order fulfillment process while making sure that the emails are delivered reliably?&lt;/p&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Add a business process management application to your Elastic Beanstalk app servers and re-use the ROS 
+database for tracking order status use one of the Elastic Beanstalk instances to send emails to customers.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Use SWF with an Auto Scaling group of activity workers and a decider instance in another Auto Scaling group 
+with min/max=1 Use the decider instance to send emails to customers.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Use SWF with an Auto Scaling group of activity workers and a decider instance in another Auto Scaling group 
+with min/max=1 use SES to send emails to customers.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;73 | You have deployed a web application targeting a global audience across multiple AWS Regions under the domain name.example.com. You decide to use Route53 Latency-Based Routing to serve web requests to users
+from the region closest to the user. To provide business continuity in the event of server downtime you configure weighted record sets associated with two web servers in separate Availability Zones per region.
+Dunning a DR test you notice that when you disable all web servers in one of the regions Route53 does not automatically direct all users to the other region. What could be happening? (Choose 2 answers)&lt;/p&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Latency resource record sets cannot be used in combination with weighted resource record sets.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;You did not setup an http health check for one or more of the weighted resource record sets associated 
+with the disabled web servers.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;The value of the weight associated with the latency alias resource record set in the region with the disabled 
+servers is higher than the weight for the other region.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;One of the two working web servers in the other region did not pass its HTTP health check.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;74 | Your company hosts a social media site supporting users in multiple countries. You have been asked to provide a highly available design tor the application that leverages multiple regions tor the most recently accessed content and latency sensitive portions of the wet) site The most latency sensitive component of the application involves reading user preferences to support web site personalization and ad selection.
+In addition to running your application in multiple regions, which option will support this application’s requirements?&lt;/p&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Serve user content from S3. CloudFront and use Route53 latency-based routing between ELBs in each region 
+Retrieve user preferences from a local DynamoDB table in each region and leverage SQS to capture changes to 
+user preferences with SOS workers for propagating updates to each table.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Use the S3 Copy API to copy recently accessed content to multiple regions and serve user content from S3. 
+CloudFront with dynamic content and an ELB in each region Retrieve user preferences from an ElasticCache 
+cluster in each region and leverage SNS notifications to propagate user preference changes to a worker node 
+in each region.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Use the S3 Copy API to copy recently accessed content to multiple regions and serve user content from S3 
+CloudFront and Route53 latency-based routing Between ELBs In each region Retrieve user preferences from a 
+DynamoDB table and leverage SQS to capture changes to user preferences with SOS workers for propagating 
+DynamoDB updates.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;75 | Your system recently experienced down time during the troubleshooting process. You found that a new administrator mistakenly terminated several production EC2 instances.
+Which of the following strategies will help prevent a similar situation in the future?
+The administrator still must be able to:
+– launch, start stop, and terminate development resources.
+– launch and start production instances.&lt;/p&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Create an IAM user, which is not allowed to terminate instances by leveraging production EC2 termination 
+protection.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Leverage resource based tagging along with an IAM user, which can prevent specific users from terminating 
+production EC2 resources.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Leverage EC2 termination protection and multi-factor authentication, which together require users to 
+authenticate before terminating EC2 instances&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;76 | A customer has established an AWS Direct Connect connection to AWS. The link is up and routes are being advertised from the customer’s end, however the customer is unable to connect from EC2 instances inside its
+VPC to servers residing in its datacenter.
+Which of the following options provide a viable solution to remedy this situation? (Choose 2 answers)&lt;/p&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Add a route to the route table with an iPsec VPN connection as the target.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Enable route propagation to the virtual private gateway (VGW).&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Enable route propagation to the customer gateway (CGW).&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Modify the route table of all Instances using the ‘route’ command.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;77 | Your company previously configured a heavily used, dynamically routed VPN connection between your onpremises data center and AWS. You recently provisioned a DirectConnect connection and would like to start
+using the new connection. After configuring DirectConnect settings in the AWS Console, which of the following options will provide the most seamless transition for your users?&lt;/p&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Delete your existing VPN connection to avoid routing loops configure your DirectConnect router with the 
+appropriate settings and verity network traffic is leveraging DirectConnect.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Configure your DirectConnect router with a higher BGP priority than your VPN router, verify network traffic 
+is leveraging Directconnect and then delete your existing VPN connection.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Update your VPC route tables to point to the DirectConnect connection configure your DirectConnect router 
+with the appropriate settings verify network traffic is leveraging DirectConnect and then delete the VPN 
+connection.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;78 | A web company is looking to implement an external payment service into their highly available application deployed in a VPC. Their application EC2 instances are behind a public lacing ELB. Auto scaling is used to add
+additional instances as traffic increases under normal load.  the application runs 2 instances in the Auto Scaling group but at peak it can scale 3x in size. The application instances need to communicate with the payment service over the Internet which requires whitelisting of all public IP addresses used to communicate with it. A maximum of 4 whitelisting IP addresses are allowed at a time and can be added through an API.
+How should they architect their solution?&lt;/p&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Route payment requests through two NAT instances setup for High Availability and whitelist the Elastic IP 
+addresses attached to the NAT instances.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Whitelist the VPC Internet Gateway Public IP and route payment requests through the Internet Gateway.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Whitelist the ELB IP addresses and route payment requests from the Application servers through the ELB.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;79 | You are designing the network infrastructure for an application server in Amazon VPC. Users will access all the application instances from the Internet as well as from an on-premises network. The on-premises network is connected to your VPC over an AWS Direct Connect link.
+How would you design routing to meet the above requirements?&lt;/p&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Configure a single routing Table with a default route via the Internet gateway. Propagate a default route via 
+BGP on the AWS Direct Connect customer router. Associate the routing table with all VPC subnets.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Configure a single routing table with a default route via the internet gateway Propagate specific routes for 
+the on-premises networks via BGP on the AWS Direct Connect customer router Associate the routing table 
+with all VPC subnets.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Configure a single routing table with two default routes: one to the internet via an Internet gateway the 
+other to the on-premises network via the VPN gateway use this routing table across all subnets in your VPC.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;80 | You are implementing AWS Direct Connect. You intend to use AWS public service end points such as Amazon S3, across the AWS Direct Connect link. You want other Internet traffic to use your existing link to an Internet
+Service Provider.
+What is the correct way to configure AWS Direct connect for access to services such as Amazon S3?&lt;/p&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Configure a public Interface on your AWS Direct Connect link Configure a static route via your AWS Direct 
+Connect link that points to Amazon S3 Advertise a default route to AWS using BGP.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Create a private interface on your AWS Direct Connect link. Configure a static route via your AWS Direct 
+connect link that points to Amazon S3 Configure specific routes to your network in your VPC.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Create a public interface on your AWS Direct Connect link Redistribute BGP routes into your existing routing 
+infrastructure advertise specific routes for your network to AWS.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_61-70.html&quot;&gt;AWS CSA Professional Quiz_61-70&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_81-90.html&quot;&gt;AWS CSA Professional Quiz_81-90&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_11-20.html&quot;&gt;AWS CSA Professional Quiz_11-20&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_21-30.html&quot;&gt;AWS CSA Professional Quiz_21-30&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_31-40.html&quot;&gt;AWS CSA Professional Quiz_31-40&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_41-50.html&quot;&gt;AWS CSA Professional Quiz_41-50&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_51-60.html&quot;&gt;AWS CSA Professional Quiz_51-60&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_61-70.html&quot;&gt;AWS CSA Professional Quiz_61-70&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_71-80.html&quot;&gt;AWS CSA Professional Quiz_71-80&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_81-90.html&quot;&gt;AWS CSA Professional Quiz_81-90&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_91-100.html&quot;&gt;AWS CSA Professional Quiz_91-100&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_101-110.html&quot;&gt;AWS CSA Professional Quiz_101-110&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_111-120.html&quot;&gt;AWS CSA Professional Quiz_111-120&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_121-130.html&quot;&gt;AWS CSA Professional Quiz_121-130&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_131-140.html&quot;&gt;AWS CSA Professional Quiz_131-140&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_141-150.html&quot;&gt;AWS CSA Professional Quiz_141-150&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_151-160.html&quot;&gt;AWS CSA Professional Quiz_151-160&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_161-170.html&quot;&gt;AWS CSA Professional Quiz_161-170&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_171-180.html&quot;&gt;AWS CSA Professional Quiz_171-180&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_181-190.html&quot;&gt;AWS CSA Professional Quiz_181-190&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_191-200.html&quot;&gt;AWS CSA Professional Quiz_191-200&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_201-210.html&quot;&gt;AWS CSA Professional Quiz_201-210&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Wed, 26 Sep 2018 12:00:00 +0000</pubDate>
+        <link>http://wingadium.icetea.space/aws/cert/2018/09/26/AWS_CSA_Professional_Quiz_71-80.html</link>
+        <guid isPermaLink="true">http://wingadium.icetea.space/aws/cert/2018/09/26/AWS_CSA_Professional_Quiz_71-80.html</guid>
+        
+        <category>AWS Cert</category>
+        
+        
+        <category>AWS</category>
+        
+        <category>Cert</category>
+        
+      </item>
+    
+      <item>
+        <title>AWS CSA Professional Quiz 61-70</title>
+        <description>&lt;h1 id=&quot;aws-csa-professional-quiz-61-70&quot;&gt;AWS CSA Professional Quiz 61-70&lt;/h1&gt;
+&lt;hr /&gt;
+&lt;hr /&gt;
+&lt;p&gt;61 | You need a persistent and durable storage to trace call activity of an IVR (Interactive Voice Response) system.
+Call duration is mostly in the 2-3 minutes timeframe. Each traced call can be either active or terminated. An external application needs to know each minute the list of currently active calls, which are usually a few
+calls/second. Put once per month there is a periodic peak up to 1000 calls/second for a few hours The system is open 24/7 and any downtime should be avoided. Historical data is periodically archived to files. Cost saving is a priority for this project.
+What database implementation would better fit this scenario, keeping costs as low as possible?&lt;/p&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Use RDS Multi-AZ with two tables, one for -Active calls” and one for -Terminated calls”. In this way the 
+“Active calls_ table is always small and effective to access.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Use DynamoDB with a “Calls” table and a Global Secondary Index on a “IsActive’” attribute that is present 
+for active calls only In this way the Global Secondary index is sparse and more effective.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Use DynamoDB with a ‘Calls” table and a Global secondary index on a ‘State” attribute that can equal to 
+“active” or “terminated” in this way the Global Secondary index can be used for all Items in the table.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;62 | A web design company currently runs several FTP servers that their 250 customers use to upload and download large graphic files They wish to move this system to AWS to make it more scalable, but they wish to
+maintain customer privacy and Keep costs to a minimum.
+What AWS architecture would you recommend?&lt;/p&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;ASK their customers to use an S3 client instead of an FTP client. Create a single S3 bucket Create an IAM 
+user for each customer Put the IAM Users in a Group that has an IAM policy that permits access to subdirectories within the bucket via use of the ‘username’ Policy variable.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Create a single S3 bucket with Reduced Redundancy Storage turned on and ask their customers to use an S3 
+client instead of an FTP client Create a bucket for each customer with a Bucket Policy that permits access only 
+to that one customer.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Create an auto-scaling group of FTP servers with a scaling policy to automatically scale-in when minimum 
+network traffic on the auto-scaling group is below a given threshold. Load a central list of ftp users from S3 as 
+part of the user Data startup script on each Instance.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;63&lt;/td&gt;
+      &lt;td&gt;You have been asked to design the storage layer for an application. The application requires disk performance of at least 100,000 IOPS in addition, the storage layer must be able to survive the loss of an individual disk. EC2 instance, or Availability Zone without any data loss. The volume you provide must have a capacity of at least 3 TB.Which of the following designs will meet these objectives’?&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Instantiate an i2 8xlarge instance in us-east-1a Create a RAID 0 volume using the four 800GB SSD 
+ephemeral disks provided with the instance Provision 3×1 TB EBS volumes attach them to the instance and 
+configure them as a second RAID 0 volume Configure synchronous, block-level replication from the ephemeralbacked volume to the EBS-backed volume.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Instantiate an i2 8xlarge instance in us-east-1a create a raid 0 volume using the four 800GB SSD ephemeral 
+disks provide with the Instance Configure synchronous block-level replication to an Identically configured 
+Instance in us-east-1b.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Instantiate a c3 8xlarge Instance In us-east-1 Provision an AWS Storage Gateway and configure it for 3 TB of 
+storage and 100 000 lOPS Attach the volume to the instance.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Instantiate a c3 8xlarge instance in us-east-1 provision 4x1TB EBS volumes, attach them to the instance, and 
+configure them as a single RAID 5 volume Ensure that EBS snapshots are performed every 15 minutes.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;64 | You would like to create a mirror image of your production environment in another region for disaster recovery purposes. Which of the following AWS resources do not need to be recreated in the second region?
+(Choose 2 answers)&lt;/p&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Route 53 Record Sets&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;AMI Roles&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Elastic IP Addresses (EIP)&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;EC2 Key Pairs&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Launch configurations&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;65 | Your company runs a customer facing event registration site. This site is built with a 3-tier architecture with web and application tier servers and a MySQL database. The application requires 6 web tier servers and 6
+application tier servers for normal operation, but can run on a minimum of 65% server capacity and a single MySQL database. When deploying this application in a region with three availability zones (AZs) which
+architecture provides high availability?&lt;/p&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;A web tier deployed across 2 AZs with 3 EC2 (Elastic Compute Cloud) instances in each AZ inside an Auto 
+Scaling Group behind an ELB (elastic load balancer), and an application tier deployed across 2 AZs with 3 EC2 
+instances in each AZ inside an Auto Scaling Group behind an ELB. and one RDS (Relational Database Service) 
+instance deployed with read replicas in the other AZ.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;A web tier deployed across 3 AZs with 2 EC2 (Elastic Compute Cloud) instances in each AZ inside an Auto 
+Scaling Group behind an ELB (elastic load balancer) and an application tier deployed across 3 AZs with 2 EC2 
+instances in each AZ inside an Auto Scaling Group behind an ELB and one RDS (Relational Database Service) 
+Instance deployed with read replicas in the two other AZs.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;A web tier deployed across 2 AZs with 3 EC2 (Elastic Compute Cloud) instances in each AZ inside an Auto 
+Scaling Group behind an ELB (elastic load balancer) and an application tier deployed across 2 AZs with 3 EC2 
+instances m each AZ inside an Auto Scaling Group behind an ELS and a Multi-AZ RDS (Relational Database 
+Service) deployment.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;66 | Your application is using an ELB in front of an Auto Scaling group of web/application servers deployed across two AZs and a Multi-AZ RDS Instance for data persistence.
+The database CPU is often above 80% usage and 90% of I/O operations on the database are reads. To improve performance you recently added a single-node Memcached ElastiCache Cluster to cache frequent DB query results. In the next weeks the overall workload is expected to grow by 30%.
+Do you need to change anything in the architecture to maintain the high availability or the application with the anticipated additional load’* Why?&lt;/p&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Yes. you should deploy two Memcached ElastiCache Clusters in different AZs because the RDS Instance will 
+not Be able to handle the load if the cache node fails.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;No. if the cache node fails the automated ElastiCache node recovery feature will prevent any availability 
+impact.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Yes you should deploy the Memcached ElastiCache Cluster with two nodes in the same AZ as the RDS DB 
+master instance to handle the load if one cache node fails.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;67 | You are responsible for a legacy web application whose server environment is approaching end of life. You would like to migrate this application to AWS as quickly as possible, since the application environment currently has the following limitations:
+The VM’s single 10GB VMDK is almost full&lt;/p&gt;
+
+&lt;p&gt;The virtual network interface still uses the 10Mbps driver, which leaves your 100Mbps WAN connection completely underutilized
+It is currently running on a highly customized. Windows VM within a VMware environment:
+You do not have me installation media
+This is a mission critical application with an RTO (Recovery Time Objective) of 8 hours. RPO (Recovery Point Objective) of 1 hour. How could you best migrate this application to AWS while meeting your business continuity requirements?&lt;/p&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Use the EC2 VM Import Connector for vCenter to import the VM into EC2.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Use Import/Export to import the VM as an ESS snapshot and attach to EC2.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Use S3 to create a backup of the VM and restore the data into EC2.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;68 | An International company has deployed a multi-tier web application that relies on DynamoDB in a single region.
+For regulatory reasons they need disaster recovery capability In a separate region with a Recovery Time Objective of 2 hours and a Recovery Point Objective of 24 hours. They should synchronize their data on a regular basis and be able to provision the web application rapidly using CloudFormation.
+The objective is to minimize changes to the existing web application, control the throughput of DynamoDB used for the synchronization of data and synchronize only the modified elements.
+Which design would you choose to meet these requirements?&lt;/p&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Use AWS data Pipeline to schedule a DynamoDB cross region copy once a day. create a Lastupdated’ 
+attribute in your DynamoDB table that would represent the timestamp of the last update and use it as a filter.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Use EMR and write a custom script to retrieve data from DynamoDB in the current region using a SCAN 
+operation and push it to QynamoDB in the second region.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Use AWS data Pipeline to schedule an export of the DynamoDB table to S3 in the current region once a day 
+then schedule another task immediately after it that will import data from S3 to DynamoDB in the other region.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;69&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Refer to the architecture diagram above of a batch processing solution using Simple Queue Service (SQS) to set up a message queue between EC2 instances which are used as batch processors Cloud Watch monitors the number of Job requests (queued messages) and an Auto Scaling group adds or deletes batch servers automatically based on parameters set in Cloud Watch alarms. You can use this architecture to implement which of the following features in a cost effective and efficient manner?&lt;/p&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Reduce the overall time for executing jobs through parallel processing by allowing a busy EC2 instance that 
+receives a message to pass it to the next instance in a daisy-chain setup.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Implement fault tolerance against EC2 instance failure since messages would remain in SQS and worn can 
+continue with recovery of EC2 instances implement fault tolerance against SQS failure by backing up messages 
+to S3.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Implement message passing between EC2 instances within a batch by exchanging messages through SOS&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Coordinate number of EC2 instances with number of job requests automatically thus Improving cost 
+effectiveness.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;70&lt;/td&gt;
+      &lt;td&gt;Your company currently has a 2-tier web application running in an on-premises data center. You have experienced several infrastructure failures in the past two months resulting in significant financial losses. Your CIO is strongly agreeing to move the application to AWS. While working on achieving buy-in from the other company executives, he asks you to develop a disaster recovery plan to help improve Business continuity in the short term. He specifies a target Recovery Time Objective (RTO) of 4 hours and a Recovery Point Objective (RPO) of 1 hour or less. He also asks you to implement the solution within 2 weeks. Your database is 200GB in size and you have a 20Mbps Internet connection. How would you do this while minimizing costs?&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Create an EBS backed private AMI which includes a fresh install or your application. Setup a script in your 
+data center to backup the local database every 1 hour and to encrypt and copy the resulting file to an S3 
+bucket using multi-part upload.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Install your application on a compute-optimized EC2 instance capable of supporting the application’s 
+average load synchronously replicate transactions from your on-premises database to a database instance in 
+AWS across a secure Direct Connect connection.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Deploy your application on EC2 instances within an Auto Scaling group across multiple availability zones 
+asynchronously replicate transactions from your on-premises database to a database instance in AWS across a 
+secure VPN connection.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_51-60.html&quot;&gt;AWS CSA Professional Quiz_51-60&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_71-80.html&quot;&gt;AWS CSA Professional Quiz_71-80&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_11-20.html&quot;&gt;AWS CSA Professional Quiz_11-20&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_21-30.html&quot;&gt;AWS CSA Professional Quiz_21-30&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_31-40.html&quot;&gt;AWS CSA Professional Quiz_31-40&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_41-50.html&quot;&gt;AWS CSA Professional Quiz_41-50&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_51-60.html&quot;&gt;AWS CSA Professional Quiz_51-60&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_61-70.html&quot;&gt;AWS CSA Professional Quiz_61-70&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_71-80.html&quot;&gt;AWS CSA Professional Quiz_71-80&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_81-90.html&quot;&gt;AWS CSA Professional Quiz_81-90&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_91-100.html&quot;&gt;AWS CSA Professional Quiz_91-100&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_101-110.html&quot;&gt;AWS CSA Professional Quiz_101-110&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_111-120.html&quot;&gt;AWS CSA Professional Quiz_111-120&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_121-130.html&quot;&gt;AWS CSA Professional Quiz_121-130&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_131-140.html&quot;&gt;AWS CSA Professional Quiz_131-140&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_141-150.html&quot;&gt;AWS CSA Professional Quiz_141-150&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_151-160.html&quot;&gt;AWS CSA Professional Quiz_151-160&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_161-170.html&quot;&gt;AWS CSA Professional Quiz_161-170&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_171-180.html&quot;&gt;AWS CSA Professional Quiz_171-180&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_181-190.html&quot;&gt;AWS CSA Professional Quiz_181-190&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_191-200.html&quot;&gt;AWS CSA Professional Quiz_191-200&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_201-210.html&quot;&gt;AWS CSA Professional Quiz_201-210&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Wed, 26 Sep 2018 12:00:00 +0000</pubDate>
+        <link>http://wingadium.icetea.space/aws/cert/2018/09/26/AWS_CSA_Professional_Quiz_61-70.html</link>
+        <guid isPermaLink="true">http://wingadium.icetea.space/aws/cert/2018/09/26/AWS_CSA_Professional_Quiz_61-70.html</guid>
+        
+        <category>AWS Cert</category>
+        
+        
+        <category>AWS</category>
+        
+        <category>Cert</category>
+        
+      </item>
+    
+      <item>
+        <title>AWS CSA Professional Quiz 51-60</title>
+        <description>&lt;h1 id=&quot;aws-csa-professional-quiz-51-60&quot;&gt;AWS CSA Professional Quiz 51-60&lt;/h1&gt;
+&lt;hr /&gt;
+&lt;hr /&gt;
+&lt;p&gt;51 | Which of the following statements are true about Amazon Route 53 resource records? Choose 2 answers&lt;/p&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;An Alias record can map one DNS name to another Amazon Route 53 DNS name.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;A CNAME record can be created for your zone apex.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;An Amazon Route 53 CNAME record can point to any DNS record hosted anywhere.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;TTL can be set for an Alias record in Amazon Route 53.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;52 | A 3-tier e-commerce web application is current deployed on-premises and will be migrated to AWS for greater scalability and elasticity. The web server currently shares read-only data using a network distributed file system. The app server tier uses a clustering mechanism for discovery and shared session state that depends on IP multicast. The database tier uses shared-storage clustering to provide database fall over capability, and uses several read slaves for scaling Data on all servers and the distributed file system directory is backed up weekly to off-site tapes
+Which AWS storage and database architecture meets the requirements of the application?&lt;/p&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Web servers, store read-only data in S3, and copy from S3 to root volume at boot time App servers snare 
+state using a combination or DynamoDB and IP unicast Database use RDS with multi-AZ deployment and one 
+or more Read Replicas Backup web and app servers backed up weekly via Mils database backed up via DB 
+snapshots.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Web servers store -read-only data in S3, and copy from S3 to root volume at boot time App servers share 
+state using a combination of DynamoDB and IP unicast Database, use RDS with multi-AZ deployment and one 
+or more read replicas Backup web servers app servers, and database backed up weekly to Glacier using 
+snapshots.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Web servers store read-only data In S3 and copy from S3 to root volume at boot time App servers share 
+state using a combination of DynamoDB and IP unicast Database use RDS with multi-AZ deployment Backup 
+web and app servers backed up weekly via AMIs. database backed up via DB snapshots&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;53&lt;/td&gt;
+      &lt;td&gt;Your customer wishes to deploy an enterprise application to AWS which will consist of several web servers, several application servers and a small (50GB) Oracle database information is stored, both in the database and the file systems of the various servers. The backup system must support database recovery whole server and whole disk restores, and individual file restores with a recovery time of no more than two hours. They have chosen to use RDS Oracle as the database. Which backup architecture will meet these requirements?&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Backup RDS using automated daily DB backups Backup the EC2 instances using AMIs and supplement with 
+file-level backup to S3 using traditional enterprise backup software to provide file level restore&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Backup RDS using a Multi-AZ Deployment Backup the EC2 instances using Amis, and supplement by copying 
+file system data to S3 to provide file level restore.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Backup RDS using automated daily DB backups Backup the EC2 instances using EBS snapshots and 
+supplement with file-level backups to Amazon Glacier using traditional enterprise backup software to provide 
+file level restore&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;54 | Your company has HQ in Tokyo and branch offices all over the world and is using a logistics software with a multi-regional deployment on AWS in Japan, Europe and US.
+The logistic software has a 3-tier architecture and currently uses MySQL 5.6 for data persistence. Each region has deployed its own database. 
+In the HQ region you run an hourly batch process reading data from every region to compute cross-regional reports that are sent by email to all offices this batch process must be completed as fast as possible to quickly optimize logistics. 
+How do you build the database architecture in order to meet the requirements’?&lt;/p&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;For each regional deployment, use RDS MySQL with a master in the region and a read replica in the HQ 
+region&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;For each regional deployment, use MySQL on EC2 with a master in the region and send hourly EBS 
+snapshots to the HQ region&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;For each regional deployment, use RDS MySQL with a master in the region and send hourly RDS snapshots 
+to the HQ region&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;For each regional deployment, use MySQL on EC2 with a master in the region and use S3 to copy data files 
+hourly to the HQ region&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;55&lt;/td&gt;
+      &lt;td&gt;A customer has a 10 GB AWS Direct Connect connection to an AWS region where they have a web application hosted on Amazon Elastic Computer Cloud (EC2). The application has dependencies on an on-premises mainframe database that uses a BASE (Basic Available. Sort stale Eventual consistency) rather than an ACID (Atomicity. Consistency isolation. Durability) consistency model. The application is exhibiting undesirable behavior because the database is not able to handle the volume of writes. How can you reduce the load on your on-premises database resources in the most cost-effective way?&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Use an Amazon Elastic Map Reduce (EMR) S3DistCp as a synchronization mechanism between the onpremises database and a Hadoop cluster on AWS.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Modify the application to write to an Amazon SQS queue and develop a worker process to flush the queue 
+to the on-premises database.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Modify the application to use DynamoDB to feed an EMR cluster which uses a map function to write to the 
+on-premises database.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;56&lt;/td&gt;
+      &lt;td&gt;Company B is launching a new game app for mobile devices. Users will log into the game using their existing social media account to streamline data capture. Company B would like to directly save player data and scoring information from the mobile app to a DynamoDB table named Score Data When a user saves their game the progress data will be stored to the Game state S3 bucket. what is the best approach for storing data to DynamoDB and S3?&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Use an EC2 Instance that is launched with an EC2 role providing access to the Score Data DynamoDB table 
+and the GameState S3 bucket that communicates with the mobile app via web services.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Use temporary security credentials that assume a role providing access to the Score Data DynamoDB table 
+and the Game State S3 bucket using web identity federation.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Use Login with Amazon allowing users to sign in with an Amazon account providing the mobile app with 
+access to the Score Data DynamoDB table and the Game State S3 bucket.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;57&lt;/td&gt;
+      &lt;td&gt;Your company plans to host a large donation website on Amazon Web Services (AWS). You anticipate a large and undetermined amount of traffic that will create many database writes. To be certain that you do not drop any writes to a database hosted on AWS. Which service should you use?&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Amazon RDS with provisioned IOPS up to the anticipated peak write throughput.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Amazon Simple Queue Service (SQS) for capturing the writes and draining the queue to write to the 
+database.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Amazon ElastiCache to store the writes until the writes are committed to the database.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;58 | You have launched an EC2 instance with four (4) 500 GB EBS Provisioned IOPS volumes attached. The EC2 Instance Is EBS-Optimized and supports 500 Mbps throughput between EC2 and EBS. The two EBS volumes are configured as a single RAID 0 device, and each Provisioned IOPS volume is provisioned with 4.000 IOPS (4 000 16KB reads or writes) for a total of 16.000 random IOPS on the instance The EC2 Instance initially delivers the expected 16 000 IOPS random read and write performance Sometime later in order to increase the total
+random I/O performance of the instance, you add an additional two 500 GB EBS Provisioned IOPS volumes to the RAID Each volume Is provisioned to 4.000 lOPs like the original four for a total of 24.000 IOPS on the EC2 instance Monitoring shows that the EC2 instance CPU utilization increased from 50% to 70%. but the total random IOPS measured at the instance level does not increase at all.
+What is the problem and a valid solution?&lt;/p&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Larger storage volumes support higher Provisioned IOPS rates: increase the provisioned volume storage of 
+each of the 6 EBS volumes to 1TB.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;The EBS-Optimized throughput limits the total IOPS that can be utilized use an EBS-Optimized instance that 
+provides larger throughput.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Small block sizes cause performance degradation, limiting the I’O throughput, configure the instance device 
+driver and file system to use 64KB blocks to increase throughput.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;RAID 0 only scales linearly to about 4 devices, use RAID 0 with 4 EBS Provisioned IOPS volumes but increase 
+each Provisioned IOPS EBS volume to 6.000 IOPS.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;59 | You have recently joined a startup company building sensors to measure street noise and air quality in urban areas.
+The company has been running a pilot deployment of around 100 sensors for 3 months Each sensor uploads 1KB of sensor data every minute to a backend hosted on AWS.
+During the pilot, you measured a peak or 10 IOPS on the database, and you stored an average of 3GB of sensor data per month in the database
+The current deployment consists of a load-balanced auto scaled Ingestion layer using EC2 instances and a PostgreSQL RDS database with 500GB standard storage.
+The pilot is considered a success and your CEO has managed to get the attention or some potential investors 
+The business plan requires a deployment of at least 100K sensors which needs to be supported by the backend&lt;/p&gt;
+
+&lt;p&gt;You also need to store sensor data for at least two years to be able to compare year over year Improvements.
+To secure funding, you have to make sure that the platform meets these requirements and leaves room for further scaling
+Which setup win meet the requirements?&lt;/p&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Add an SQS queue to the ingestion layer to buffer writes to the RDS instance&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Ingest data into a DynamoDB table and move old data to a Redshift cluster&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Replace the RDS instance with a 6 node Redshift cluster with 96TB of storage&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;60 | Your company is in the process of developing a next generation pet collar that collects biometric information to assist families with promoting healthy lifestyles for their pets. Each collar will push 30kb of biometric data In JSON format every 2 seconds to a collection platform that will process and analyze the data providing health trending information back to the pet owners and veterinarians via a web portal Management has tasked you to architect the collection platform ensuring the following requirements are met.
+Provide the ability for real-time analytics of the inbound biometric data
+Ensure processing of the biometric data is highly durable. Elastic and parallel
+The results of the analytic processing should be persisted for data mining
+Which architecture outlined below win meet the initial requirements for the collection platform?&lt;/p&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Utilize S3 to collect the inbound sensor data analyze the data from S3 with a daily scheduled Data Pipeline 
+and save the results to a Redshift Cluster.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Utilize Amazon Kinesis to collect the inbound sensor data, analyze the data with Kinesis clients and save the 
+results to a Redshift cluster using EMR.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Utilize SQS to collect the inbound sensor data analyze the data from SQS with Amazon Kinesis and save the 
+results to a Microsoft SQL Server RDS instance.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_41-50.html&quot;&gt;AWS CSA Professional Quiz_41-50&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_61-70.html&quot;&gt;AWS CSA Professional Quiz_61-70&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_11-20.html&quot;&gt;AWS CSA Professional Quiz_11-20&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_21-30.html&quot;&gt;AWS CSA Professional Quiz_21-30&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_31-40.html&quot;&gt;AWS CSA Professional Quiz_31-40&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_41-50.html&quot;&gt;AWS CSA Professional Quiz_41-50&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_51-60.html&quot;&gt;AWS CSA Professional Quiz_51-60&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_61-70.html&quot;&gt;AWS CSA Professional Quiz_61-70&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_71-80.html&quot;&gt;AWS CSA Professional Quiz_71-80&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_81-90.html&quot;&gt;AWS CSA Professional Quiz_81-90&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_91-100.html&quot;&gt;AWS CSA Professional Quiz_91-100&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_101-110.html&quot;&gt;AWS CSA Professional Quiz_101-110&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_111-120.html&quot;&gt;AWS CSA Professional Quiz_111-120&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_121-130.html&quot;&gt;AWS CSA Professional Quiz_121-130&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_131-140.html&quot;&gt;AWS CSA Professional Quiz_131-140&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_141-150.html&quot;&gt;AWS CSA Professional Quiz_141-150&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_151-160.html&quot;&gt;AWS CSA Professional Quiz_151-160&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_161-170.html&quot;&gt;AWS CSA Professional Quiz_161-170&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_171-180.html&quot;&gt;AWS CSA Professional Quiz_171-180&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_181-190.html&quot;&gt;AWS CSA Professional Quiz_181-190&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_191-200.html&quot;&gt;AWS CSA Professional Quiz_191-200&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_201-210.html&quot;&gt;AWS CSA Professional Quiz_201-210&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Wed, 26 Sep 2018 12:00:00 +0000</pubDate>
+        <link>http://wingadium.icetea.space/aws/cert/2018/09/26/AWS_CSA_Professional_Quiz_51-60.html</link>
+        <guid isPermaLink="true">http://wingadium.icetea.space/aws/cert/2018/09/26/AWS_CSA_Professional_Quiz_51-60.html</guid>
+        
+        <category>AWS Cert</category>
+        
+        
+        <category>AWS</category>
+        
+        <category>Cert</category>
+        
+      </item>
+    
+      <item>
+        <title>AWS CSA Professional Quiz 41-50</title>
+        <description>&lt;h1 id=&quot;aws-csa-professional-quiz-41-50&quot;&gt;AWS CSA Professional Quiz 41-50&lt;/h1&gt;
+&lt;hr /&gt;
+&lt;hr /&gt;
+&lt;p&gt;41 | A company is deploying a new two-tier web application in AWS. The company has limited staff and requires high availability, and the application requires complex queries and table joins. Which configuration provides the solution for the company’s requirements?&lt;/p&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;MySQL Installed on two Amazon EC2 Instances in a single Availability Zone&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Amazon RDS for MySQL with Multi-AZ&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Amazon ElastiCache&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;42&lt;/td&gt;
+      &lt;td&gt;A t2.medium EC2 instance type must be launched with what type of Amazon Machine Image (AMI)?&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;An Instance store Hardware Virtual Machine AMI&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;An Instance store Paravirtual AMI&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;An Amazon EBS-backed Hardware Virtual Machine AMI&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;43&lt;/td&gt;
+      &lt;td&gt;You manually launch a NAT AMI in a public subnet. The network is properly configured. Security groups and network access control lists are property configured. Instances in a private subnet can access the NAT. The NAT can access the Internet. However, private instances cannot access the Internet. What additional step is required to allow access from the private instances?&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Enable Source/Destination Check on the private Instances.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Enable Source/Destination Check on the NAT instance.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Disable Source/Destination Check on the private instances.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;44&lt;/td&gt;
+      &lt;td&gt;Which of the following approaches provides the lowest cost for Amazon Elastic Block Store snapshots while giving you the ability to fully restore data?&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Maintain two snapshots: the original snapshot and the latest incremental snapshot.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Maintain a volume snapshot; subsequent snapshots will overwrite one another&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Maintain a single snapshot the latest snapshot is both Incremental and complete.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;45&lt;/td&gt;
+      &lt;td&gt;An existing application stores sensitive information on a non-boot Amazon EBS data volume attached to an Amazon Elastic Compute Cloud instance. Which of the following approaches would protect the sensitive data on an Amazon EBS volume?&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Upload your customer keys to AWS CloudHSM. Associate the Amazon EBS volume with AWS CloudHSM. Remount the Amazon EBS volume.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Create and mount a new, encrypted Amazon EBS volume. Move the data to the new volume. Delete the old 
+Amazon EBS volume.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Unmount the EBS volume. Toggle the encryption attribute to True. Re-mount the Amazon EBS volume.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;46 | A US-based company is expanding their web presence into Europe. The company wants to extend their AWS infrastructure from Northern Virginia (us-east-1) into the Dublin (eu-west-1) region. Which of the following
+options would enable an equivalent experience for users on both continents?&lt;/p&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Use a public-facing load balancer per region to load-balance web traffic, and enable HTTP health checks.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Use a public-facing load balancer per region to load-balance web traffic, and enable sticky sessions.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Use Amazon Route 53, and apply a geolocation routing policy to distribute traffic across both regions.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;47&lt;/td&gt;
+      &lt;td&gt;Which of the following are use cases for Amazon DynamoDB? Choose 3 answers&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Storing BLOB data.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Managing web sessions.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Storing JSON documents.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Storing metadata for Amazon S3 objects.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Running relational joins and complex updates.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;48 | A customer implemented AWS Storage Gateway with a gateway-cached volume at their main office. An event takes the link between the main and branch office offline. Which methods will enable the branch office to
+access their data? Choose 3 answers&lt;/p&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Use a HTTPS GET to the Amazon S3 bucket where the files are located.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Restore by implementing a lifecycle policy on the Amazon S3 bucket.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Make an Amazon Glacier Restore API call to load the files into another Amazon S3 bucket within four to six 
+hours.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Launch a new AWS Storage Gateway instance AMI in Amazon EC2, and restore from a gateway snapshot.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Create an Amazon EBS volume from a gateway snapshot, and mount it to an Amazon EC2 instance.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;49 | A company has configured and peered two VPCs: VPC-1 and VPC-2. VPC-1 contains only private subnets, and VPC-2 contains only public subnets. The company uses a single AWS Direct Connect connection and private
+virtual interface to connect their on-premises network with VPC-1. Which two methods increases the fault tolerance of the connection to VPC-1? Choose 2 answers&lt;/p&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Establish a hardware VPN over the internet between VPC-2 ana the on-premises network.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Establish a hardware VPN over the internet between VPC-1 and the on-premises network.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Establish a new AWS Direct Connect connection and private virtual interface in the same region as VPC-2.&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Establish a new AWS Direct Connect connection and private virtual interface in a different AWS region than 
+VPC-1.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;50&lt;/td&gt;
+      &lt;td&gt;What is the minimum time Interval for the data that Amazon CloudWatch receives and aggregates?&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;One second&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Five seconds&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;One minute&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;Three minutes&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_31-40.html&quot;&gt;AWS CSA Professional Quiz_31-40&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_51-60.html&quot;&gt;AWS CSA Professional Quiz_51-60&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_11-20.html&quot;&gt;AWS CSA Professional Quiz_11-20&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_21-30.html&quot;&gt;AWS CSA Professional Quiz_21-30&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_31-40.html&quot;&gt;AWS CSA Professional Quiz_31-40&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_41-50.html&quot;&gt;AWS CSA Professional Quiz_41-50&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_51-60.html&quot;&gt;AWS CSA Professional Quiz_51-60&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_61-70.html&quot;&gt;AWS CSA Professional Quiz_61-70&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_71-80.html&quot;&gt;AWS CSA Professional Quiz_71-80&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_81-90.html&quot;&gt;AWS CSA Professional Quiz_81-90&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_91-100.html&quot;&gt;AWS CSA Professional Quiz_91-100&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_101-110.html&quot;&gt;AWS CSA Professional Quiz_101-110&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_111-120.html&quot;&gt;AWS CSA Professional Quiz_111-120&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_121-130.html&quot;&gt;AWS CSA Professional Quiz_121-130&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_131-140.html&quot;&gt;AWS CSA Professional Quiz_131-140&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_141-150.html&quot;&gt;AWS CSA Professional Quiz_141-150&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_151-160.html&quot;&gt;AWS CSA Professional Quiz_151-160&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_161-170.html&quot;&gt;AWS CSA Professional Quiz_161-170&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_171-180.html&quot;&gt;AWS CSA Professional Quiz_171-180&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_181-190.html&quot;&gt;AWS CSA Professional Quiz_181-190&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_191-200.html&quot;&gt;AWS CSA Professional Quiz_191-200&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;AWS_CSA_Professional_Quiz_201-210.html&quot;&gt;AWS CSA Professional Quiz_201-210&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Wed, 26 Sep 2018 12:00:00 +0000</pubDate>
+        <link>http://wingadium.icetea.space/aws/cert/2018/09/26/AWS_CSA_Professional_Quiz_41-50.html</link>
+        <guid isPermaLink="true">http://wingadium.icetea.space/aws/cert/2018/09/26/AWS_CSA_Professional_Quiz_41-50.html</guid>
+        
+        <category>AWS Cert</category>
+        
+        
+        <category>AWS</category>
+        
+        <category>Cert</category>
+        
+      </item>
+    
   </channel>
 </rss>
