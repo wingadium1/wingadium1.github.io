@@ -6,8 +6,8 @@
 </description>
     <link>http://wingadium.icetea.space/</link>
     <atom:link href="http://wingadium.icetea.space/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 24 May 2022 02:43:36 +0000</pubDate>
-    <lastBuildDate>Tue, 24 May 2022 02:43:36 +0000</lastBuildDate>
+    <pubDate>Tue, 24 May 2022 02:49:22 +0000</pubDate>
+    <lastBuildDate>Tue, 24 May 2022 02:49:22 +0000</lastBuildDate>
     <generator>Jekyll v4.2.2</generator>
     
       <item>
@@ -67,6 +67,8 @@ Previously the version that tester received to verify feature or bug would be me
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://github.com/wingadium1/wingadium1.github.io/raw/master/img/Git-Page-4.png&quot; alt=&quot;alt text&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;So it can simply be summed up as follows: when a bug is discovered, fix it right there and cherry-pick related branches that have not been released: &lt;strong&gt;&lt;em&gt;staging&lt;/em&gt;&lt;/strong&gt;, &lt;strong&gt;*develop&lt;/strong&gt; * is require.&lt;/p&gt;
 
