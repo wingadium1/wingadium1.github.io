@@ -34,3 +34,4 @@ deploy:
     branch: gh-pages
   target_branch: master
   email: "wingadium1@gmail.com"
+  local_dir: _site
