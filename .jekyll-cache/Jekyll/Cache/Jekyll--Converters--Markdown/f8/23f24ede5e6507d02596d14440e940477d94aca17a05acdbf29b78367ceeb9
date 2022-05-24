@@ -1,0 +1,6 @@
+I"š<h1 id="aws-csa-professional-quiz-101-110">AWS CSA Professional Quiz 101-110</h1>
+<hr />
+<hr />
+<p>101 | An AWS customer is deploying an application that is composed of an AutoScaling group of EC2 Instances. The customers security policy requires that every outbound connection from these instances to any other service within the customers Virtual Private Cloud must be authenticated using a unique x 509 certificate that contains the specific instanceid. In addition an x 509 certificates must Designed by the customerâ€™s Key management service in order to be trusted for authentication.
+Which of the following configurations will support these requirements?</p>
+:ET

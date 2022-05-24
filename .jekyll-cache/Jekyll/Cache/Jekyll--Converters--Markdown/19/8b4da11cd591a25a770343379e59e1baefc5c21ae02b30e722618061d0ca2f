@@ -1,0 +1,6 @@
+I"ë<h1 id="aws-csa-professional-quiz-71-80">AWS CSA Professional Quiz 71-80</h1>
+<hr />
+<hr />
+<p>71 | An ERP application is deployed across multiple AZs in a single region. In the event of failure, the Recovery Time Objective (RTO) must be less than 3 hours, and the Recovery Point Objective (RPO) must be 15 minutes the customer realizes that data corruption occurred roughly 1.5 hours ago.
+What DR strategy could be used to achieve this RTO and RPO in the event of this kind of failure?</p>
+:ET

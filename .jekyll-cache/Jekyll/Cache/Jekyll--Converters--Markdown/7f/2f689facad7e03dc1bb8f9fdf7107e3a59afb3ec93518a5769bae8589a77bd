@@ -1,0 +1,183 @@
+I"÷<h1 id="aws-csa-professional-quiz-161-170">AWS CSA Professional Quiz 161-170</h1>
+<hr />
+<hr />
+<p>161 | Amazon RDS automated backups and DB Snapshots are currently supported for only the <strong>__</strong><em>__</em> storage engine</p>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />InnoDB</li>
+</ul>
+
+<hr />
+
+<table>
+  <tbody>
+    <tr>
+      <td>162</td>
+      <td>How many relational database engines does RDS currently support?</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Three: MySQL, Oracle and Microsoft SQL Server.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Just two: MySQL and Oracle.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Five: MySQL, PostgreSQL, MongoDB, Cassandra and SQLite.</li>
+</ul>
+
+<hr />
+
+<table>
+  <tbody>
+    <tr>
+      <td>163</td>
+      <td>Fill in the blanks: The base URL for all requests for instance metadata is <strong>__</strong>_____</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />http://254.169.169.254/latest/</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />http://169.169.254.254/latest/</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />http://127.0.0.1/latest/</li>
+</ul>
+
+<hr />
+
+<table>
+  <tbody>
+    <tr>
+      <td>164</td>
+      <td>While creating the snapshots using the command line tools, which command should I be using?</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />ec2-deploy-snapshot</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />ec2-fresh-snapshot</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />ec2-create-snapshot</li>
+</ul>
+
+<hr />
+
+<p>165 | Typically, you want your application to check whether a request generated an error before you spend any time processing results. The easiest way to find out if an error occurred is to look for an <strong>__</strong><em>__</em> node in the
+response from the Amazon RDS API.</p>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Incorrect</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Error</li>
+</ul>
+
+<hr />
+
+<table>
+  <tbody>
+    <tr>
+      <td>166</td>
+      <td>What are the two permission types used by AWS?</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Resource-based and Product-based</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Product-based and Service-based</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Service-based</li>
+</ul>
+
+<hr />
+
+<table>
+  <tbody>
+    <tr>
+      <td>167</td>
+      <td>In the Amazon cloudwatch, which metric should I be checking to ensure that your DB Instance has enough free storage space?</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />FreeStorage</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />FreeStorageSpace</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />FreeStorageVolume</li>
+</ul>
+
+<hr />
+
+<table>
+  <tbody>
+    <tr>
+      <td>168</td>
+      <td>Amazon RDS DB snapshots and automated backups are stored in</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Amazon S3</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Amazon ECS Volume</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Amazon RDS</li>
+</ul>
+
+<hr />
+
+<table>
+  <tbody>
+    <tr>
+      <td>169</td>
+      <td>What is the maximum key length of a tag?</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />512 Unicode characters</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />64 Unicode characters</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />256 Unicode characters</li>
+</ul>
+
+<hr />
+
+<table>
+  <tbody>
+    <tr>
+      <td>170</td>
+      <td>IAM Groups canâ€™t _____.</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />be nested more than 3 levels</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />be nested at all</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />be nested more than 4 levels</li>
+</ul>
+
+<hr />
+<p><a href="AWS_CSA_Professional_Quiz_151-160.html">AWS CSA Professional Quiz_151-160</a></p>
+
+<p><a href="AWS_CSA_Professional_Quiz_171-180.html">AWS CSA Professional Quiz_171-180</a></p>
+
+<ul>
+  <li><a href="AWS_CSA_Professional_Quiz_11-20.html">AWS CSA Professional Quiz_11-20</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_21-30.html">AWS CSA Professional Quiz_21-30</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_31-40.html">AWS CSA Professional Quiz_31-40</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_41-50.html">AWS CSA Professional Quiz_41-50</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_51-60.html">AWS CSA Professional Quiz_51-60</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_61-70.html">AWS CSA Professional Quiz_61-70</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_71-80.html">AWS CSA Professional Quiz_71-80</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_81-90.html">AWS CSA Professional Quiz_81-90</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_91-100.html">AWS CSA Professional Quiz_91-100</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_101-110.html">AWS CSA Professional Quiz_101-110</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_111-120.html">AWS CSA Professional Quiz_111-120</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_121-130.html">AWS CSA Professional Quiz_121-130</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_131-140.html">AWS CSA Professional Quiz_131-140</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_141-150.html">AWS CSA Professional Quiz_141-150</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_151-160.html">AWS CSA Professional Quiz_151-160</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_161-170.html">AWS CSA Professional Quiz_161-170</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_171-180.html">AWS CSA Professional Quiz_171-180</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_181-190.html">AWS CSA Professional Quiz_181-190</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_191-200.html">AWS CSA Professional Quiz_191-200</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_201-210.html">AWS CSA Professional Quiz_201-210</a></li>
+</ul>
+:ET

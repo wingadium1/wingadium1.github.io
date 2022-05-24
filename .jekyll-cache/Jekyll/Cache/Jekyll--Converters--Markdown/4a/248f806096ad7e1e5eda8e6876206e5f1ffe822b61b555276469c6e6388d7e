@@ -1,0 +1,64 @@
+I"C<p>https://github.com/wingadium1/wingadium1.github.io/raw/master</p>
+
+<h1 id="how-to-use-git">How to use Git</h1>
+
+<p>Programmers use Git every day, but most people are still using basic commands like commit, push, pull; and when needing to be a participant or starting to manage the repository and Version Releases, it starts to get awkward.</p>
+
+<p>Here I would like to share some stories in the company that I have encountered.</p>
+
+<h2 id="case-1-choose-feature-to-release">Case 1: Choose feature to release.</h2>
+
+<p>A project that combines both mobile and backend, a customer can request a lot of features during a Sprint or a phase of the project. However, from the demand from the marketing department, many features may not be selected for golive, but the Test team still needs a version with full features to complete the task.</p>
+
+<p>From the beginning of the project, for quite a long time, the project used the release branch workflow, of course due to the initial situation of the project at that time, just moved all the features from the <strong><em>develop</em></strong> environment. to <strong><em>staging</em></strong> then to <strong><em>production</em></strong>.</p>
+
+<p>When the client arose the above need, the mistake was made, the developer tried to use cherry-pick to select the commits from the staging branch to production, it was obvious that there was a very high chance that the commit would be lacking.</p>
+
+<p><img src="../img/Git-Page-1.png" alt="alt text" /></p>
+
+<h3 id="so-what-did-the-team-do">So what did the team do?</h3>
+
+<p>It is easy to see the need here to maintain the source code between independent features/tasks/fixbugs. Besides, these branches still merge into the develop branch for verifying features and maintaining the latest live version.</p>
+
+<p><img src="../img/Git-Page-2.png" alt="alt text" /></p>
+
+<p>To make it easy to understand, we still code on the feature branch as usual and merge but the source code in the feature is then more complete (after the tester has tested it) and merge when that feature or bug (this bug is a detected bug). currently in production) is decided to release, let’s call this branch <strong><em>staging</em></strong>
+Previously the version that tester received to verify feature or bug would be merged more often like develop branch like in old git flow. (temporarily called <strong><em>develop</em></strong>)</p>
+
+<p><img src="../img/Git-Page-3.png" alt="alt text" /></p>
+
+<p>We deal with follow-up questions related to daily team activities.</p>
+
+<h4 id="new-features">New features</h4>
+
+<p>There is no different with the old way.</p>
+
+<h4 id="fix-bug">Fix bug</h4>
+<p>So how are bugs handled? The principle is also very simple, but the implementation is a bit more complicated.</p>
+<ul>
+  <li>Bugs where will be fixed there. That is, when you find a bug somewhere, it will be fixed there first: for example, the above golived version or develop or staging</li>
+  <li>Identify the source of the bug
+    <ul>
+      <li>It’s best to identify which commit the bug was created from or when the team was working on something.</li>
+      <li>If it can’t be determined (possibly due to many reasons leading to the bug), it is possible to identify the feature or fix the bug that leads to the degradation.</li>
+    </ul>
+  </li>
+  <li>After identifying the above 2 points and patching the bug in the branch we discovered (split branch to fix bug and merge)
+    <ul>
+      <li>Cherry-pick merge commits on related branches:
+        <ul>
+          <li>For example, you find a bug in version 2.0.1, but 2.0 and 1.0 are 2 versions running in parallel (1.0 is still LTS) but you identify a bug that appears from 1.0, you still have to patch it for 1.0, however in this case sometimes we often consider it as 2 bugs for ease of handling</li>
+          <li>More common case is bug in staging (tester branch), since <strong><em>staging</em></strong> is not merged with <strong><em>develop</em></strong> we need to cherry-pick on <strong><em>develop</em></strong> and the branch that implements that feature.</li>
+          <li>If the feature has been released in the golived version, you only need to care about <strong><em>develop</em></strong>, <strong><em>staging</em></strong>, but actually before that, the bug fix branch was also implemented as shown in the 3rd picture. .</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p>So it can simply be summed up as follows: when a bug is discovered, fix it right there and cherry-pick related branches that have not been released: <strong><em>staging</em></strong>, <strong>*develop</strong> * is require.</p>
+
+<h4 id="release">Release</h4>
+
+<p>Quite simply, when the source code has been tested in <strong><em>staging</em></strong> and cherry-picks the patches on the <strong><em>feature</em></strong> branch and fixbug, it means the source code in those branches is complete. and ready to release, when needed, any functionality can be completely merged into the <strong><em>production</em></strong> branch or more carefully, you can add the <strong><em>pre-production</em></strong> branch to use so that users can check again one last time.</p>
+:ET

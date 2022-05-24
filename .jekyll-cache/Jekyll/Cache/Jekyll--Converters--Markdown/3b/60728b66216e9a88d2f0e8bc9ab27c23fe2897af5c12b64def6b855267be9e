@@ -1,0 +1,8 @@
+I"<h1 id="aws-csa-professional-quiz-61-70">AWS CSA Professional Quiz 61-70</h1>
+<hr />
+<hr />
+<p>61 | You need a persistent and durable storage to trace call activity of an IVR (Interactive Voice Response) system.
+Call duration is mostly in the 2-3 minutes timeframe. Each traced call can be either active or terminated. An external application needs to know each minute the list of currently active calls, which are usually a few
+calls/second. Put once per month there is a periodic peak up to 1000 calls/second for a few hours The system is open 24/7 and any downtime should be avoided. Historical data is periodically archived to files. Cost saving is a priority for this project.
+What database implementation would better fit this scenario, keeping costs as low as possible?</p>
+:ET

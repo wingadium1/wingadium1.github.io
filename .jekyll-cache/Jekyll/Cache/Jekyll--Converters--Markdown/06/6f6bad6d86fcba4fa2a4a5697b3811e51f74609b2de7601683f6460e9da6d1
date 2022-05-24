@@ -1,0 +1,199 @@
+I",/<h1 id="aws-csa-professional-quiz-21-30">AWS CSA Professional Quiz 21-30</h1>
+<hr />
+<hr />
+<p>21 | You are deploying an application to collect votes for a very popular television show. Millions of users will submit votes using mobile devices. The votes must be collected into a durable, scalable, and highly available
+data store for real-time public tabulation. Which service should you use?</p>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Amazon DynamoDB</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Amazon Redshift</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Amazon Kinesis</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Amazon Simple Queue Service</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />A</li>
+</ul>
+
+<hr />
+
+<table>
+  <tbody>
+    <tr>
+      <td>22</td>
+      <td>The Trusted Advisor service provides insight regarding which four categories of an AWS account?</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Security, fault tolerance, high availability, and connectivity</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Security, access control, high availability, and performance</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Performance, cost optimization, security, and fault tolerance</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Performance, cost optimization, access control, and connectivity</li>
+</ul>
+
+<hr />
+
+<table>
+  <tbody>
+    <tr>
+      <td>23</td>
+      <td>You are deploying an application to track GPS coordinates of delivery trucks in the United States. Coordinates are transmitted from each delivery truck once every three seconds. You need to design an architecture that will enable real-time processing of these coordinates from multiple consumers. Which service should you use to implement data ingestion?</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Amazon Kinesis</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />AWS Data Pipeline</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Amazon AppStream</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Amazon Simple Queue Service</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />A</li>
+</ul>
+
+<hr />
+
+<table>
+  <tbody>
+    <tr>
+      <td>24</td>
+      <td>A photo-sharing service stores pictures in Amazon Simple Storage Service (S3) and allows application sign-in using an OpenID Connect-compatible identity provider. Which AWS Security Token Service approach to temporary access should you use for the Amazon S3 operations?</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />SAML-based Identity Federation</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Cross-Account Access</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />AWS Identity and Access Management roles</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Web Identity Federation</li>
+</ul>
+
+<hr />
+
+<p>25 | You have an application running on an Amazon Elastic Compute Cloud instance, that uploads 5 GB video objects to Amazon Simple Storage Service (S3). Video uploads are taking longer than expected, resulting in
+poor application performance. Which method will help improve performance of your application?</p>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Enable enhanced networking</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Use Amazon S3 multipart upload</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Leveraging Amazon CloudFront, use the HTTP POST method to reduce latency</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Use Amazon Elastic Block Store Provisioned IOPs and use an Amazon EBS-optimized instance</li>
+</ul>
+
+<hr />
+
+<table>
+  <tbody>
+    <tr>
+      <td>26</td>
+      <td>A customer wants to track access to their Amazon Simple Storage Service (S3) buckets and also use this information for their internal security and access audits. Which of the following will meet the Customer requirement?</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Enable AWS CloudTrail to audit all Amazon S3 bucket access.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Enable server access logging for all required Amazon S3 buckets.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Enable the Requester Pays option to track access via AWS Billing</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Enable Amazon S3 event notifications for Put and Post.</li>
+</ul>
+
+<hr />
+
+<table>
+  <tbody>
+    <tr>
+      <td>27</td>
+      <td>A company is deploying a two-tier, highly available web application to AWS. Which service provides durable storage for static content while utilizing lower Overall CPU resources for the web tier?</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Amazon EBS volume</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Amazon S3</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Amazon EC2 instance store</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Amazon RDS instance</li>
+</ul>
+
+<hr />
+
+<table>
+  <tbody>
+    <tr>
+      <td>28</td>
+      <td>You are designing a web application that stores static assets in an Amazon Simple Storage Service (S3) bucket. You expect this bucket to immediately receive over 150 PUT requests per second. What should you do to ensure optimal performance?</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Use multi-part upload.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Add a random prefix to the key names.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Amazon S3 will automatically manage performance at this scale.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Use a predictable naming scheme, such as sequential numbers or date time sequences, in the key names</li>
+</ul>
+
+<hr />
+
+<table>
+  <tbody>
+    <tr>
+      <td>29</td>
+      <td>When will you incur costs with an Elastic IP address (EIP)?</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />When an EIP is allocated.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />When it is allocated and associated with a running instance.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />When it is allocated and associated with a stopped instance.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Costs are incurred regardless of whether the EIP is associated with a running instance.</li>
+</ul>
+
+<hr />
+
+<table>
+  <tbody>
+    <tr>
+      <td>30</td>
+      <td>A company has an AWS account that contains three VPCs (Dev, Test, and Prod) in the same region. Test is peered to both Prod and Dev. All VPCs have non-overlapping CIDR blocks. The company wants to push minor code releases from Dev to Prod to speed up time to market. Which of the following options helps the company accomplish this?</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Create a new peering connection Between Prod and Dev along with appropriate routes</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Create a new entry to Prod in the Dev route table using the peering connection as the target.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Attach a second gateway to Dev. Add a new entry in the Prod route table identifying the gateway as the 
+target.</li>
+</ul>
+
+<hr />
+<p><a href="AWS_CSA_Professional_Quiz_11-20.html">AWS CSA Professional Quiz_11-20</a></p>
+
+<p><a href="AWS_CSA_Professional_Quiz_31-40.html">AWS CSA Professional Quiz_31-40</a></p>
+
+<ul>
+  <li><a href="AWS_CSA_Professional_Quiz_11-20.html">AWS CSA Professional Quiz_11-20</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_21-30.html">AWS CSA Professional Quiz_21-30</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_31-40.html">AWS CSA Professional Quiz_31-40</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_41-50.html">AWS CSA Professional Quiz_41-50</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_51-60.html">AWS CSA Professional Quiz_51-60</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_61-70.html">AWS CSA Professional Quiz_61-70</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_71-80.html">AWS CSA Professional Quiz_71-80</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_81-90.html">AWS CSA Professional Quiz_81-90</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_91-100.html">AWS CSA Professional Quiz_91-100</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_101-110.html">AWS CSA Professional Quiz_101-110</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_111-120.html">AWS CSA Professional Quiz_111-120</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_121-130.html">AWS CSA Professional Quiz_121-130</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_131-140.html">AWS CSA Professional Quiz_131-140</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_141-150.html">AWS CSA Professional Quiz_141-150</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_151-160.html">AWS CSA Professional Quiz_151-160</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_161-170.html">AWS CSA Professional Quiz_161-170</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_171-180.html">AWS CSA Professional Quiz_171-180</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_181-190.html">AWS CSA Professional Quiz_181-190</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_191-200.html">AWS CSA Professional Quiz_191-200</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_201-210.html">AWS CSA Professional Quiz_201-210</a></li>
+</ul>
+:ET

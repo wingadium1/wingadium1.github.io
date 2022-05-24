@@ -1,0 +1,186 @@
+I""<h1 id="aws-csa-professional-quiz-171-180">AWS CSA Professional Quiz 171-180</h1>
+<hr />
+<hr />
+<p>171 | You must increase storage size in increments of at least _____ %</p>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />40</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />20</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />50</li>
+</ul>
+
+<hr />
+
+<table>
+  <tbody>
+    <tr>
+      <td>172</td>
+      <td>Changes to the backup window take effect <strong>__</strong>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />from the next billing cycle</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />after 30 minutes</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />immediately</li>
+</ul>
+
+<hr />
+
+<table>
+  <tbody>
+    <tr>
+      <td>173</td>
+      <td>Using Amazon CloudWatch’s Free Tier, what is the frequency of metric updates which you receive?</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />5 minutes</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />500 milliseconds.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />30 seconds</li>
+</ul>
+
+<hr />
+
+<table>
+  <tbody>
+    <tr>
+      <td>174</td>
+      <td>Which is the default region in AWS?</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />eu-west-1</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />us-east-1</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />us-east-2</li>
+</ul>
+
+<hr />
+
+<table>
+  <tbody>
+    <tr>
+      <td>175</td>
+      <td>What are the Amazon EC2 API tools?</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />They don’t exist. The Amazon EC2 AMI tools, instead, are used to manage permissions.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Command-line tools to the Amazon EC2 web service.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />They are a set of graphical tools to manage EC2 instances.</li>
+</ul>
+
+<hr />
+
+<table>
+  <tbody>
+    <tr>
+      <td>176</td>
+      <td>What are the two types of licensing options available for using Amazon RDS for Oracle?</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />BYOL and Enterprise License</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />BYOL and License Included</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Enterprise License and License Included</li>
+</ul>
+
+<hr />
+
+<table>
+  <tbody>
+    <tr>
+      <td>177</td>
+      <td>What does a “Domain” refer to in Amazon SWF?</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />A security group in which only tasks inside can communicate with each other</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />A special type of worker</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />A collection of related Workflows</li>
+</ul>
+
+<hr />
+
+<table>
+  <tbody>
+    <tr>
+      <td>178</td>
+      <td>EBS Snapshots occur _____</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Asynchronously</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Synchronously</li>
+</ul>
+
+<hr />
+
+<table>
+  <tbody>
+    <tr>
+      <td>179</td>
+      <td>Disabling automated backups <strong>__</strong> disable the point-in-time recovery.</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />if configured to can</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />will never</li>
+</ul>
+
+<hr />
+
+<p>180 | Out of the stripping options available for the EBS volumes, which one has the following disadvantage :
+‘Doubles the amount of I/O required from the instance to EBS compared to RAID 0, because you’re mirroring all writes to a pair of volumes, limiting how much you can stripe.’ ?</p>
+
+<ul class="task-list">
+  <li class="task-list-item">
+    <p><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Raid 0</p>
+  </li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />RAID 1+0 (RAID 10)</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Raid 1</li>
+</ul>
+
+<hr />
+<p><a href="AWS_CSA_Professional_Quiz_161-170.html">AWS CSA Professional Quiz_161-170</a></p>
+
+<p><a href="AWS_CSA_Professional_Quiz_181-190.html">AWS CSA Professional Quiz_181-190</a></p>
+
+<ul>
+  <li><a href="AWS_CSA_Professional_Quiz_11-20.html">AWS CSA Professional Quiz_11-20</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_21-30.html">AWS CSA Professional Quiz_21-30</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_31-40.html">AWS CSA Professional Quiz_31-40</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_41-50.html">AWS CSA Professional Quiz_41-50</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_51-60.html">AWS CSA Professional Quiz_51-60</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_61-70.html">AWS CSA Professional Quiz_61-70</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_71-80.html">AWS CSA Professional Quiz_71-80</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_81-90.html">AWS CSA Professional Quiz_81-90</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_91-100.html">AWS CSA Professional Quiz_91-100</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_101-110.html">AWS CSA Professional Quiz_101-110</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_111-120.html">AWS CSA Professional Quiz_111-120</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_121-130.html">AWS CSA Professional Quiz_121-130</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_131-140.html">AWS CSA Professional Quiz_131-140</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_141-150.html">AWS CSA Professional Quiz_141-150</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_151-160.html">AWS CSA Professional Quiz_151-160</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_161-170.html">AWS CSA Professional Quiz_161-170</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_171-180.html">AWS CSA Professional Quiz_171-180</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_181-190.html">AWS CSA Professional Quiz_181-190</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_191-200.html">AWS CSA Professional Quiz_191-200</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_201-210.html">AWS CSA Professional Quiz_201-210</a></li>
+</ul>
+:ET

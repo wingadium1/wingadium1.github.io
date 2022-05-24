@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>How to recover corrupted GIT repository</title>
+  <meta name="description" content="How to recover corrupted GIT repository">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://wingadium.icetea.space/new/2018/01/15/how_to_recover_corrupted_git_repository.html">
+  <link rel="alternate" type="application/rss+xml" title="wingadium's blog" href="http://wingadium.icetea.space/feed.xml" />
+  <link rel="stylesheet" href="/assets/css/style.css" media="screen">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+    <a class="site-title" href="/">wingadium</a>
+
+    <nav class="site-nav">
+      <a href="#" class="menu-icon">
+        <svg viewBox="0 0 18 15">
+          <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+          <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+          <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+        </svg>
+      </a>
+
+      <div class="trigger">
+        
+          
+          <a class="page-link" href="/about/">About</a>
+          
+        
+          
+          <a class="page-link" href="/archives.html">wingadium</a>
+          
+        
+          
+          <a class="page-link" href="/categories.html">Category</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <a class="page-link" href="/tag.html">Tag</a>
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">How to recover corrupted GIT repository</h1>
+    <p class="post-meta">Jan 15, 2018</p>
+  </header>
+
+  <article class="post-content">
+    <h1 id="how-to-recover-corrupted-git-repository">How to recover corrupted GIT repository</h1>
+
+<h2 id="git-corrupted-really">GIT corrupted, really?</h2>
+
+<p>Thực sự vấn đề này mình cũng không sure lắm là do đâu, và cũng không chắc vấn đề này có phải là corrupted hay không nhưng sẽ note lại một chút về case này.</p>
+
+<h3 id="nạn-nhân">Nạn nhân</h3>
+<p>Ngô Hải Đoàn, 1995, Android Dev. Anh ta đang làm việc trên PC, đột nhiên tòa nhà bị mất điện, khi bật máy lại anh ta phát hiện ra anh ta không thể thực hiện các câu lệnh git trên local-repository của mình nữa và mình là thằng cave được gọi support.</p>
+
+<h3 id="phán-đoán">Phán đoán</h3>
+<p>Trước khi vào phần phán đoán thì mình có hỏi về source code đã commit chưa, nếu commit rồi thì khả năng recover được rất cao.
+Câu hỏi thứ 2, source code đó có quan trọng không, nếu có thể re-work trong dưới 30m thì chắc sẽ không có node này.</p>
+
+<p>Mình sẽ kết thúc phần phán đoán ở đây vì chả có gì để phán đoán cả</p>
+
+<h3 id="kiểm-tra-một-chút">Kiểm tra một chút.</h3>
+<p>Trong khi voọc máy của Đoàn thì mình có cố re-init repository nhưng có vẻ không khả quan, kiểm tra một lúc thì có vẻ như các object và ref của git vẫn còn khá ổn. Bạn có thể tự kiểm tra thư mục <code class="language-plaintext highlighter-rouge">.git</code> trong local repository của mình.</p>
+
+<blockquote>
+  <p>Như vậy, nhìn chung khả năng cao branch/commit quan trọng vẫn ổn.</p>
+</blockquote>
+
+<h3 id="thử-recover">Thử recover.</h3>
+
+<p>Mình có sử dụng một số câu lệnh git cơ bản như <code class="language-plaintext highlighter-rouge">git log</code> hay <code class="language-plaintext highlighter-rouge">git init</code> để thử lấy lại commit-id nhưng không thành công.</p>
+
+<p>Đến đây nhìn chung bạn không thể làm gì với repo này nữa, nên mình sẽ chuyển toàn bộ object của repo này sang một thư mục khác mà vừa clone về. (copy thư mục <code class="language-plaintext highlighter-rouge">object</code> trong <code class="language-plaintext highlighter-rouge">.git</code> của thư mục cũ sang chỗ tương ứng của thư mục mới)</p>
+
+<blockquote>
+  <p>Đến đây bạn có một repository giống với remote (chỗ mà bạn clone về) và cộng thêm các commit mà bạn đã commit hoặc đã pull về từ remote.</p>
+</blockquote>
+
+<h3 id="tại-sao-lại-copy-objects">Tại sao lại copy <code class="language-plaintext highlighter-rouge">objects</code></h3>
+
+<p>Nhìn chung nếu bạn đã commit thì không sợ mất content. Bởi khi commit git sẽ sinh ra các file <code class="language-plaintext highlighter-rouge">object</code> trong thư mục <code class="language-plaintext highlighter-rouge">objects</code>, công với log trong <code class="language-plaintext highlighter-rouge">logs</code> và một số <code class="language-plaintext highlighter-rouge">ref</code> hay <code class="language-plaintext highlighter-rouge">info</code>.</p>
+
+<p>Object name sẽ dài 40 ký tự (SHA1)</p>
+
+<p>Thư mục object của bạn sẽ trông như này</p>
+
+<p><img src="https://github.com/wingadium1/wingadium1.github.io/raw/master/img/git-objects.png" alt="alt text" /></p>
+
+<p>Tên thư mục sẽ là 2 ký tự đầu trong 40 ký tự.
+Trong thư mục sẽ có các file với tên là 38 ký tự còn lại.</p>
+
+<p>Objects sẽ chứa thông tin về file (changed content)
+để xem được thì cần dùng câu lệnh git(do git mã hóa nên chỉ git xem đc :D): <code class="language-plaintext highlighter-rouge">git cat-file</code></p>
+
+<p><img src="https://github.com/wingadium1/wingadium1.github.io/raw/master/img/git-cat-file.png" alt="alt text" /></p>
+
+<blockquote>
+  <p>Đến đấy các bạn sẽ đặt câu hỏi thế git quản lý các file thành commit như thế nào</p>
+</blockquote>
+
+<p>Từ các <code class="language-plaintext highlighter-rouge">objects</code> thì git sẽ dựng lên tree là các phiên bản của thư mục bao gồm các <code class="language-plaintext highlighter-rouge">objects</code>.</p>
+
+<p><img src="https://git-scm.com/book/en/v2/images/data-model-1.png" alt="alt text" /></p>
+
+<p><img src="https://github.com/wingadium1/wingadium1.github.io/raw/master/img/git-cat-file-tree.png" alt="alt text" /></p>
+
+<p>Cứ thế, bằng cách duyệt tree, ta sẽ có 1 tree hoàn chỉnh gồm content của cả một phiên bản (commit).</p>
+
+<p>Cuối cùng commit sẽ bao gồm 1 tree</p>
+
+<p><img src="https://github.com/wingadium1/wingadium1.github.io/raw/master/img/git-cat-file-commit.png" alt="alt text" /></p>
+
+<blockquote>
+  <p>Tóm lại cứ còn objects là bạn còn tất cả, việc còn lại là đi tìm commit-id để recover.</p>
+</blockquote>
+
+<h3 id="tìm-commit">Tìm commit</h3>
+
+<p>Có một vài chỗ để bạn có thể tìm GIT commit-id, thứ nhất đó là thư mục <code class="language-plaintext highlighter-rouge">refs</code></p>
+
+<h4 id="refs">Refs</h4>
+
+<p>Refs chỉ đơn giản là references của commit. <code class="language-plaintext highlighter-rouge">Refs</code> dùng để bạn nhớ lastest commit bằng cách lưu commit id vào thư mục refs.</p>
+
+<p><img src="https://github.com/wingadium1/wingadium1.github.io/raw/master/img/git-ref-head.png" alt="alt text" /></p>
+
+<p>Ở đây lastest commit của nhánh master đang là <strong>b94514784b0b86e84bdd2d66903de5bf7f9722c2</strong>.</p>
+
+<p>Vậy nhớ được tên nhánh là có thể recover lại được. Lúc này bạn sẽ recover toàn bộ tree của nhánh đó và mặc nhiên các commit base trên commit này sẽ có thể trace được.</p>
+
+<h4 id="logs">logs</h4>
+
+<p>Một chỗ nữa, toàn năng hơn là <code class="language-plaintext highlighter-rouge">logs</code>. Log lưu lại lịch sử của từng nhánh.</p>
+
+<p><img src="https://github.com/wingadium1/wingadium1.github.io/raw/master/img/git-logs.png" alt="alt text" /></p>
+
+<p>Bạn có thể xem mình đã <em>tunglamgi</em> trên từng nhánh.</p>
+
+<blockquote>
+  <p>Đến đây bạn có commit-id rồi việc còn lại là recover bằng câu lệnh <code class="language-plaintext highlighter-rouge">git checkout commit-id</code></p>
+</blockquote>
+
+<h3 id="btw">Btw</h3>
+
+<p>Nhìn chung xử lý mấy việc lặt vặt này khá hay và tạo cho mình nhiều cơ hội xử lý các thủ thuật về <strong>git</strong>.</p>
+
+<p>Anw: Dù mất kì chuyện gì xảy ra đừng bao giờ xóa thư mục <strong><code class="language-plaintext highlighter-rouge">.git</code></strong>
+:D</p>
+
+  </article>
+
+</div>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">wingadium's blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-1">
+        <ul class="contact-list">
+          <li>wingadium's blog</li>
+          <li><a href="mailto:wingadium1@gmail.com">wingadium1@gmail.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/wingadium1">
+              <span class="icon  icon--github">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+                </svg>
+              </span>
+
+              <span class="username">wingadium1</span>
+            </a>
+          </li>
+          
+
+          
+          <li>
+            <a href="https://twitter.com/wingadium1">
+              <span class="icon  icon--twitter">
+                <svg viewBox="0 0 16 16">
+                  <path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809
+                  c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/>
+                </svg>
+              </span>
+
+              <span class="username">wingadium1</span>
+            </a>
+          </li>
+          
+        </ul>
+      </div>
+
+      <div class="footer-col  footer-col-3">
+        <p class="text">wingadium's blog about Linux, FOSS, Web, music, movies, book and social problem
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>

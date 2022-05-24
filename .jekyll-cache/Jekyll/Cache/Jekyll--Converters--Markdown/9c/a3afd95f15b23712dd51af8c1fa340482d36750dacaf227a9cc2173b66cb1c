@@ -1,0 +1,51 @@
+I" <h1 id="aws-csa-professional---cross-account-access-read-list">AWS CSA Professional - Cross account access read list</h1>
+
+<ol>
+  <li><a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html">Tutorial: Delegate Access Across AWS Accounts Using IAM Roles</a></li>
+  <li><a href="https://aws.amazon.com/blogs/security/how-to-enable-cross-account-access-to-the-aws-management-console/">How to Enable Cross-Account Access to the AWS Management Console</a></li>
+  <li>Policy</li>
+</ol>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-10-17"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"Statement"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"Action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"s3:ListAllMyBuckets"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arn:aws:s3:::*"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"Action"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"s3:ListBucket"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"s3:GetBucketLocation"</span><span class="w">
+       </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arn:aws:s3:::productionapp"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"Action"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"s3:GetObject"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"s3:PutObject"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"s3:DeleteObject"</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arn:aws:s3:::productionapp/*"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<ol>
+  <li>Role</li>
+</ol>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+  <span class="dl">"</span><span class="s2">Version</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">2012-10-17</span><span class="dl">"</span><span class="p">,</span>
+  <span class="dl">"</span><span class="s2">Statement</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">Effect</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Allow</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">Action</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">sts:AssumeRole</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">Resource</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">arn:aws:iam::PRODUCTION-ACCOUNT-ID:role/MyDevelopersAccess</span><span class="dl">"</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+:ET

@@ -1,0 +1,651 @@
+I"݀<h1 id="aws-csa-professional-quiz-acloudguru">AWS CSA Professional Quiz ACloudGuru</h1>
+
+<ul>
+  <li>
+    <p>S3 standard storage provides a durability of <strong>__</strong>__:</p>
+
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />99.99%</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />99.99999999999%</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />99.999999999%</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />99.9999%</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p>Objects are stored redundantly across multiple devices within a region to provide a high level of durability. Further information: https://aws.amazon.com/s3/faqs/</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>True or False: Vertical scaling is preferred for a Warm Standby DR strategy</p>
+
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />False</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />True</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p>Horizontal scaling is preferred, as it avoids the need for downtime while restarting instances, as seen in a vertical scaling setup.</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>True or False: ElastiCache snapshots will degrade performance on your cache cluster</p>
+
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />False</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />True</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p>The entire cluster is snapshotted and therefore performing a snapshot will degrade performance and should be done during the least busy period.</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>RDS allows you to replicate your data by <strong>__</strong>__. (Choose 2)</p>
+
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Creating a snapshot of your database</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Saving a database export to Amazon S3 using the console</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Creating a read replica running in another region</li>
+    </ul>
+  </li>
+  <li>
+    <p>True or False: Backup and Restore is the least expensive DR scenario</p>
+
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />False</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />True</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p>Backup and Restore is the least expensive way data can be replicated. However, it results the largest RTO and RPO for your business. Further information: https://d0.awsstatic.com/whitepapers/aws-disaster-recovery.pdf</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>You can scale an RDS instance by <strong>__</strong>__</p>
+
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Configuring your database to be multi-AZ</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />By adding new RDS instances and always writing to both databases from your application</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Setting up read replicas of your database</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p>Read replicas leverage built-in database engine data replication functionality to scale elastically for read-heavy applications. If write performance is the limitation, you will need to look at upgrading to a larger instance size, or sharding, or a different solution. Multi-AZ deployments will improve fault tolerance but will not improve performance. Further information: https://aws.amazon.com/rds/faqs/https://aws.amazon.com/rds/details/read-replicas/</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>True or False: The Pilot Light strategy will usually include a database server and AMIs as its core</p>
+
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />False</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />True</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p>A replicated database would most likely be kept in AWS to use in the event of an onsite failure, and AMIs would be used for application servers or webhosts.</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>What’s the maximum number of gateway-stored volumes supported?</p>
+
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />8</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />12</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />32</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />10</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p>Further information: 
+https://aws.amazon.com/storagegateway/faqs/
+https://aws.amazon.com/storagegateway/details/
+http://docs.aws.amazon.com/storagegateway/latest/userguide/resource-gateway-limits.html</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>What ports are required to be open to run Storage Gateway on-premise?</p>
+
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />80 inbound, 443 outbound, and 3260 outbound</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />443 outbound, 80 inbound (from local network for activation), 3260 inbound (from iscsi clients connecting), and outbound 53 (dns)</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />80 outbound, 443 inbound, and UDP 53 outbound</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p>Port 80 is only needed for activation and can be closed once that’s complete. Further information: http://docs.aws.amazon.com/storagegateway/latest/userguide/Requirements.html</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>AWS Import/Export can be used to export data from <strong>__</strong>__?</p>
+
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />S3 and Glacier</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />S3 EBS, and Glacier</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />S3 only</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p>Data that requires exporting will need to be moved to S3 first. Note that Import/Export SnowBall has slightly different options from Import/Export Disk Further information: http://docs.aws.amazon.com/AWSImportExport/latest/DG/introduction.html</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>The Recovery Point Objective (RPO) is <strong>__</strong>__</p>
+
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />The maximum duration of time of which data might be lost from an IT service due to an incident</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />The maximum time between a disruption and the most recent data recovery point</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />A standards compliant point value which indicates the risk of having to perform a recovery due to a disruption</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />The amount of time that it takes for your business to recover from an outage or disruption</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p>How much data can your organization lose? One hour’s worth? A day’s worth? None at all? Further information: https://media.amazonwebservices.com/AWS_Disaster_Recovery.pdf</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>Archive retrieval from Amazon Glacier takes <strong>__</strong>__</p>
+
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />less than *hour maximum</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />3 or more hours</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />3 - 12 hours</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />2 - 4 hours</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p>Amazon Glacier data retrievals typically take 3 - 5 hours but can take longer than that. Further information: https://aws.amazon.com/glacier/faqs/#data-retrievals</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>If you create a volume from an EC2 incremental snapshot, it will contain the base snapshot data plus any incremental changes up to that point in time</p>
+
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />False</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />True</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p>Further information: http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-creating-snapshot.html http://docs.aws.amazon.com/AWSEC2latest/UserGuide/ebs-restoring-volume.html http://docs.aws.amazon.com/AWSEC2latest/UserGuide/ebs-deleting-snapshot.html</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>RDS Multi-AZ data replication is <strong>__</strong>__</p>
+
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Synchronous</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Asynchronous</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p>Multi-AZ replication is always synchronous unlike cross region read replicas which are asynchronous. Further information: https://aws.amazon.com/rds/details/multi-az/</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>True or False: Snapshots can be created of your gateway-cached and gateway-stored volumes</p>
+
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />False</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />True</li>
+    </ul>
+  </li>
+  <li>
+    <p>True or False: The maximum total storage you can use with gateway-cached volumes is 1 Petabyte</p>
+
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />False</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />True</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p>Gateway-cached volumes supports up to 32 volumes each with a maximum size of 32TB giving a total of 1PB storage.</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>In addition to the base on-premise system requirements, a gateway-stored volume requires that you have <strong>__</strong>__.</p>
+
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Enough local storage to hold the amount of cache that you require, plus an amount of storage as an upload buffer</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />An amount of storage equal to that of your entire dataset, plus an upload buffer</li>
+    </ul>
+  </li>
+  <li>
+    <p>True or False: Gateway-stored volumes can be a maximum of 32TB in size</p>
+
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />False</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />True</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p>Gateway-stored volumes can be a maximum of 16TB in size. Further information: https://aws.amazon.com/storagegateway/faqs/</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>In the Pilot Light recovery strategy, the system could be failed-over by using <strong>__</strong>__. (Choose 3)</p>
+
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Auto-scaling groups</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Manual failover</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Amazon SWF</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Amazon Route53</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />An external monitoring tool and a script to modify the DNS records</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p>The mechanism for failover is completely up to your business and will need to adhere to your RTO and RPO requirements.</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>The Recovery Time Objective (RTO) is <strong>__</strong>__.</p>
+
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />The amount of time that it takes for your business to recover from an outage or disruption</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />The maximum period of time in which data might be lost from an IT service due to a major incident</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />The amount of time Amazon guarantees to repair outages in the event of the loss of an availability zone</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />The amount of time it takes to recover a file from Amazon Glacier Storage</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p>RTO can include the time to fix the problem without a recovery, the recovery itself, testing and communication to users.</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>AWS Import/Export Disk data encryption is optional for <strong>__</strong>__.</p>
+
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Imports and exports</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Exports only</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Imports only</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p>Import/Export Snowball has different requirements.</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>If you create a volume from an EC2 incremental snapshot, it will contain the base snapshot data plus any incremental changes up to that point in time.</p>
+
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />False</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />True</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p>Further information: http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-creating-snapshot.html http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-restoring-volume.html http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-deleting-snapshot.html</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>Multi-AZ is a form of database scaling.</p>
+
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />False</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />True</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p>Multi-AZ is not a form of database scaling. It is a mechanism for data redundancy only.</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>If you need to backup 500PB of on-premises data to Amazon S3, the best transfer option is <strong>__</strong>__.</p>
+
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />HTTP upload to S3 via the MultipartUpload API</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Amazon Mechanical Turk</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />AWS Snowball</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Using AWS Direct Connect</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p>For large data backups to S3, AWS Import/Export Disk or Snowball is going to be the cheapest and potentially the fastest option. Further information: https://aws.amazon.com/blogs/aws/aws-importexport-snowball-transfer-1-petabyte-per-week-using-amazon-owned-storage-appliances/</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>True or False: RDS automated backups are available for MySQL only if you are not using InnoDB</p>
+
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />False</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />True</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p>RDS automated backups for MySQL are only available if you are using InnoDB</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>If you require a tape storage solution that supports unlimited virtual tapes, which service would you use?</p>
+
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />A virtual tape library</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />A virtual tape shelf</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p>Virtual tape shelves are stored on Amazon Glacier and allow you to have unlimited virtual tapes. Virtual Tape Libraries are stored on Amazon S3 and support up to 1500 Virtual Tapes.</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>If you delete an RDS instance, all backups will be deleted.</p>
+
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />False</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />True</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p>Only automated backups will be deleted if you delete an RDS instance. Manual backups will be retained.</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>Read replicas are available across different regions for <strong>__</strong>__.</p>
+
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />PostgreSQL and MariaDB only</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />MariaDB and MySQL only</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />MariaDB, PostgreSQL, and MySQL</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />MySQL and PostgreSQL</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />SQL Server only</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />MariaDB only</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />ostgreSQL only</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />MySQL only</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p>You can create read replicas within a Region or between Regions for your for MySQL, MariaDB, and PostgreSQL Amazon RDS database instances encrypted at rest with AWS Key Management Service (KMS). Further information: http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>Storage Gateway cached volumes allows you to store up to how many Terabytes per volume?</p>
+
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />24TB</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />64TB</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />32TB</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />12TB</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p>Further information: https://aws.amazon.com/storagegateway/faqs/</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>True or False: When using AWS Import/Export to export from a versioned S3 bucket, all versions will be exported.</p>
+
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />False</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />True</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p>Only the most recent version will be exported from S3 using AWS Import/Export. Further information: https://aws.amazon.com/importexport/disk/http://docs.aws.amazon.com/AWSImportExport/latest/DG/CHAP_GuideAndLimit.html</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>AWS Import/Export Disk can be used to import data into <strong>__</strong>__.</p>
+
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />S3, EBS, and Glacier</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />S3, EBS, Glacier and Redshift</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />S3 Only</li>
+    </ul>
+  </li>
+  <li>
+    <p>True or False: ElastiCache snapshots will degrade performance on your cache cluster.</p>
+
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />False</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />True</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p>The entire cluster is snapshotted and therefore performing a snapshot will degrade performance and should be done during the least busy period.</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>RDS read replicas are supported with which of the following database engines?</p>
+
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />MySQL only</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />MySQL, MariaDB, and SQL Server</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />SQL Server, Oracle, and PostgreSQL</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />MySQL, MariaDB, Oracle, SQL Server, and PostgreSQL</li>
+    </ul>
+  </li>
+  <li>
+    <p>AWS Import/Export can be used to export data from <strong>__</strong>__?</p>
+
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />S3, EBS, and Glacier</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />S3 only</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />S3 and Glacier</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p>Data that requires exporting will need to be moved to S3 first. Note that Import/Export SnowBall has slightly different options from Import/Export Disk Further information: http://docs.aws.amazon.com/AWSImportExport/latest/DG/introduction.html</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>What are the hardware requirement minimums for your Storage Gateway on-premise hardware?</p>
+
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />8vCPUs, 12B of RAM, 80GB VM image and system data</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />4vCPUs, 7.5GB of RAM, 75GB VM image and system data</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />4vCPUs, 16GB of RAM, 80GB VM image and system data</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />8vCPUs, 8GB of RAM, 75GB VM image and system data</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p>On-premise Storage Gateway Virtual Machine requirements are 4 or 8vCPUs, 16GB of RAM and 80GB of VM image and system data storage.</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>True or False: The Pilot Light strategy will usually include a database server and AMIs as its core.</p>
+
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />False</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />True</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p>A replicated database would most likely be kept in AWS to use in the event of an onsite failure, and AMIs would be used for application servers or webhosts.</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>True or False: Vertical scaling is preferred for a Warm Standby DR strategy.</p>
+
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />False</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />True</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p>Horizontal scaling is preferred, as it avoids the need for downtime while restarting instances, as seen in a vertical scaling setup.</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>RDS snapshots in a multi-AZ configuration are taken from the <strong>__</strong>__.</p>
+
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Either the primary, or secondary database instance depending on which is under the least load</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Primary database instance</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Secondary database instance</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p>Multi-AZ database snapshots are always taken from the secondary instance to avoid placing IO load on the primary instance.</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>True or False: Virtual tape storage retrieval is always instantaneous.</p>
+
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />False</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />True</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p>Virtual tape storage retrieval is only instantaneous for Virtual Tape Library retrievals. Virtual Tape Shelf retrievals can take up to 24 hours.</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>The Warm Standby DR strategy involves <strong>__</strong>__.</p>
+
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Maintaining a separate complete production-ready replica of your system</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />Creating and running a production replica on minimal hardware, including database replicas and instances then scaling it up in the event of a failure to use for production.</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Creating all the required infrastructure resources on AWS in response to a failure</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p>The Warm Standby DR strategy is a quicker response time due to the always running (warm) backup system. This offers better RTO and RPO than the Pilot Light and Backup and Restore strategies Further information: https://d0.awsstatic.com/whitepapers/aws-disaster-recovery.pdf</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>True or False: Storage Gateway traffic be throttled.</p>
+
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />False</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />True</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p>Further information: https://aws.amazon.com/storagegateway/faqs/</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>AWS DynamoDB does not allow you to replicate data across regions.</p>
+
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />False</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />True</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p>DynamoDB does allow you to replicate data across regions using streams. See the links for more information. Further information: http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Streams.CrossRegionRepl.html</p>
+</blockquote>
+
+<ul>
+  <li>
+    <p>True or False: You can force an RDS Multi-AZ failover by rebooting the active instance.</p>
+
+    <ul class="task-list">
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />False</li>
+      <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />True</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p>Forcing a failover can be done by restarting the active instance via either the console or the RebootDBInstance API call. Further information: http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_RebootInstance.html</p>
+</blockquote>
+:ET

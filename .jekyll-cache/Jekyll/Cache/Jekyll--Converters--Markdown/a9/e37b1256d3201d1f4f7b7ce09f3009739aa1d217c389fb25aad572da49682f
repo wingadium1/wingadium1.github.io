@@ -1,0 +1,64 @@
+I"W<h1 id="note-for-aws-lambda--api-gateway--route53--s3--rds-project-developement">Note for AWS Lambda + API Gateway + Route53 + S3 + RDS project developement</h1>
+
+<h2 id="aws">AWS</h2>
+
+<h3 id="authentication-and-authorization">Authentication and Authorization</h3>
+<ul>
+  <li><a href="https://www.sandersdenardi.com/aws-lambda-api-auth/">https://www.sandersdenardi.com/aws-lambda-api-auth/</a>
+Create 3 separate api: login, logout, get with 3 Lambda functions, login will call to another authentication resource: YAML, Cognito, etc</li>
+  <li><a href="https://aws.amazon.com/blogs/compute/introducing-custom-authorizers-in-amazon-api-gateway/">https://aws.amazon.com/blogs/compute/introducing-custom-authorizers-in-amazon-api-gateway/</a>
+Custom Authorizer API Gateway</li>
+  <li><a href="https://github.com/danilop/LambdAuth">https://github.com/danilop/LambdAuth</a> Lambda function for cognito</li>
+  <li><a href="https://www.concurrencylabs.com/blog/configure-your-lambda-function-like-a-champ-sail-smoothly/">https://www.concurrencylabs.com/blog/configure-your-lambda-function-like-a-champ-sail-smoothly/</a>
+Config lambda function with environment tag</li>
+  <li><a href="https://gitlab.com/wingadium/ReadingDocument/blob/f21f586f2bae119d94c9c006c846783be31c9e26/Serverless%20Authentication%20AWS%20Re%20Invent%202016.pdf">AWS re:Invent Serverless Authentication and Authorization</a></li>
+</ul>
+
+<h3 id="lambda-cicd">Lambda CI/CD</h3>
+
+<ul>
+  <li><a href="https://blog.jayway.com/2016/09/07/continuous-deployment-aws-lambda-behind-api-gateway/">Continuous Deployment of AWS Lambda behind API Gateway</a></li>
+  <li><a href="https://blog.jayway.com/2016/07/07/continuous-deployment-aws-lambda/">Continuous Deployment on AWS Lambda</a></li>
+  <li><a href="http://docs.aws.amazon.com/lambda/latest/dg/automating-deployment.html">Lambda automating deployment</a></li>
+  <li><a href="https://aws.amazon.com/blogs/compute/tag/cicd/">CI/CD tag in AWS Blog</a></li>
+  <li><a href="https://aws.amazon.com/blogs/compute/continuous-integration-deployment-for-aws-lambda-functions-with-jenkins-and-grunt-part-1/">Continuous Integration/Deployment for AWS Lambda functions with Jenkins and Grunt – Part 1</a></li>
+  <li><a href="https://aws.amazon.com/blogs/compute/continuous-integration-deployment-for-aws-lambda-functions-with-jenkins-and-grunt-part-2/">Continuous Integration/Deployment for AWS Lambda functions with Jenkins and Grunt – Part 2</a></li>
+</ul>
+
+<h3 id="lambda-implementation">Lambda implementation</h3>
+<ul>
+  <li><a href="http://docs.aws.amazon.com/lambda/latest/dg/lambda-edge.html">AWS Lambda@Edge</a> Lambda@Edge lets you run Lambda functions at AWS Regions and Amazon CloudFront edge locations in response to CloudFront events, without provisioning or managing servers.</li>
+</ul>
+
+<h3 id="nodejs-tips">Node.js tips</h3>
+<ul>
+  <li><a href="https://hackernoon.com/6-reasons-why-javascripts-async-await-blows-promises-away-tutorial-c7ec10518dd9">js async-await vs promises</a></li>
+</ul>
+
+<h3 id="lambda-limitation-investigation">Lambda limitation investigation</h3>
+
+<ul>
+  <li><a href="http://docs.aws.amazon.com/general/latest/gr/api-retries.html">http://docs.aws.amazon.com/general/latest/gr/api-retries.html</a></li>
+  <li><a href="https://dzone.com/articles/the-rise-of-lambda">https://dzone.com/articles/the-rise-of-lambda</a></li>
+  <li><a href="https://www.stratoscale.com/blog/cloud/aws-lambda-features-limitations-practical-examples/">https://www.stratoscale.com/blog/cloud/aws-lambda-features-limitations-practical-examples/</a></li>
+  <li><a href="https://aws.amazon.com/blogs/compute/category/aws-lambda/">https://aws.amazon.com/blogs/compute/category/aws-lambda/</a></li>
+  <li><a href="https://aws.amazon.com/blogs/aws/run-code-cloud/">https://aws.amazon.com/blogs/aws/run-code-cloud/</a></li>
+  <li><a href="http://docs.aws.amazon.com/lambda/latest/dg/retries-on-errors.html">http://docs.aws.amazon.com/lambda/latest/dg/retries-on-errors.html</a></li>
+  <li><a href="http://docs.aws.amazon.com/lambda/latest/dg/use-cases.html">http://docs.aws.amazon.com/lambda/latest/dg/use-cases.html</a></li>
+</ul>
+
+<h3 id="serving-private-content-through-cloudfront">Serving private content through CloudFront</h3>
+<ul>
+  <li>To serve private content through CloudFront we use Origin Access Identity, signed URLs or signed cookies</li>
+  <li><a href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-task-list.html">Setup serving private content througt CloudFront</a></li>
+  <li><a href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-s3.html">http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-s3.html</a></li>
+  <li><a href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-signed-cookies.html">How to use signed cookies</a></li>
+  <li><a href="http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-signed-urls.html">How to use singed URLs</a></li>
+</ul>
+
+<h3 id="browser-base-upload-using-http-post">Browser-base Upload using HTTP Post</h3>
+<ul>
+  <li>To upload file to S3 we can upload directly to S3 instead of using webserver, when use this method Web Client must have S3 Signature</li>
+  <li><a href="http://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-UsingHTTPPOST.html">How to implement browser-base upload</a></li>
+</ul>
+:ET

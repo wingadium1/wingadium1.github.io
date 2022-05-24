@@ -1,0 +1,103 @@
+I"�<h1 id="how-to-recover-corrupted-git-repository">How to recover corrupted GIT repository</h1>
+
+<h2 id="git-corrupted-really">GIT corrupted, really?</h2>
+
+<p>Thực sự vấn đề này mình cũng không sure lắm là do đâu, và cũng không chắc vấn đề này có phải là corrupted hay không nhưng sẽ note lại một chút về case này.</p>
+
+<h3 id="nạn-nhân">Nạn nhân</h3>
+<p>Ngô Hải Đoàn, 1995, Android Dev. Anh ta đang làm việc trên PC, đột nhiên tòa nhà bị mất điện, khi bật máy lại anh ta phát hiện ra anh ta không thể thực hiện các câu lệnh git trên local-repository của mình nữa và mình là thằng cave được gọi support.</p>
+
+<h3 id="phán-đoán">Phán đoán</h3>
+<p>Trước khi vào phần phán đoán thì mình có hỏi về source code đã commit chưa, nếu commit rồi thì khả năng recover được rất cao.
+Câu hỏi thứ 2, source code đó có quan trọng không, nếu có thể re-work trong dưới 30m thì chắc sẽ không có node này.</p>
+
+<p>Mình sẽ kết thúc phần phán đoán ở đây vì chả có gì để phán đoán cả</p>
+
+<h3 id="kiểm-tra-một-chút">Kiểm tra một chút.</h3>
+<p>Trong khi voọc máy của Đoàn thì mình có cố re-init repository nhưng có vẻ không khả quan, kiểm tra một lúc thì có vẻ như các object và ref của git vẫn còn khá ổn. Bạn có thể tự kiểm tra thư mục <code class="language-plaintext highlighter-rouge">.git</code> trong local repository của mình.</p>
+
+<blockquote>
+  <p>Như vậy, nhìn chung khả năng cao branch/commit quan trọng vẫn ổn.</p>
+</blockquote>
+
+<h3 id="thử-recover">Thử recover.</h3>
+
+<p>Mình có sử dụng một số câu lệnh git cơ bản như <code class="language-plaintext highlighter-rouge">git log</code> hay <code class="language-plaintext highlighter-rouge">git init</code> để thử lấy lại commit-id nhưng không thành công.</p>
+
+<p>Đến đây nhìn chung bạn không thể làm gì với repo này nữa, nên mình sẽ chuyển toàn bộ object của repo này sang một thư mục khác mà vừa clone về. (copy thư mục <code class="language-plaintext highlighter-rouge">object</code> trong <code class="language-plaintext highlighter-rouge">.git</code> của thư mục cũ sang chỗ tương ứng của thư mục mới)</p>
+
+<blockquote>
+  <p>Đến đây bạn có một repository giống với remote (chỗ mà bạn clone về) và cộng thêm các commit mà bạn đã commit hoặc đã pull về từ remote.</p>
+</blockquote>
+
+<h3 id="tại-sao-lại-copy-objects">Tại sao lại copy <code class="language-plaintext highlighter-rouge">objects</code></h3>
+
+<p>Nhìn chung nếu bạn đã commit thì không sợ mất content. Bởi khi commit git sẽ sinh ra các file <code class="language-plaintext highlighter-rouge">object</code> trong thư mục <code class="language-plaintext highlighter-rouge">objects</code>, công với log trong <code class="language-plaintext highlighter-rouge">logs</code> và một số <code class="language-plaintext highlighter-rouge">ref</code> hay <code class="language-plaintext highlighter-rouge">info</code>.</p>
+
+<p>Object name sẽ dài 40 ký tự (SHA1)</p>
+
+<p>Thư mục object của bạn sẽ trông như này</p>
+
+<p><img src="https://github.com/wingadium1/wingadium1.github.io/raw/master/img/git-objects.png" alt="alt text" /></p>
+
+<p>Tên thư mục sẽ là 2 ký tự đầu trong 40 ký tự.
+Trong thư mục sẽ có các file với tên là 38 ký tự còn lại.</p>
+
+<p>Objects sẽ chứa thông tin về file (changed content)
+để xem được thì cần dùng câu lệnh git(do git mã hóa nên chỉ git xem đc :D): <code class="language-plaintext highlighter-rouge">git cat-file</code></p>
+
+<p><img src="https://github.com/wingadium1/wingadium1.github.io/raw/master/img/git-cat-file.png" alt="alt text" /></p>
+
+<blockquote>
+  <p>Đến đấy các bạn sẽ đặt câu hỏi thế git quản lý các file thành commit như thế nào</p>
+</blockquote>
+
+<p>Từ các <code class="language-plaintext highlighter-rouge">objects</code> thì git sẽ dựng lên tree là các phiên bản của thư mục bao gồm các <code class="language-plaintext highlighter-rouge">objects</code>.</p>
+
+<p><img src="https://git-scm.com/book/en/v2/images/data-model-1.png" alt="alt text" /></p>
+
+<p><img src="https://github.com/wingadium1/wingadium1.github.io/raw/master/img/git-cat-file-tree.png" alt="alt text" /></p>
+
+<p>Cứ thế, bằng cách duyệt tree, ta sẽ có 1 tree hoàn chỉnh gồm content của cả một phiên bản (commit).</p>
+
+<p>Cuối cùng commit sẽ bao gồm 1 tree</p>
+
+<p><img src="https://github.com/wingadium1/wingadium1.github.io/raw/master/img/git-cat-file-commit.png" alt="alt text" /></p>
+
+<blockquote>
+  <p>Tóm lại cứ còn objects là bạn còn tất cả, việc còn lại là đi tìm commit-id để recover.</p>
+</blockquote>
+
+<h3 id="tìm-commit">Tìm commit</h3>
+
+<p>Có một vài chỗ để bạn có thể tìm GIT commit-id, thứ nhất đó là thư mục <code class="language-plaintext highlighter-rouge">refs</code></p>
+
+<h4 id="refs">Refs</h4>
+
+<p>Refs chỉ đơn giản là references của commit. <code class="language-plaintext highlighter-rouge">Refs</code> dùng để bạn nhớ lastest commit bằng cách lưu commit id vào thư mục refs.</p>
+
+<p><img src="https://github.com/wingadium1/wingadium1.github.io/raw/master/img/git-ref-head.png" alt="alt text" /></p>
+
+<p>Ở đây lastest commit của nhánh master đang là <strong>b94514784b0b86e84bdd2d66903de5bf7f9722c2</strong>.</p>
+
+<p>Vậy nhớ được tên nhánh là có thể recover lại được. Lúc này bạn sẽ recover toàn bộ tree của nhánh đó và mặc nhiên các commit base trên commit này sẽ có thể trace được.</p>
+
+<h4 id="logs">logs</h4>
+
+<p>Một chỗ nữa, toàn năng hơn là <code class="language-plaintext highlighter-rouge">logs</code>. Log lưu lại lịch sử của từng nhánh.</p>
+
+<p><img src="https://github.com/wingadium1/wingadium1.github.io/raw/master/img/git-logs.png" alt="alt text" /></p>
+
+<p>Bạn có thể xem mình đã <em>tunglamgi</em> trên từng nhánh.</p>
+
+<blockquote>
+  <p>Đến đây bạn có commit-id rồi việc còn lại là recover bằng câu lệnh <code class="language-plaintext highlighter-rouge">git checkout commit-id</code></p>
+</blockquote>
+
+<h3 id="btw">Btw</h3>
+
+<p>Nhìn chung xử lý mấy việc lặt vặt này khá hay và tạo cho mình nhiều cơ hội xử lý các thủ thuật về <strong>git</strong>.</p>
+
+<p>Anw: Dù mất kì chuyện gì xảy ra đừng bao giờ xóa thư mục <strong><code class="language-plaintext highlighter-rouge">.git</code></strong>
+:D</p>
+:ET

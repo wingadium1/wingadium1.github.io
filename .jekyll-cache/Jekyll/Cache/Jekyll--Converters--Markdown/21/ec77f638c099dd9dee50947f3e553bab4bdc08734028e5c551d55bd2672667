@@ -1,0 +1,192 @@
+I"�<h1 id="aws-csa-professional-quiz-191-200">AWS CSA Professional Quiz 191-200</h1>
+<hr />
+<hr />
+<p>191 | Can I move a Reserved Instance from one Region to another?</p>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />No</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Only if they are moving into GovCloud</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Yes</li>
+</ul>
+
+<hr />
+
+<table>
+  <tbody>
+    <tr>
+      <td>192</td>
+      <td>What is Amazon Glacier?</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />You mean Amazon “Iceberg”: it’s a low-cost storage service.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />A security tool that allows to “freeze” an EBS volume and perform computer forensics on it.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />A low-cost storage service that provides secure and durable storage for data archiving and backup.</li>
+</ul>
+
+<hr />
+
+<table>
+  <tbody>
+    <tr>
+      <td>193</td>
+      <td>What is the durability of S3 RRS?</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />0.9999</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />0.9995</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />0.99995</li>
+</ul>
+
+<hr />
+
+<table>
+  <tbody>
+    <tr>
+      <td>194</td>
+      <td>What does specifying the mapping /dev/sdc=none when launching an instance do?</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Prevents /dev/sdc from creating the instance.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Prevents /dev/sdc from deleting the instance.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Set the value of /dev/sdc to ‘zero’</li>
+</ul>
+
+<hr />
+
+<table>
+  <tbody>
+    <tr>
+      <td>195</td>
+      <td>Is Federated Storage Engine currently supported by Amazon RDS for MySQL?</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Only for Oracle RDS instances</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />No</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Yes</li>
+</ul>
+
+<hr />
+
+<table>
+  <tbody>
+    <tr>
+      <td>196</td>
+      <td>Is there a limit to how many groups a user can be in?</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Yes for all users</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Yes for all users except root</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />No</li>
+</ul>
+
+<hr />
+
+<table>
+  <tbody>
+    <tr>
+      <td>197</td>
+      <td>True or False: When you perform a restore operation to a point in time or from a DB Snapshot, a new DB Instance is created with a new endpoint.</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />true</li>
+</ul>
+
+<hr />
+
+<table>
+  <tbody>
+    <tr>
+      <td>198</td>
+      <td>A/An _____ acts as a firewall that controls the traffic allowed to reach one or more instances.</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul class="task-list">
+  <li class="task-list-item">
+    <p><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />security group</p>
+  </li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />ACL</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />IAM</li>
+</ul>
+
+<hr />
+
+<table>
+  <tbody>
+    <tr>
+      <td>199</td>
+      <td>Will my standby RDS instance be in the same Availability Zone as my primary?</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Only for Oracle RDS types</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Yes</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Only if configured at launch</li>
+</ul>
+
+<hr />
+
+<table>
+  <tbody>
+    <tr>
+      <td>200</td>
+      <td>While launching an RDS DB instance, on which page I can select the Availability Zone?</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />REVIEW</li>
+  <li class="task-list-item">
+    <p><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />DB INSTANCE DETAILS</p>
+  </li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />MANAGEMENT OPTIONS</li>
+</ul>
+
+<hr />
+<p><a href="AWS_CSA_Professional_Quiz_181-190.html">AWS CSA Professional Quiz_181-190</a></p>
+
+<ul>
+  <li><a href="AWS_CSA_Professional_Quiz_11-20.html">AWS CSA Professional Quiz_11-20</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_21-30.html">AWS CSA Professional Quiz_21-30</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_31-40.html">AWS CSA Professional Quiz_31-40</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_41-50.html">AWS CSA Professional Quiz_41-50</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_51-60.html">AWS CSA Professional Quiz_51-60</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_61-70.html">AWS CSA Professional Quiz_61-70</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_71-80.html">AWS CSA Professional Quiz_71-80</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_81-90.html">AWS CSA Professional Quiz_81-90</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_91-100.html">AWS CSA Professional Quiz_91-100</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_101-110.html">AWS CSA Professional Quiz_101-110</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_111-120.html">AWS CSA Professional Quiz_111-120</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_121-130.html">AWS CSA Professional Quiz_121-130</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_131-140.html">AWS CSA Professional Quiz_131-140</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_141-150.html">AWS CSA Professional Quiz_141-150</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_151-160.html">AWS CSA Professional Quiz_151-160</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_161-170.html">AWS CSA Professional Quiz_161-170</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_171-180.html">AWS CSA Professional Quiz_171-180</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_181-190.html">AWS CSA Professional Quiz_181-190</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_191-200.html">AWS CSA Professional Quiz_191-200</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_201-210.html">AWS CSA Professional Quiz_201-210</a></li>
+</ul>
+:ET

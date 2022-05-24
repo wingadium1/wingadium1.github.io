@@ -1,0 +1,183 @@
+I"Ò-<h1 id="aws-csa-professional-quiz-41-50">AWS CSA Professional Quiz 41-50</h1>
+<hr />
+<hr />
+<p>41 | A company is deploying a new two-tier web application in AWS. The company has limited staff and requires high availability, and the application requires complex queries and table joins. Which configuration provides the solution for the companyâ€™s requirements?</p>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />MySQL Installed on two Amazon EC2 Instances in a single Availability Zone</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Amazon RDS for MySQL with Multi-AZ</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Amazon ElastiCache</li>
+</ul>
+
+<hr />
+
+<table>
+  <tbody>
+    <tr>
+      <td>42</td>
+      <td>A t2.medium EC2 instance type must be launched with what type of Amazon Machine Image (AMI)?</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />An Instance store Hardware Virtual Machine AMI</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />An Instance store Paravirtual AMI</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />An Amazon EBS-backed Hardware Virtual Machine AMI</li>
+</ul>
+
+<hr />
+
+<table>
+  <tbody>
+    <tr>
+      <td>43</td>
+      <td>You manually launch a NAT AMI in a public subnet. The network is properly configured. Security groups and network access control lists are property configured. Instances in a private subnet can access the NAT. The NAT can access the Internet. However, private instances cannot access the Internet. What additional step is required to allow access from the private instances?</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Enable Source/Destination Check on the private Instances.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Enable Source/Destination Check on the NAT instance.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Disable Source/Destination Check on the private instances.</li>
+</ul>
+
+<hr />
+
+<table>
+  <tbody>
+    <tr>
+      <td>44</td>
+      <td>Which of the following approaches provides the lowest cost for Amazon Elastic Block Store snapshots while giving you the ability to fully restore data?</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Maintain two snapshots: the original snapshot and the latest incremental snapshot.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Maintain a volume snapshot; subsequent snapshots will overwrite one another</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Maintain a single snapshot the latest snapshot is both Incremental and complete.</li>
+</ul>
+
+<hr />
+
+<table>
+  <tbody>
+    <tr>
+      <td>45</td>
+      <td>An existing application stores sensitive information on a non-boot Amazon EBS data volume attached to an Amazon Elastic Compute Cloud instance. Which of the following approaches would protect the sensitive data on an Amazon EBS volume?</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Upload your customer keys to AWS CloudHSM. Associate the Amazon EBS volume with AWS CloudHSM. Remount the Amazon EBS volume.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Create and mount a new, encrypted Amazon EBS volume. Move the data to the new volume. Delete the old 
+Amazon EBS volume.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Unmount the EBS volume. Toggle the encryption attribute to True. Re-mount the Amazon EBS volume.</li>
+</ul>
+
+<hr />
+
+<p>46 | A US-based company is expanding their web presence into Europe. The company wants to extend their AWS infrastructure from Northern Virginia (us-east-1) into the Dublin (eu-west-1) region. Which of the following
+options would enable an equivalent experience for users on both continents?</p>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Use a public-facing load balancer per region to load-balance web traffic, and enable HTTP health checks.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Use a public-facing load balancer per region to load-balance web traffic, and enable sticky sessions.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Use Amazon Route 53, and apply a geolocation routing policy to distribute traffic across both regions.</li>
+</ul>
+
+<hr />
+
+<table>
+  <tbody>
+    <tr>
+      <td>47</td>
+      <td>Which of the following are use cases for Amazon DynamoDB? Choose 3 answers</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Storing BLOB data.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Managing web sessions.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Storing JSON documents.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Storing metadata for Amazon S3 objects.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Running relational joins and complex updates.</li>
+</ul>
+
+<hr />
+
+<p>48 | A customer implemented AWS Storage Gateway with a gateway-cached volume at their main office. An event takes the link between the main and branch office offline. Which methods will enable the branch office to
+access their data? Choose 3 answers</p>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Use a HTTPS GET to the Amazon S3 bucket where the files are located.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Restore by implementing a lifecycle policy on the Amazon S3 bucket.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Make an Amazon Glacier Restore API call to load the files into another Amazon S3 bucket within four to six 
+hours.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Launch a new AWS Storage Gateway instance AMI in Amazon EC2, and restore from a gateway snapshot.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Create an Amazon EBS volume from a gateway snapshot, and mount it to an Amazon EC2 instance.</li>
+</ul>
+
+<hr />
+
+<p>49 | A company has configured and peered two VPCs: VPC-1 and VPC-2. VPC-1 contains only private subnets, and VPC-2 contains only public subnets. The company uses a single AWS Direct Connect connection and private
+virtual interface to connect their on-premises network with VPC-1. Which two methods increases the fault tolerance of the connection to VPC-1? Choose 2 answers</p>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Establish a hardware VPN over the internet between VPC-2 ana the on-premises network.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Establish a hardware VPN over the internet between VPC-1 and the on-premises network.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Establish a new AWS Direct Connect connection and private virtual interface in the same region as VPC-2.</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Establish a new AWS Direct Connect connection and private virtual interface in a different AWS region than 
+VPC-1.</li>
+</ul>
+
+<hr />
+
+<table>
+  <tbody>
+    <tr>
+      <td>50</td>
+      <td>What is the minimum time Interval for the data that Amazon CloudWatch receives and aggregates?</td>
+    </tr>
+  </tbody>
+</table>
+
+<ul class="task-list">
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />One second</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Five seconds</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />One minute</li>
+  <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" />Three minutes</li>
+</ul>
+
+<hr />
+<p><a href="AWS_CSA_Professional_Quiz_31-40.html">AWS CSA Professional Quiz_31-40</a></p>
+
+<p><a href="AWS_CSA_Professional_Quiz_51-60.html">AWS CSA Professional Quiz_51-60</a></p>
+
+<ul>
+  <li><a href="AWS_CSA_Professional_Quiz_11-20.html">AWS CSA Professional Quiz_11-20</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_21-30.html">AWS CSA Professional Quiz_21-30</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_31-40.html">AWS CSA Professional Quiz_31-40</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_41-50.html">AWS CSA Professional Quiz_41-50</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_51-60.html">AWS CSA Professional Quiz_51-60</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_61-70.html">AWS CSA Professional Quiz_61-70</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_71-80.html">AWS CSA Professional Quiz_71-80</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_81-90.html">AWS CSA Professional Quiz_81-90</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_91-100.html">AWS CSA Professional Quiz_91-100</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_101-110.html">AWS CSA Professional Quiz_101-110</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_111-120.html">AWS CSA Professional Quiz_111-120</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_121-130.html">AWS CSA Professional Quiz_121-130</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_131-140.html">AWS CSA Professional Quiz_131-140</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_141-150.html">AWS CSA Professional Quiz_141-150</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_151-160.html">AWS CSA Professional Quiz_151-160</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_161-170.html">AWS CSA Professional Quiz_161-170</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_171-180.html">AWS CSA Professional Quiz_171-180</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_181-190.html">AWS CSA Professional Quiz_181-190</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_191-200.html">AWS CSA Professional Quiz_191-200</a></li>
+  <li><a href="AWS_CSA_Professional_Quiz_201-210.html">AWS CSA Professional Quiz_201-210</a></li>
+</ul>
+:ET

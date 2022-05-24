@@ -1,0 +1,107 @@
+I"�#<h1 id="git-from-noob-to-master---chapter-1">Git from noob to master - Chapter 1</h1>
+
+<p>Trong một vài lần chém gió về Git, thấy mọi người có vẻ chưa chú ý nhiều đến Git và sử dụng nó một cách hiệu quả.
+Nhân đây xin mạn phép chém gió sơ qua để mọi người hoàn thiện.</p>
+
+<h2 id="git-là-gì">Git là gì</h2>
+
+<p>Câu hỏi cơ bản và đơn giản nhưng thay vì trích dẫn bất kì định nghĩa nào mình sẽ quay sang từ khóa và hinh ảnh</p>
+
+<ul>
+  <li>SCM - Source code management</li>
+  <li>Linus Torvarlds (Linux)</li>
+  <li>Thay thế BitKeeper trong dự án Linux Kernel</li>
+</ul>
+
+<h2 id="cài-đặt">Cài đặt</h2>
+
+<p>Git cung cấp bộ cài cho tất cả các OS hệ POSIX: Linux, Windows, macOS trên <a href="https://git-scm.com/"><code class="language-plaintext highlighter-rouge">git-scm</code></a>.</p>
+
+<h2 id="sơ-lược-lịch-sử">Sơ lược lịch sử</h2>
+
+<p><img src="https://github.com/wingadium1/wingadium1.github.io/raw/master/img/git-fork-you.jpg" alt="alt text" height="445px" width="965px" />.</p>
+
+<p>Torvalds thổ lộ rằng: ông chưa bao giờ muốn thực hiện quản lý source code, đó là công việc nhàm chán nhất trong thế giới máy tính (trừ database ra).
+Torvalds cùng các đồng đội sử dụng rất nhiều SCM khác nhau cho đến khi họ thấy phù hợp với BitKeeper(BK), thậm chí BK là nhân tố quan trong trong việc phát triển nhanh chóng của Linux Kernel. Vấn đề duy nhất của BK là một phần mềm độc quyền, tất nhiên có bản miễn phí với các hạn chế cho các open-source project. Larry McVoy(CEO BitMover công ty phát triển BK) vừa muốn hỗ trợ các dự án phần mềm tự do vừa muốn bảo vệ lợi ích của BK cũng như BitMover tất nhiên chừng nào hội phần mềm tự do chưa đe dọa đến lợi ích.</p>
+
+<p>Năm 2005, Andrew “Tridge” Tridgell đã dịch ngược BK, gần như ngay lập tức BK bỏ việc hỗ trợ Linux, ngược lại Linus cũng ngừng sử dụng BK để quản lý mã nguồn, tuy nhiên Linus chỉ có 3 tháng để chuyển toàn bộ source code sang công cụ mới khi BK chính thức ngừng hoàn toàn việc hỗ trợ. Điều đó nảy sỉnh việc phát triển Git.</p>
+
+<p>Quá trình phát triển bắt đầu từ ngày 3 tháng 4 nằm 2005, Torvalds công bố dự án vào ngày 6, Git có thể cài đặt trên PC vào ngày 7 và tính năng merge branch được release vào ngày 18. Đến ngày 16/6 Git thực hiện quản lý việc release Linux Kernel v2.6.12</p>
+
+<blockquote>
+  <p>Có lẽ việc ôn lại lịch sử sẽ kết thúc ở đây, phần tiếp theo sẽ quay lại thực tế sử dụng Git</p>
+</blockquote>
+
+<h2 id="một-số-khái-niệm-trong-git">Một số khái niệm trong Git</h2>
+
+<h3 id="repository">Repository</h3>
+<ul>
+  <li>Repository là khái niệm cơ bản của Git tương đương với project trong GitLab, Gerrit</li>
+  <li>Git có thể tạo bằng câu lệnh <code class="language-plaintext highlighter-rouge">git init</code>, thư mục trở thành <em>local repository</em> trong khi đó các repository online như trên GitLab được gọi là <em>remote repository</em>.</li>
+  <li>Lịch sử làm việc đều được lưu trong thư mục khởi tạo git</li>
+</ul>
+
+<h3 id="remote">Remote</h3>
+<ul>
+  <li>Repository hosted in server. Remote repository chính thường được gọi là <strong><em>Origin</em></strong></li>
+  <li>Các <em>local clone</em> đều liên kết đến <strong>remote</strong>.</li>
+  <li>1 local clone can have 0, 1 or many <strong>remote</strong>.</li>
+</ul>
+
+<h3 id="branch---nhánh">Branch - nhánh</h3>
+<ul>
+  <li>Branch cũng là một khái niệm mới trong Git mà cần phải làm quen.</li>
+  <li>Branch là các version song song với nhau của Repo.</li>
+  <li>Người dùng làm việc trên các branch mà không làm ảnh hưởng đến <strong><em>live</em></strong> version.</li>
+</ul>
+
+<h4 id="một-vài-branch-đặc-biệt">Một vài branch đặc biệt</h4>
+<ul>
+  <li>master - branch mặc định</li>
+  <li>HEAD - branch hiện tại mà người dùng đang làm việc</li>
+  <li>origin/master, origin/xxx, origin2/xxx là các nhánh ở remote repository</li>
+</ul>
+
+<h3 id="checkout">Checkout</h3>
+<ul>
+  <li>Checkout là cách người ta chuyển nhánh đề làm việc</li>
+  <li>Ví dụ: Bạn lấy project trên GitLab về và cần chuyển qua nhánh master 2 để làm việc bạn cần checkout sang nhánh master 2: <code class="language-plaintext highlighter-rouge">git checkout master2</code>,
+hoặc cũng có thể bạn cần tạo ra một nhánh mới hãy thêm flag <code class="language-plaintext highlighter-rouge">-b</code> trong câu lệnh: <code class="language-plaintext highlighter-rouge">git checkout -b dev_another_function</code>.</li>
+</ul>
+
+<h3 id="commit">Commit</h3>
+<ul>
+  <li>Nếu như Branch là nhánh cây, cành cây thì có thể coi commit chính là các nút (node) hoặc cũng có thể là một điểm nào đó trên nhánh.</li>
+  <li>Người ta lưu lịch sử làm việc trong các commit, nói cách khác nếu bạn commit dữ liệu của bạn không thể mất trừ khi bạn xóa hoàn toàn project git.</li>
+  <li>Cách tạo commit cũng đơn giản: <code class="language-plaintext highlighter-rouge">git commit -m "Commit Message"</code> hoặc cũng có thể đơn giản là <a href="https://git-scm.com/docs/git-commit"><code class="language-plaintext highlighter-rouge">git commit</code></a> sau đó làm theo hướng dẫn với giao diện text editor(thường là vi, vim, nano, etc, ..)</li>
+  <li>Mỗi commit đều có message và một ID đặc biệt (SHA –hash), từ đó có thể trace được commit</li>
+</ul>
+
+<blockquote>
+  <p>Nói đến đây mình đột nhiên nhiên phát hiện ra trình bay theo hướng này sẽ khiến mọi người khó hiểu một chút, vì vậy ngay sau đây mình sẽ trình bày về commit một cách rõ hơn, theo một cách nhin khác</p>
+</blockquote>
+
+<h3 id="git-concept">Git Concept</h3>
+
+<p><img src="https://git-scm.com/book/en/v2/images/lifecycle.png" alt="alt text" /></p>
+
+<p><img src="https://github.com/wingadium1/wingadium1.github.io/raw/master/img/git_local_operation.png" alt="alt text" /></p>
+
+<p>2 hình trên đây đã trình bày cách sử dụng git ở local một cách cơ bản</p>
+
+<p>Nhìn chung một file sẽ có 4 trạng thái như hình thứ nhất</p>
+<ul>
+  <li>Untracked: Trong working directory nhưng git không quản lý, đó là nhưng file tạo mới, được copy vào hay đơn giản là bạn vừa chạy <a href="https://git-scm.com/docs/git-rm"><code class="language-plaintext highlighter-rouge">git rm fileName</code></a>.</li>
+  <li>Unmodified: Rất dễ hiểu, đó là file git quản lý, git ghi nhận rằng file đó chưa có sự thay đổi <em>so với</em> <strong><em>commit hiện tại</em></strong> (HEAD). Có 2 cách để chuyển file vào trạng thái này đó là thêm các file untracked <a href="https://git-scm.com/docs/git-add"><code class="language-plaintext highlighter-rouge">git add</code></a> hay <a href="https://git-scm.com/docs/git-commit"><code class="language-plaintext highlighter-rouge">git commit</code></a> tức là lưu sự thay đổi đó lại (file sẽ được ghi nhận là ko thay đổi so với commit mới :D, đôi chút confuse).</li>
+  <li>Modified: Là file từ trạng thái unmodified và đã bị edit, tất nhiên khi Crtl + Z toàn bộ step, file sẽ trở lại unmodified.</li>
+  <li>Staged: là trạng thái chuẩn bị được commit, thông thường người dùng không để ý đến trạng thái này, trạng thái này được trình bày khá rõ ràng ở hình thứ 2. 
+Một trạng thái kiểu như git đã ghi nhận sự thay đổi nhưng chưa tạo commit. Để chuyển sang trạng thái staged sử dụng câu lệnh <a href="https://git-scm.com/docs/git-stage"><code class="language-plaintext highlighter-rouge">git stage</code></a>.</li>
+</ul>
+
+<blockquote>
+  <p>Một tips nhỏ với stage, khi bạn cần commit lên nhánh A mà lại làm việc trên nhánh B thì bạn có thể stage toàn bộ file cần thay đổi và checkout sang nhánh A và commit. Một cách khác đa số mọi người sẽ áp dụng đó là commit trên nhánh B, cherry-pick(sẽ nói ở dưới đây) commit sang A, ngoài ra cũng có cách chuyên nghiệp hơn đó là tạo <strong><em>pack diff</em></strong>.</p>
+</blockquote>
+
+<h3 id="merge-và-rebase">Merge và Rebase</h3>
+<p>Từ thực tế làm việc trong nhóm sẽ nảy sinh các trường hợp phải kết hợp code của nhiều developer để tạo nên một bản hoàn chỉnh thay vì tiếp tục phát triển song song mãi điều đó nảy sinh ra 2 khái niệm trong git là merge và rebase.</p>
+:ET
