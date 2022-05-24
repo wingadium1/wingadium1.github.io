@@ -53,6 +53,9 @@ So how are bugs handled? The principle is also very simple, but the implementati
     * More common case is bug in staging (tester branch), since ***staging*** is not merged with ***develop*** we need to cherry-pick on ***develop*** and the branch that implements that feature.
     * If the feature has been released in the golived version, you only need to care about ***develop***, ***staging***, but actually before that, the bug fix branch was also implemented as shown in the 3rd picture. .
 
+
+![alt text](https://github.com/wingadium1/wingadium1.github.io/raw/master/img/Git-Page-4.png)
+
 So it can simply be summed up as follows: when a bug is discovered, fix it right there and cherry-pick related branches that have not been released: ***staging***, ***develop** * is require.
 
 #### Release
